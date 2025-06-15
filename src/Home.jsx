@@ -658,7 +658,7 @@ const fadeInVariants = {
                 <div className="relative w-full max-w-[400px]">
                   <div className="overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]">
                     <img
-                      src="https://placehold.co/400x600/png"
+                      src="public/civix-mobile.png"
                       alt="Civix App on Mobile"
                       className="w-full h-auto object-cover"
                       loading="lazy"

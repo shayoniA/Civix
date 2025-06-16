@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
 import { div } from "framer-motion/client";
+import { Link, useNavigate } from 'react-router-dom';
+
 
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -103,6 +105,21 @@ const questions = [
 
 ]
 
+//Logijn state management
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token); 
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    alert("You have been logged out successfully.");
+    navigate('/');
+  };
 
   return (
     <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -163,32 +180,50 @@ const questions = [
             </svg>
             <span className="text-xl font-bold">Civix</span>
           </div>
-          <nav className="hidden md:flex gap-6">
-            <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
-              Features
-            </a>
-            <a href="#how-it-works" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
-              How It Works
-            </a>
-            <a href="#testimonials" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
-              Testimonials
-            </a>
-            <a href="#download" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
-              Download
-            </a>
-          </nav>
+                    {isLoggedIn && (
+            <nav className="md:flex gap-6">
+              <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors">
+                Features
+              </a>
+              <a href="#how-it-works" className="text-sm font-medium hover:text-emerald-500 transition-colors">
+                How It Works
+              </a>
+              <a href="#testimonials" className="text-sm font-medium hover:text-emerald-500 transition-colors">
+                Testimonials
+              </a>
+              <a href="#download" className="text-sm font-medium hover:text-emerald-500 transition-colors">
+                Download
+              </a>
+            </nav>
+          )}
+
           <div className="flex items-center gap-4">
-          <button className="hidden md:flex h-9 px-4 py-2 rounded-md text-sm font-medium border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors hover:bg-gray-100 dark:hover:bg-gray-600 duration-300">
-            Log In
-          </button>
-            <button className="h-9 px-4 py-2 rounded-md text-sm font-medium bg-emerald-500 text-white hover:bg-emerald-600 transition-colors duration-300">
-              Sign Up
-            </button>
+            {!isLoggedIn ? (
+              <>
+                <Link to="/login">
+                  <button className="md:flex flex h-10 items-center justify-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
+                    Log In
+                  </button>
+                </Link>
+                <Link to="/signup">
+                  <button className="h-9 px-4 py-2 rounded-md text-sm font-medium bg-emerald-500 text-white hover:bg-emerald-600 cursor-pointer">
+                    Sign Up
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className="h-9 px-4 py-2 rounded-md text-sm font-medium bg-emerald-500 text-white hover:bg-emerald-600"
+              >
+                Logout
+              </button>
+            )}
             <DarkModeToggle />
           </div>
         </div>
       </header>
-
+      
       <main className="flex-1">
         {/* Hero Section */}
         <section className="py-12 md:py-24 lg:py-32 xl:py-48">

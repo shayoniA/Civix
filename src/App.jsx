@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import "./index.css";
 import { motion } from "framer-motion";
+import Footer from "./components/Footer";
 
 function App() {
   // Scroll animation effect
@@ -691,7 +692,7 @@ const fadeInVariants = {
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-slate-50">
+      {/* <footer className="border-t bg-slate-50">
         <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between md:py-12">
           <div className="flex items-center gap-2">
             <svg
@@ -754,7 +755,10 @@ const fadeInVariants = {
             © {new Date().getFullYear()} Civix. All rights reserved.
           </p>
         </div>
-      </footer>
+      </footer> */}
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

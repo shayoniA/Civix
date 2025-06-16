@@ -114,6 +114,7 @@ npm install
 
 ```
 - Start the Development Server
+
 ```
 
 npm start
@@ -142,8 +143,10 @@ cd civix-app
 
 
  📦 3. **Install Dependencies**
+
 Make sure you have **Node.js** and **npm** installed.  
 Then, install the project dependencies:
+
 ```bash
 
 npm install
@@ -156,14 +159,14 @@ npm install
 Use a meaningful branch name:
 ```bash
 
-git checkout -b feature/<your-feature-name>
+git checkout -b your-feature-name
 
 ```
 
 Example:
 ```bash
 
-git checkout -b feature/improve-readme
+git checkout -b improve-readme
 
 ```
 
@@ -190,7 +193,7 @@ git commit -m "feat: your clear and concise commit message"
 🚀 7. **Push Your Branch**
 ```bash
 
-git push origin feature/<your-feature-name>
+git push origin your-feature-name
 
 ```
 
@@ -206,6 +209,7 @@ git push origin feature/<your-feature-name>
 
 
 ## 📌 Roadmap / Future Enhancements  
+
 - 🔔 Push notifications for issue updates  
 - 📈 Analytics for civic issue trends  
 - 🌐 Multilingual support  

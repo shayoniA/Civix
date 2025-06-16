@@ -611,7 +611,7 @@ const questions = [
   {/* Features Section */}
 <motion.section 
   id="features" 
-  className="bg-white py-12 md:py-24 lg:py-32"
+  className="bg-white dark:bg-gray-900 py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-100px" }}
@@ -626,16 +626,17 @@ const questions = [
         <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
           Frequently Asked Questions
         </h2>
-        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+        <p className="max-w-[900px] text-gray-600 dark:text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             Find answers to commonly asked questions about Civix platform features and services.
         </p>
       </div>
-      <div className="w-full mt-8 max-w-3xl mx-auto">
+      <div className="w-full mt-8 max-w-3xl mx-auto bg-transparent">
           {questions.map((faq) => (
             <div key={faq.id}
             className="py-2 mb-4 w-full overflow-hidden">
               <button 
-              className="w-full text-left flex items-center justify-between px-4 py-2 bg-emerald-100 border-0 outline-none focus:outline-none focus:ring-0 shadow-none rounded-md hover:bg-emerald-100 transition-colors duration-300"
+                className="w-full text-left flex items-center justify-between px-4 py-2 bg-emerald-100 dark:bg-emerald-900 text-gray-800 dark:text-gray-100 border-0 outline-none focus:outline-none focus:ring-0 shadow-none rounded-md hover:bg-emerald-200 dark:hover:bg-emerald-800 transition-colors duration-300"
+
               onClick={() => setActiveFaq(activeFaq === faq.id ? null : faq.id)}
               >
                 <span className="font-medium">{faq.question}</span>
@@ -661,7 +662,7 @@ const questions = [
               </button>
                 {activeFaq === faq.id && (
                   <motion.div
-                    className="mt-2 px-4 py-2 bg-white rounded-md shadow-sm"
+                      className="mt-2 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-md shadow-sm"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}

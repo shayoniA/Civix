@@ -712,19 +712,19 @@ const fadeInVariants = {
             <span className="text-xl font-bold">Civix</span>
           </div>
           <nav className="flex flex-wrap gap-4 md:gap-6">
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="/about" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               About
             </a>
             <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Features
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="/privacy" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Privacy
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="/Terms" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Terms
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="/contact" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Contact
             </a>
           </nav>

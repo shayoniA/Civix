@@ -222,7 +222,7 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 --- 
 
-### 🌟 Our Awesome Contributors
+## 🌟 Our Awesome Contributors
 
 <a href="https://github.com/Harshs16/civix/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Harshs16/civix" />

@@ -98,8 +98,8 @@ Civix supports a **light and dark mode toggle** to enhance user experience in di
 - Node.js and npm  
 - PostgreSQL
 
-### 📥 Clone and Run  
-- 1. Clone the repository
+### 📥 Clone and Run (For Local Testing) 
+- Clone the repository
 
 ```
 
@@ -107,32 +107,103 @@ git clone https://github.com/Harshs16/civix.git
 cd civix-app
 
 ```
+- Install Dependencies
+```
 
-- 2. Create a new branch for your feature or fix
+npm install
+
+```
+- Start the Development Server
+```
+
+npm start
 
 ```
 
-git checkout -b feat/your-feature-name
+### 🧑‍💻 How to Contribute
+
+Here’s a quick step-by-step guide to help you get started:
+
+
+
+ 🔧 1. **Fork the Repository**
+Click the **"Fork"** button on the top-right of this repo. This will create a copy under your GitHub account.
+
+
+
+📥 2. **Clone the Fork**
+```bash
+
+git clone https://github.com/<your-username>/civix.git
+cd civix-app
 
 ```
 
-- 3. Make your changes in the codebase
-- 4. Then stage and commit your changes
+
+
+ 📦 3. **Install Dependencies**
+Make sure you have **Node.js** and **npm** installed.  
+Then, install the project dependencies:
+```bash
+
+npm install
 
 ```
+
+
+
+### 🌱 4. **Create a New Branch**
+Use a meaningful branch name:
+```bash
+
+git checkout -b feature/<your-feature-name>
+
+```
+
+Example:
+```bash
+
+git checkout -b feature/improve-readme
+
+```
+
+
+ 🛠️ 5. **Make Your Changes**
+- Improve the code, fix bugs, or update docs.
+- If you're running the project:
+  ```bash
+
+  npm start
+
+  ```
+
+
+
+ ✅ 6. **Stage and Commit**
+```bash
 
 git add .
-git commit -m "feat: meaningful description of the feature"
-
-```
-- Push the feature branch to your forked repo
+git commit -m "feat: your clear and concise commit message"
 
 ```
 
-git push origin feat/your-feature-name
+🚀 7. **Push Your Branch**
+```bash
+
+git push origin feature/<your-feature-name>
 
 ```
+
 ---
+
+🔁 8. **Create a Pull Request**
+- Go to your forked repo on GitHub
+- Click **“Compare & pull request”**
+- Add a helpful description of what you changed and why
+
+---
+
+
 
 ## 📌 Roadmap / Future Enhancements  
 - 🔔 Push notifications for issue updates  
@@ -146,11 +217,14 @@ git push origin feat/your-feature-name
 Pull requests are welcome! For major changes, please open an issue first to discuss your ideas.
 
 --- 
+
 ### 🌟 Our Awesome Contributors
 
 <a href="https://github.com/Harshs16/civix/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Harshs16/civix" />
 </a>
+
+--- 
 
 ## 📄 License
 MIT License. See LICENSE file for more details.

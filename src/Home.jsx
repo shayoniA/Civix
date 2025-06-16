@@ -1,3 +1,4 @@
+import DarkModeToggle from './DarkModeToggle';
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
@@ -104,7 +105,7 @@ const questions = [
 
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       {/* SEO Optimization */}
       <Helmet>
         <title>Civix | Report Local Issues & Improve Your Community</title>
@@ -142,7 +143,7 @@ const questions = [
       </Helmet>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-down">
+      <header className="sticky top-0 z-50 w-full border-b bg-white/95 dark:bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60 animate-fade-down">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <svg
@@ -177,12 +178,13 @@ const questions = [
             </a>
           </nav>
           <div className="flex items-center gap-4">
-            <button className="hidden md:flex h-9 px-4 py-2 rounded-md text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors duration-300">
-              Log In
-            </button>
+          <button className="hidden md:flex h-9 px-4 py-2 rounded-md text-sm font-medium border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors hover:bg-gray-100 dark:hover:bg-gray-600 duration-300">
+            Log In
+          </button>
             <button className="h-9 px-4 py-2 rounded-md text-sm font-medium bg-emerald-500 text-white hover:bg-emerald-600 transition-colors duration-300">
               Sign Up
             </button>
+            <DarkModeToggle />
           </div>
         </div>
       </header>
@@ -198,7 +200,7 @@ const questions = [
                     Report Local Issues. <br />
                     <span className="text-emerald-500">Make Your City Better.</span>
                   </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                  <p className="max-w-[600px] text-gray-600 dark:text-gray-300 md:text-xl">
                     Civix helps citizens report and track local civic issues like potholes, broken lights, and garbage
                     collection problems.
                   </p>
@@ -222,7 +224,7 @@ const questions = [
                       <path d="m12 5 7 7-7 7" />
                     </svg>
                   </button>
-                  <button className="flex h-10 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
+                  <button className="flex h-10 items-center justify-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
                     Learn More
                   </button>
                 </div>
@@ -301,7 +303,7 @@ const questions = [
 {/* Features Section */}
 <motion.section 
   id="features" 
-  className="bg-slate-50 py-12 md:py-24 lg:py-32"
+  className="bg-slate-50 dark:bg-gray-800 py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-100px" }}
@@ -316,7 +318,7 @@ const questions = [
         <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
           Everything you need to improve your community
         </h2>
-        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+        <p className="max-w-[600px] text-gray-600 dark:text-gray-300 md:text-xl">
           Civix provides a comprehensive platform for citizens and city workers to collaborate on local issues.
         </p>
       </div>
@@ -401,14 +403,14 @@ const questions = [
         ].map((feature, index) => (
           <motion.div 
             key={index}
-            className="w-full max-w-sm rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
+            className="w-full max-w-sm rounded-lg border bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm transition-all duration-300 hover:shadow-md"
             variants={cardVariants}
             whileHover={{ y: -5 }}
           >
             <div className="flex flex-col space-y-1.5 p-6">
               {feature.icon}
               <h3 className="text-lg font-semibold leading-none tracking-tight">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground">{feature.description}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{feature.description}</p>
             </div>
             <div className="p-6 pt-0">
               <ul className="grid gap-2 text-sm">
@@ -459,7 +461,7 @@ const questions = [
         <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
           Simple process, powerful results
         </h2>
-        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+        <p className="max-w-[600px] text-gray-600 dark:text-gray-300 md:text-xl">
           Civix makes it easy to report issues and track their resolution in just a few simple steps.
         </p>
       </div>
@@ -514,7 +516,7 @@ const questions = [
 {/* Testimonials Section */}
 <motion.section 
   id="testimonials" 
-  className="bg-slate-50 py-12 md:py-24 lg:py-32"
+  className="bg-slate-50 dark:bg-gray-800 py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
@@ -529,7 +531,7 @@ const questions = [
         <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
           Trusted by communities everywhere
         </h2>
-        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+        <p className="max-w-[600px] text-gray-600 dark:text-gray-300 md:text-xl">
           See what citizens and city workers are saying about Civix.
         </p>
       </div>
@@ -556,7 +558,7 @@ const questions = [
         ].map((testimonial, index) => (
           <motion.div 
             key={index}
-            className="w-full max-w-md rounded-lg border bg-white text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
+            className="w-full max-w-md rounded-lg border bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm transition-all duration-300 hover:shadow-md"
             variants={cardVariants}
             whileHover={{ y: -5 }}
           >
@@ -588,7 +590,7 @@ const questions = [
                   </div>
                   <div>
                     <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">{testimonial.role}</p>
                   </div>
                 </div>
               </div>
@@ -670,7 +672,7 @@ const questions = [
 </motion.section>
 
 </motion.section>        {/* Download Section */}
-        <section id="download" className="py-12 md:py-24 lg:py-32 bg-emerald-50">
+        <section id="download" className="py-12 md:py-24 lg:py-32 bg-emerald-50 dark:bg-gray-800">  
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="flex flex-col justify-center space-y-4 animate-on-scroll">
@@ -678,7 +680,7 @@ const questions = [
                   <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
                     Ready to improve your community?
                   </h2>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
+                  <p className="max-w-[600px] text-gray-600 dark:text-gray-300 md:text-xl">
                     Download the Civix app today and start making a difference in your neighborhood.
                   </p>
                 </div>
@@ -796,7 +798,7 @@ const questions = [
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-slate-50">
+      <footer className="border-t border-gray-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 dark:shadow-sm">
         <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between md:py-12">
           <div className="flex items-center gap-2">
             <svg
@@ -814,27 +816,27 @@ const questions = [
               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            <span className="text-xl font-bold">Civix</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-white">Civix</span>
           </div>
           <nav className="flex flex-wrap gap-4 md:gap-6">
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium text-gray-600 dark:text-gray-100 hover:text-emerald-500 transition-colors duration-300">
               About
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium text-gray-600 dark:text-gray-100 hover:text-emerald-500 transition-colors duration-300">
               Features
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium text-gray-600 dark:text-gray-100 hover:text-emerald-500 transition-colors duration-300">
               Privacy
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium text-gray-600 dark:text-gray-100 hover:text-emerald-500 transition-colors duration-300">
               Terms
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium text-gray-600 dark:text-gray-100 hover:text-emerald-500 transition-colors duration-300">
               Contact
             </a>
           </nav>
           <div className="flex items-center gap-4">
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-gray-600 dark:text-gray-100 hover:text-emerald-500 hover:scale-110 transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -854,8 +856,8 @@ const questions = [
             </a>
           </div>
         </div>
-        <div className="container py-4 md:py-6">
-          <p className="text-center text-sm text-muted-foreground">
+        <div className="container py-4 md:py-6 bg-slate-100 dark:bg-gray-900">
+          <p className="text-center text-sm text-gray-600 dark:text-gray-200">
             © {new Date().getFullYear()} Civix. All rights reserved.
           </p>
         </div>

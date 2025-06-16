@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import "./index.css";
 import { motion } from "framer-motion";
+import { Typewriter } from 'react-simple-typewriter';
 
 function App() {
   // Scroll animation effect
@@ -159,10 +160,19 @@ const fadeInVariants = {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center">
               <div className="flex flex-col justify-center space-y-4 animate-on-scroll">
-                <div className="space-y-2">
+                <div className="space-y-2">                 
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Report Local Issues. <br />
-                    <span className="text-emerald-500">Make Your City Better.</span>
+                      Report Local Issues. <br />
+                    <span className="text-emerald-500">
+                      <Typewriter
+                        words={['Make Your City Better.', 'Empower Communities.', 'Fix What’s Broken.']}
+                        loop
+                        cursor
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1500}
+                      />
+                    </span>
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     Civix helps citizens report and track local civic issues like potholes, broken lights, and garbage

@@ -548,12 +548,14 @@ const questions = [
           {
             quote: "I reported a pothole on my street and it was fixed within a week. The ability to track progress kept me informed the whole time.",
             name: "Sarah Johnson",
-            role: "Resident, Portland"
+            role: "Resident, Portland",
+            profilePic: "/profiles/sarah.jpg"
           },
           {
             quote: "As a city worker, Civix has transformed how we manage local issues. The dashboard makes it easy to prioritize and track our work.",
             name: "Michael Rodriguez",
-            role: "Public Works, Austin"
+            role: "Public Works, Austin",
+            profilePic: "/profiles/michael.jpg"
           }
         ].map((testimonial, index) => (
           <motion.div 
@@ -586,7 +588,11 @@ const questions = [
                 <p className="text-lg">"{testimonial.quote}"</p>
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-slate-100 p-1">
-                    <div className="h-10 w-10 rounded-full bg-slate-200" />
+                    <img
+                      src={testimonial.profilePic}
+                      alt={testimonial.name}
+                      className="h-10 w-10 rounded-full object-cover"
+                    />
                   </div>
                   <div>
                     <p className="font-semibold">{testimonial.name}</p>

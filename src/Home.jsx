@@ -759,34 +759,37 @@ const questions = [
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center lg:justify-end animate-on-scroll">
-                <div className="relative w-full max-w-[400px]">
+            <div className="flex flex-row items-center justify-center gap-20 p-4 bg-gray-100 animate-on-scroll">
+                {/* SVG Icon Box */}
+                <div className="flex-none h-20 w-20 border-2 border-red-500 rounded-lg bg-background p-2 shadow-lg hover:scale-110 transition-all duration-300">
+                  <div className="flex h-full w-full items-center justify-center rounded bg-emerald-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-10 w-10 text-emerald-500"
+                    >
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Image Box */}
+                <div className="max-w-[300px] border-2 border-blue-500">
                   <div className="overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]">
                     <img
-                      src="public/civix-mobile.png"
+                      src="/civix-mobile.png"
                       alt="Civix App on Mobile"
                       className="w-full h-auto object-cover"
                       loading="lazy"
                     />
-                  </div>
-                  <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-lg border bg-background p-2 shadow-lg transition-all duration-300 hover:scale-110">
-                    <div className="flex h-full w-full items-center justify-center rounded bg-emerald-100">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-10 w-10 text-emerald-500"
-                      >
-                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                    </div>
                   </div>
                 </div>
               </div>

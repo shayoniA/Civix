@@ -3,10 +3,11 @@ import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
 import { div } from "framer-motion/client";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
-  
+  const navigate = useNavigate();
   // Scroll animation effect
   useEffect(() => {
     const animateOnScroll = () => {
@@ -396,7 +397,9 @@ const questions = [
             ),
             title: "Community Voting",
             description: "Upvote issues in your area to help prioritize what matters most.",
-            features: ["Issue upvoting", "Trending issues", "Community feedback"]
+            features: ["Issue upvoting", "Trending issues", "Community feedback"],
+            onClick: () => navigate('/community-voting')
+          
           }
         ].map((feature, index) => (
           <motion.div 
@@ -404,6 +407,7 @@ const questions = [
             className="w-full max-w-sm rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
             variants={cardVariants}
             whileHover={{ y: -5 }}
+            onClick={feature.onClick || (() => {})}
           >
             <div className="flex flex-col space-y-1.5 p-6">
               {feature.icon}

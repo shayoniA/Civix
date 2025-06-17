@@ -851,14 +851,6 @@ function Home() {
               </div>
               <div className="flex items-center justify-center lg:justify-end animate-on-scroll">
                 <div className="relative w-full max-w-[400px]">
-                  <div className="overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]">
-                    <img
-                      src="public/civix-mobile.png"
-                      alt="Civix App on Mobile"
-                      className="w-full h-auto object-cover"
-                      loading="lazy"
-                    />
-                  </div>
                   <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-lg border bg-background p-2 shadow-lg transition-all duration-300 hover:scale-110">
                     <div className="flex h-full w-full items-center justify-center rounded bg-emerald-100">
                       <svg

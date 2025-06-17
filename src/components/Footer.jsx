@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
-import { FaGithub, FaLinkedin, FaTwitter, FaGlobe, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaGlobe, FaInstagram } from 'react-icons/fa';
+import { SiX } from 'react-icons/si';
 
 const Footer = () => {
   return (
@@ -31,7 +32,7 @@ const Footer = () => {
           <div className="footer-icons">
             <a href="https://github.com/HarshS16" target="_blank" rel="noopener noreferrer"><FaGithub size={20} /></a>
             <a href="https://www.linkedin.com/in/harsh-srivastava-51b67324a/"><FaLinkedin size={20} /></a>
-            <a href="https://x.com/harshsr69382182"><FaTwitter size={20} /></a>
+            <a href="https://x.com/harshsr69382182"><SiX size={20} /></a>
             <a href="https://www.instagram.com/harsh_srivastava_16/"><FaInstagram size={20} /></a>
             <a href="#"><FaGlobe size={20} /></a>
           </div>

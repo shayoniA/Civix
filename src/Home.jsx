@@ -6,9 +6,14 @@ import { motion } from "framer-motion";
 import { AnimatePresence } from 'framer-motion';
 
 import { div } from "framer-motion/client";
+import { ChevronUp } from 'lucide-react';
+
 
 function Home() {
+
   const [hoveredFaq, setHoveredFaq] = useState(null);
+  const [showButton, setShowButton] = useState(false);
+
 
   // Scroll animation effect
   useEffect(() => {
@@ -30,6 +35,30 @@ function Home() {
 
     return () => window.removeEventListener("scroll", animateOnScroll);
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button when user scrolls down 300px
+      if (window.pageYOffset > 300) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // Cleanup event listener on component unmount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
 
   // Animation variants
   const containerVariants = {
@@ -921,6 +950,57 @@ function Home() {
           </p>
         </div>
       </footer>
+      {showButton && (
+        <button
+          onClick={scrollToTop}
+          className={`
+            fixed bottom-6 right-6 z-50
+            bg-emerald-500 hover:bg-white
+            text-white hover:text-emerald-500 
+            rounded-full p-4 
+            shadow-lg hover:shadow-2xl
+            border-2 border-transparent hover:border-emerald-500
+            transition-all duration-300 ease-in-out
+            transform hover:scale-110 active:scale-95
+            focus:outline-none focus:ring-4 focus:ring-emerald-300
+            backdrop-blur-sm
+            animate-fadeIn hover:animate-pulse
+          `}
+          aria-label="Scroll to top"
+        >
+          <ChevronUp size={28} className="transition-transform duration-200 hover:translate-y-[-2px]" />
+        </button>
+      )}
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-6px);
+          }
+        }
+        
+        .animate-fadeIn {
+          animation: fadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .animate-fadeIn:hover {
+          animation: float 2s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 }

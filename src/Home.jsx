@@ -3,11 +3,14 @@ import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import DarkModeToggle from "./DarkModeToggle"; 
 
+import DarkModeToggle from "./DarkModeToggle";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
   const navigate = useNavigate();
+
   // Scroll animation effect
   useEffect(() => {
     const animateOnScroll = () => {
@@ -198,6 +201,7 @@ const questions = [
           </div>
         </div>
       </header>
+
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -524,7 +528,7 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
   viewport={{ once: true }}
   variants={fadeInVariants}
 >
-  <div className="container px-4 md:px-6 mx-auto">
+  <div className="container mx-auto px-4">
     <motion.div className="flex flex-col items-center justify-center space-y-4 text-center" variants={itemVariants}>
       <div className="space-y-2">
         <div className="inline-block rounded-lg bg-emerald-100 px-3 py-1 text-sm text-emerald-700">
@@ -604,9 +608,9 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
       </motion.div>
     </div>
   </div>
+</motion.section>
 
-
-  {/* Features Section */}
+{/* Features Section */}
 <motion.section 
   id="features" 
 className="bg-white dark:bg-background py-12 md:py-24 lg:py-32"
@@ -675,8 +679,6 @@ className="mt-2 px-4 py-2 bg-card dark:bg-[#18181b] rounded-md shadow-sm"
       </div>
    </motion.div>
   </div>
-
-</motion.section>
 
 </motion.section>        {/* Download Section */}
 <section id="download" className="py-12 md:py-24 lg:py-32 bg-emerald-50 dark:bg-[#18181b] dark:text-white">
@@ -805,6 +807,7 @@ className="mt-2 px-4 py-2 bg-card dark:bg-[#18181b] rounded-md shadow-sm"
       </main>
 
       {/* Footer */}
+
 <footer className="border-t bg-slate-50 dark:bg-[#18181b]">
         <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between md:py-12">
           <div className="flex items-center gap-2">

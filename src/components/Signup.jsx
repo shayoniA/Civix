@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -16,6 +17,10 @@ const Signup = () => {
 
   // For error messages
   const [error, setError] = useState('');
+
+  // For password visibility toggle
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // Handle input changes
   const handleChange = (e) => {
@@ -81,14 +86,58 @@ const Signup = () => {
             onChange={handleChange}
             required
           />
-          <input
-            type="password"
-            name="confirmpassword"
-            placeholder="Confirm Password"
-            value={formData.confirmpassword}
-            onChange={handleChange}
-            required
-          />
+
+          {/* Password Field */}
+          <div style={{ position: 'relative' }}>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              style={{ paddingRight: '40px' }}
+            />
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              style={{
+                position: 'absolute',
+                right: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer'
+              }}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
+
+          {/* Confirm Password Field */}
+          <div style={{ position: 'relative' }}>
+            <input
+              type={showConfirmPassword ? 'text' : 'password'}
+              name="confirmpassword"
+              placeholder="Confirm Password"
+              value={formData.confirmpassword}
+              onChange={handleChange}
+              required
+              style={{ paddingRight: '40px' }}
+            />
+            <span
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              style={{
+                position: 'absolute',
+                right: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer'
+              }}
+            >
+              {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
+
+          {/* Submit Button */}
           <button type="submit">Sign Up</button>
           {error && <p style={{ color: 'red' }}>{error}</p>}
           <p>Already have an account? <Link to="/login">Login</Link></p>

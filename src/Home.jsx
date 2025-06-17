@@ -1,12 +1,14 @@
+
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
 import { div } from "framer-motion/client";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
-  
+  const navigate = useNavigate();
   // Scroll animation effect
   useEffect(() => {
     const animateOnScroll = () => {
@@ -204,7 +206,7 @@ const questions = [
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
+                  <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300" onClick={() => navigate('/login')}>
                     Get Started
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -396,7 +398,9 @@ const questions = [
             ),
             title: "Community Voting",
             description: "Upvote issues in your area to help prioritize what matters most.",
-            features: ["Issue upvoting", "Trending issues", "Community feedback"]
+            features: ["Issue upvoting", "Trending issues", "Community feedback"],
+            onClick: () => navigate('/community-voting')
+          
           }
         ].map((feature, index) => (
           <motion.div 
@@ -404,6 +408,7 @@ const questions = [
             className="w-full max-w-sm rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
             variants={cardVariants}
             whileHover={{ y: -5 }}
+            onClick={feature.onClick || (() => {})}
           >
             <div className="flex flex-col space-y-1.5 p-6">
               {feature.icon}
@@ -817,19 +822,19 @@ const questions = [
             <span className="text-xl font-bold">Civix</span>
           </div>
           <nav className="flex flex-wrap gap-4 md:gap-6">
-            <a href="/about" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               About
             </a>
             <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Features
             </a>
-            <a href="/privacy" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Privacy
             </a>
-            <a href="/Terms" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Terms
             </a>
-            <a href="/contact" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Contact
             </a>
           </nav>
@@ -863,5 +868,4 @@ const questions = [
     </div>
   );
 }
-
 export default Home;

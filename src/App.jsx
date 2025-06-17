@@ -6,6 +6,7 @@ import Signup from './components/Signup';
 import PrivateRoute from './components/PrivateRoute';
 import AdminDashboard from './components/AdminDashboard';
 import Error404 from './components/Error404';
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -35,6 +36,8 @@ const App = () => {
           } 
         />
       </Routes>
+      {/* Footer */}
+      <Footer />
     </BrowserRouter>
   );
 };

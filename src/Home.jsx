@@ -4,6 +4,7 @@ import "./Home.css";
 import { motion } from "framer-motion";
 import { div } from "framer-motion/client";
 import { useNavigate } from "react-router-dom";
+import DarkModeToggle from "./DarkModeToggle";
 
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -178,12 +179,19 @@ const questions = [
             </a>
           </nav>
           <div className="flex items-center gap-4">
-            <button className="hidden md:flex h-9 px-4 py-2 rounded-md text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors duration-300">
+            <button 
+              className="hidden md:flex h-9 px-4 py-2 rounded-md text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
+              onClick={() => navigate('/login')}
+            >
               Log In
             </button>
-            <button className="h-9 px-4 py-2 rounded-md text-sm font-medium bg-emerald-500 text-white hover:bg-emerald-600 transition-colors duration-300">
+            <button 
+              className="h-9 px-4 py-2 rounded-md text-sm font-medium bg-emerald-500 text-white hover:bg-emerald-600 transition-colors duration-300"
+              onClick={() => navigate('/signup')}
+            >
               Sign Up
             </button>
+            <DarkModeToggle />
           </div>
         </div>
       </header>

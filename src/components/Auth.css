@@ -59,6 +59,19 @@ transition: all 0.5s ease-in-out;
   transition: border-color 0.3s;
 }
 
+.dark .auth-form {
+  background: #18181b;
+}
+
+.dark .auth-form input {
+  background: #27272a;
+  color: #f4f4f5;
+  border: 1.5px solid #444;
+}
+
+.dark .auth-form input::placeholder {
+  color: #a1a1aa;
+}
 
 .auth-form button {
   background-color: rgb(16 185 129);

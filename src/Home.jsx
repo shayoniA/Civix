@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { div } from "framer-motion/client";
 import { useNavigate } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
+import Switch from "./DarkModeToggle";
 
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -179,6 +180,7 @@ const questions = [
             </a>
           </nav>
           <div className="flex items-center gap-4">
+            <Switch />
             <button 
               className="hidden md:flex h-9 px-4 py-2 rounded-md text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
               onClick={() => navigate('/login')}
@@ -191,7 +193,6 @@ const questions = [
             >
               Sign Up
             </button>
-            <DarkModeToggle />
           </div>
         </div>
       </header>
@@ -310,7 +311,7 @@ const questions = [
 {/* Features Section */}
 <motion.section 
   id="features" 
-  className="bg-slate-50 py-12 md:py-24 lg:py-32"
+  className="bg-background py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-100px" }}
@@ -409,44 +410,31 @@ const questions = [
             onClick: () => navigate('/community-voting')
           
           }
-        ].map((feature, index) => (
-          <motion.div 
-            key={index}
-            className="w-full max-w-sm rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
-            variants={cardVariants}
-            whileHover={{ y: -5 }}
-            onClick={feature.onClick || (() => {})}
-          >
-            <div className="flex flex-col space-y-1.5 p-6">
-              {feature.icon}
-              <h3 className="text-lg font-semibold leading-none tracking-tight">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground">{feature.description}</p>
-            </div>
-            <div className="p-6 pt-0">
-              <ul className="grid gap-2 text-sm">
-                {feature.features.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-4 w-4 text-emerald-500"
-                    >
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <path d="m9 11 3 3L22 4" />
-                    </svg>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+        ].map((feature, idx) => (
+          <div key={idx} className="rounded-lg bg-card text-card-foreground p-8 shadow-xl w-full max-w-[350px]">
+            {feature.icon}
+            <h3 className="mt-4 text-xl font-bold">{feature.title}</h3>
+            <p className="mt-2 text-muted-foreground">{feature.description}</p>
+            <ul className="mt-4 space-y-2">
+              {feature.features.map((f, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-emerald-500"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         ))}
       </motion.div>
     </div>
@@ -526,7 +514,7 @@ const questions = [
 {/* Testimonials Section */}
 <motion.section 
   id="testimonials" 
-  className="bg-slate-50 py-12 md:py-24 lg:py-32"
+  className="bg-background py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
@@ -568,7 +556,7 @@ const questions = [
         ].map((testimonial, index) => (
           <motion.div 
             key={index}
-            className="w-full max-w-md rounded-lg border bg-white text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
+            className="w-full max-w-md rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
             variants={cardVariants}
             whileHover={{ y: -5 }}
           >
@@ -615,7 +603,7 @@ const questions = [
   {/* Features Section */}
 <motion.section 
   id="features" 
-  className="bg-white py-12 md:py-24 lg:py-32"
+  className="bg-background py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-100px" }}
@@ -639,7 +627,10 @@ const questions = [
             <div key={faq.id}
             className="py-2 mb-4 w-full overflow-hidden">
               <button 
-              className="w-full text-left flex items-center justify-between px-4 py-2 bg-emerald-100 border-0 outline-none focus:outline-none focus:ring-0 shadow-none rounded-md hover:bg-emerald-100 transition-colors duration-300"
+              className={`w-full text-left flex items-center justify-between px-4 py-2 border-0 outline-none focus:outline-none focus:ring-0 shadow-none rounded-md transition-colors duration-300
+                ${activeFaq === faq.id
+                  ? 'bg-emerald-200 dark:bg-emerald-600 text-emerald-900 dark:text-white font-semibold'
+                  : 'bg-emerald-100 dark:bg-[#23272f] text-accent-foreground dark:text-white hover:bg-accent hover:dark:bg-[#2a2e37]'}`}
               onClick={() => setActiveFaq(activeFaq === faq.id ? null : faq.id)}
               >
                 <span className="font-medium">{faq.question}</span>
@@ -665,12 +656,12 @@ const questions = [
               </button>
                 {activeFaq === faq.id && (
                   <motion.div
-                    className="mt-2 px-4 py-2 bg-white rounded-md shadow-sm"
+                    className="mt-2 px-4 py-2 bg-card dark:bg-[#18181b] rounded-md shadow-sm"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}>
-                        <p className="text-left">{faq.answer}</p>
+                        <p className="text-left text-foreground dark:text-white">{faq.answer}</p>
                   </motion.div>
                 )}
             </div>
@@ -682,7 +673,7 @@ const questions = [
 </motion.section>
 
 </motion.section>        {/* Download Section */}
-        <section id="download" className="py-12 md:py-24 lg:py-32 bg-emerald-50">
+        <section id="download" className="py-12 md:py-24 lg:py-32 bg-emerald-50 dark:bg-[#18181b] dark:text-white">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="flex flex-col justify-center space-y-4 animate-on-scroll">
@@ -773,7 +764,7 @@ const questions = [
               </div>
               <div className="flex items-center justify-center lg:justify-end animate-on-scroll">
                 <div className="relative w-full max-w-[400px]">
-                  <div className="overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]">
+                  <div className="overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] bg-white dark:bg-[#23272f]">
                     <img
                       src="public/civix-mobile.png"
                       alt="Civix App on Mobile"
@@ -781,8 +772,8 @@ const questions = [
                       loading="lazy"
                     />
                   </div>
-                  <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-lg border bg-background p-2 shadow-lg transition-all duration-300 hover:scale-110">
-                    <div className="flex h-full w-full items-center justify-center rounded bg-emerald-100">
+                  <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-lg border bg-background dark:bg-[#23272f] p-2 shadow-lg transition-all duration-300 hover:scale-110">
+                    <div className="flex h-full w-full items-center justify-center rounded bg-emerald-100 dark:bg-emerald-900">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -808,7 +799,7 @@ const questions = [
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-slate-50">
+      <footer className="border-t bg-slate-50 dark:bg-[#18181b]">
         <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between md:py-12">
           <div className="flex items-center gap-2">
             <svg
@@ -867,7 +858,7 @@ const questions = [
           </div>
         </div>
         <div className="container py-4 md:py-6">
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="text-center text-sm text-muted-foreground dark:text-muted-foreground">
             © {new Date().getFullYear()} Civix. All rights reserved.
           </p>
         </div>

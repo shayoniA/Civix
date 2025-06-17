@@ -867,5 +867,4 @@ const questions = [
     </div>
   );
 }
-
 export default Home;

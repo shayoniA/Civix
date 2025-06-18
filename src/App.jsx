@@ -8,12 +8,22 @@ import AdminDashboard from './components/AdminDashboard';
 import Error404 from './components/Error404';
 import Footer from "./components/Footer";
 
+// Newly added pages
+import About from "./Pages/About";
+import Privacy from "./Pages/Privacy";
+import Terms from "./Pages/Terms";
+import Contact from "./Pages/Contact";
+
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Error404 />} />
@@ -36,6 +46,7 @@ const App = () => {
           } 
         />
       </Routes>
+
       {/* Footer */}
       <Footer />
     </BrowserRouter>

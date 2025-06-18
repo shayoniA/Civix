@@ -34,7 +34,7 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/harsh-srivastava-51b67324a/"><FaLinkedin size={20} /></a>
             <a href="https://x.com/harshsr69382182"><SiX size={20} /></a>
             <a href="https://www.instagram.com/harsh_srivastava_16/"><FaInstagram size={20} /></a>
-            <a href="#"><FaGlobe size={20} /></a>
+            <a href="https://yourwebsite.com" target="_blank" rel="noopener noreferrer"><FaGlobe size={20} /></a>
           </div>
         </div>
       </div>

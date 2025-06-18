@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   // Logic to hide eye icon on blur only if not hovered
-  const handleBlur = () => {
+  const handlePasswordBlur = () => {
     setTimeout(() => {
       if (!isHovered) setIsIconVisible(false);
     }, 100); // Delay so icon doesn't vanish before hover is triggered

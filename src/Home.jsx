@@ -4,9 +4,7 @@ import "./Home.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Switch from "./DarkModeToggle";
-import DarkModeToggle from "./DarkModeToggle";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import TypingText from './TypingTest';
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
   const navigate = useNavigate();
@@ -236,9 +234,7 @@ function Home() {
                 <div className="space-y-2">
                   <h1 className="text-left text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                     Report Local Issues. <br />
-                    <span className="text-emerald-500">
-                      Make Your City Better.
-                    </span>
+                    <TypingText />
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl text-left">
                     Civix helps citizens report and track local civic issues

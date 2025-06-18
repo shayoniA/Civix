@@ -8,6 +8,7 @@ import Switch from "./DarkModeToggle";
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
   const navigate = useNavigate();
+
   // Scroll animation effect
   useEffect(() => {
     const animateOnScroll = () => {
@@ -179,12 +180,14 @@ const questions = [
           </nav>
           <div className="flex items-center gap-4">
             <Switch />
+
             <button 
               className="hidden md:flex h-9 px-4 py-2 rounded-md text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
               onClick={() => navigate('/login')}
             >
               Log In
             </button>
+
             <button 
               className="h-9 px-4 py-2 rounded-md text-sm font-medium bg-emerald-500 text-white hover:bg-emerald-600 transition-colors duration-300"
               onClick={() => navigate('/signup')}
@@ -194,9 +197,7 @@ const questions = [
           </div>
         </div>
       </header>
-
-      <main className="flex-1">
-        {/* Hero Section */}
+      <main>
         <section className="py-12 md:py-24 lg:py-32 xl:py-48">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center">
@@ -309,7 +310,7 @@ const questions = [
 {/* Features Section */}
 <motion.section 
   id="features" 
-  className="bg-background py-12 md:py-24 lg:py-32"
+  className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-100px" }}
@@ -406,15 +407,20 @@ const questions = [
             description: "Upvote issues in your area to help prioritize what matters most.",
             features: ["Issue upvoting", "Trending issues", "Community feedback"],
             onClick: () => navigate('/community-voting')
-          
           }
-        ].map((feature, idx) => (
-          <div key={idx} className="rounded-lg bg-card text-card-foreground p-8 shadow-xl w-full max-w-[350px]">
+        ].map((feature, index) => (
+          <motion.div
+            key={index}
+            className="rounded-lg bg-card text-card-foreground p-8 shadow-xl w-full max-w-[350px] transition-all duration-300 hover:shadow-md"
+            variants={cardVariants}
+            whileHover={{ y: -5 }}
+            onClick={feature.onClick || (() => {})}
+          >
             {feature.icon}
             <h3 className="mt-4 text-xl font-bold">{feature.title}</h3>
             <p className="mt-2 text-muted-foreground">{feature.description}</p>
             <ul className="mt-4 space-y-2">
-              {feature.features.map((f, i) => (
+              {feature.features.map((item, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -428,11 +434,11 @@ const questions = [
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>{f}</span>
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </motion.div>
     </div>
@@ -440,8 +446,8 @@ const questions = [
 </motion.section>
 
 {/* How It Works Section */}
-<motion.section 
-  id="how-it-works" 
+<motion.section
+  id="how-it-works"
   className="py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
@@ -512,13 +518,13 @@ const questions = [
 {/* Testimonials Section */}
 <motion.section 
   id="testimonials" 
-  className="bg-background py-12 md:py-24 lg:py-32"
+  className="bg-slate-50 py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
   variants={fadeInVariants}
 >
-  <div className="container px-4 md:px-6 mx-auto">
+  <div className="container mx-auto px-4">
     <motion.div className="flex flex-col items-center justify-center space-y-4 text-center" variants={itemVariants}>
       <div className="space-y-2">
         <div className="inline-block rounded-lg bg-emerald-100 px-3 py-1 text-sm text-emerald-700">
@@ -554,7 +560,9 @@ const questions = [
         ].map((testimonial, index) => (
           <motion.div 
             key={index}
-            className="w-full max-w-md rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
+
+            className="w-full max-w-md rounded-lg border bg-white text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
+
             variants={cardVariants}
             whileHover={{ y: -5 }}
           >
@@ -596,12 +604,12 @@ const questions = [
       </motion.div>
     </div>
   </div>
+</motion.section>
 
-
-  {/* Features Section */}
+{/* Features Section */}
 <motion.section 
-  id="features" 
-  className="bg-background py-12 md:py-24 lg:py-32"
+  id="faqs" 
+  className="bg-white dark:bg-background py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-100px" }}
@@ -625,10 +633,10 @@ const questions = [
             <div key={faq.id}
             className="py-2 mb-4 w-full overflow-hidden">
               <button 
-              className={`w-full text-left flex items-center justify-between px-4 py-2 border-0 outline-none focus:outline-none focus:ring-0 shadow-none rounded-md transition-colors duration-300
-                ${activeFaq === faq.id
-                  ? 'bg-emerald-200 dark:bg-emerald-600 text-emerald-900 dark:text-white font-semibold'
-                  : 'bg-emerald-100 dark:bg-[#23272f] text-accent-foreground dark:text-white hover:bg-accent hover:dark:bg-[#2a2e37]'}`}
+className={`w-full text-left flex items-center justify-between px-4 py-2 border-0 outline-none focus:outline-none focus:ring-0 shadow-none rounded-md transition-colors duration-300
+  ${activeFaq === faq.id
+    ? 'bg-emerald-200 dark:bg-emerald-600 text-emerald-900 dark:text-white font-semibold'
+    : 'bg-emerald-100 dark:bg-[#23272f] text-accent-foreground dark:text-white hover:bg-accent hover:dark:bg-[#2a2e37]'}`}
               onClick={() => setActiveFaq(activeFaq === faq.id ? null : faq.id)}
               >
                 <span className="font-medium">{faq.question}</span>
@@ -654,12 +662,12 @@ const questions = [
               </button>
                 {activeFaq === faq.id && (
                   <motion.div
-                    className="mt-2 px-4 py-2 bg-card dark:bg-[#18181b] rounded-md shadow-sm"
+className="mt-2 px-4 py-2 bg-card dark:bg-[#18181b] rounded-md shadow-sm"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}>
-                        <p className="text-left text-foreground dark:text-white">{faq.answer}</p>
+<p className="text-left text-foreground dark:text-white">{faq.answer}</p>
                   </motion.div>
                 )}
             </div>
@@ -670,136 +678,21 @@ const questions = [
 
 </motion.section>
 
-</motion.section>        {/* Download Section */}
-        <section id="download" className="py-12 md:py-24 lg:py-32 bg-emerald-50 dark:bg-[#18181b] dark:text-white">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-              <div className="flex flex-col justify-center space-y-4 animate-on-scroll">
-                <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                    Ready to improve your community?
-                  </h2>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-                    Download the Civix app today and start making a difference in your neighborhood.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="mr-2 h-4 w-4"
-                    >
-                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                      <path d="M12 18h.01" />
-                    </svg>
-                    Download for iOS
-                  </button>
-                  <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="mr-2 h-4 w-4"
-                    >
-                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                      <path d="M12 18h.01" />
-                    </svg>
-                    Download for Android
-                  </button>
-                </div>
-                <div className="flex flex-wrap items-center gap-4 text-sm">
-                  <div className="flex items-center gap-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-4 w-4 text-emerald-500"
-                    >
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <path d="m9 11 3 3L22 4" />
-                    </svg>
-                    <span>Free Download</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-4 w-4 text-emerald-500"
-                    >
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <path d="m9 11 3 3L22 4" />
-                    </svg>
-                    <span>Regular Updates</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center lg:justify-end animate-on-scroll">
-                <div className="relative w-full max-w-[400px]">
-                  <div className="overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] bg-white dark:bg-[#23272f]">
-                    <img
-                      src="public/civix-mobile.png"
-                      alt="Civix App on Mobile"
-                      className="w-full h-auto object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-lg border bg-background dark:bg-[#23272f] p-2 shadow-lg transition-all duration-300 hover:scale-110">
-                    <div className="flex h-full w-full items-center justify-center rounded bg-emerald-100 dark:bg-emerald-900">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-10 w-10 text-emerald-500"
-                      >
-                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t bg-slate-50 dark:bg-[#18181b]">
-        <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between md:py-12">
-          <div className="flex items-center gap-2">
+{/* Download Section */}
+<section id="download" className="py-12 md:py-24 lg:py-32 bg-emerald-50 dark:bg-[#18181b] dark:text-white">
+  <div className="container px-4 md:px-6">
+    <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+      <div className="flex flex-col justify-center space-y-4 animate-on-scroll">
+        <div className="space-y-2">
+          <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+            Ready to improve your community?
+          </h2>
+          <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
+            Download the Civix app today and start making a difference in your neighborhood.
+          </p>
+        </div>
+        <div className="flex flex-col gap-2 min-[400px]:flex-row">
+          <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -810,32 +703,83 @@ const questions = [
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="h-6 w-6 text-emerald-500"
+              className="mr-2 h-4 w-4"
             >
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-              <circle cx="12" cy="10" r="3" />
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+              <path d="M12 18h.01" />
             </svg>
-            <span className="text-xl font-bold">Civix</span>
+            Download for iOS
+          </button>
+          <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="mr-2 h-4 w-4"
+            >
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+              <path d="M12 18h.01" />
+            </svg>
+            Download for Android
+          </button>
+        </div>
+        <div className="flex flex-wrap items-center gap-4 text-sm">
+          <div className="flex items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4 text-emerald-500"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <path d="m9 11 3 3L22 4" />
+            </svg>
+            <span>Free Download</span>
           </div>
-          <nav className="flex flex-wrap gap-4 md:gap-6">
-            <a href="/about" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
-              About
-            </a>
-            <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
-              Features
-            </a>
-            <a href="/privacy" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
-              Privacy
-            </a>
-            <a href="/terms" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
-              Terms
-            </a>
-            <a href="/contact" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
-              Contact
-            </a>
-          </nav>
-          <div className="flex items-center gap-4">
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+          <div className="flex items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4 text-emerald-500"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <path d="m9 11 3 3L22 4" />
+            </svg>
+            <span>Regular Updates</span>
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center justify-center lg:justify-end animate-on-scroll">
+        <div className="relative w-full max-w-[400px]">
+          <div className="overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] bg-white dark:bg-[#23272f]">
+            <img
+              src="/civix-mobile.png"
+              alt="Civix App on Mobile"
+              className="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-lg border bg-background dark:bg-[#23272f] p-2 shadow-lg transition-all duration-300 hover:scale-110">
+            <div className="flex h-full w-full items-center justify-center rounded bg-emerald-100 dark:bg-emerald-900">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -846,20 +790,83 @@ const questions = [
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-5 w-5"
+                className="h-10 w-10 text-emerald-500"
               >
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                <path d="M9 18c-4.51 2-5-2-7-2" />
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
               </svg>
-              <span className="sr-only">GitHub</span>
-            </a>
+            </div>
           </div>
-          <p className="text-center text-sm text-muted-foreground dark:text-muted-foreground">
-            © {new Date().getFullYear()} Civix. All rights reserved.
-          </p>
         </div>
-      </footer>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer className="border-t bg-slate-50 dark:bg-[#18181b]">
+  <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between md:py-12">
+    <div className="flex items-center gap-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-6 w-6 text-emerald-500"
+      >
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+      <span className="text-xl font-bold">Civix</span>
+    </div>
+    <nav className="flex flex-wrap gap-4 md:gap-6">
+      <a href="/about" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+        About
+      </a>
+      <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+        Features
+      </a>
+      <a href="/privacy" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+        Privacy
+      </a>
+      <a href="/terms" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+        Terms
+      </a>
+      <a href="/contact" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+        Contact
+      </a>
+    </nav>
+    <div className="flex items-center gap-4">
+      <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-5 w-5"
+        >
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </svg>
+        <span className="sr-only">GitHub</span>
+      </a>
+    </div>
+    <p className="text-center text-sm text-muted-foreground dark:text-muted-foreground">
+      © {new Date().getFullYear()} Civix. All rights reserved.
+    </p>
+  </div>
+</footer>
     </div>
   );
 }
+
 export default Home;

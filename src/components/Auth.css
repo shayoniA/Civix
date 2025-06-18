@@ -42,6 +42,10 @@ transition: all 0.5s ease-in-out;
 .auth-form h2 {
   color: rgb(16 185 129);
   transition: all 0.3s;
+  font-size: 2rem;     /* Make the font bigger */
+  font-weight: 700;    /* Make it bold */
+  text-align: center;  /* Optional: center align */
+  margin-bottom: 1 rem;
 }
 
 .auth-form form {
@@ -57,6 +61,12 @@ transition: all 0.5s ease-in-out;
   border-radius: 8px;
   font-size: 1.1rem;       /* slightly bigger font */
   transition: border-color 0.3s;
+}
+
+.auth-form input:hover {
+  border-color: black;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transform: scale(1.01);
 }
 
 .dark .auth-form {
@@ -76,12 +86,14 @@ transition: all 0.5s ease-in-out;
 .auth-form button {
   background-color: rgb(16 185 129);
   color: white;
-  padding: 18px;
-  font-size: 1.1rem;
+  padding: 12px;
+  font-size: 14px;  
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  cursor: pointer;
+  margin-bottom: 20px
 }
 
 .auth-form button:hover {
@@ -89,7 +101,7 @@ transition: all 0.5s ease-in-out;
 }
 
 .auth-form p {
-  margin-top: 10px;
+  margin-top: 8 px;
   color: #333;
 }
 
@@ -97,4 +109,30 @@ transition: all 0.5s ease-in-out;
   color: rgb(15, 212, 147);
   text-decoration: none;
   font-weight: bold;
+}
+
+.auth-form form input {
+  margin-bottom: 12px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #555;
 }

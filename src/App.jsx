@@ -7,6 +7,7 @@ import PrivateRoute from './components/PrivateRoute';
 import AdminDashboard from './components/AdminDashboard';
 import Error404 from './components/Error404';
 import Footer from "./components/Footer";
+import ScrollToTop from './components/ScrollToTop';
 
 // Newly added pages
 import About from "./Pages/About";
@@ -17,6 +18,7 @@ import Contact from "./Pages/Contact";
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Home />} />

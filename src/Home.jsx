@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import Switch from "./DarkModeToggle";
+
 
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);

@@ -3,8 +3,7 @@ import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-
-
+import Switch from "./DarkModeToggle";
 import DarkModeToggle from "./DarkModeToggle";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -16,11 +15,11 @@ function Home() {
   useEffect(() => {
     const animateOnScroll = () => {
       const elements = document.querySelectorAll(".animate-on-scroll");
-      
+
       elements.forEach((element) => {
         const elementTop = element.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
-        
+
         if (elementTop < windowHeight - 100) {
           element.classList.add("animate-fade-up");
         }
@@ -29,7 +28,7 @@ function Home() {
 
     window.addEventListener("scroll", animateOnScroll);
     animateOnScroll(); // Run once on load
-    
+
     return () => window.removeEventListener("scroll", animateOnScroll);
   }, []);
 
@@ -122,7 +121,7 @@ const questions = [
         <meta property="og:image" content="https://civixapp.com/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://civixapp.com" />
-        
+
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -184,21 +183,19 @@ const questions = [
           <div className="flex items-center gap-4">
 <Switch />
 
-<button 
+<button
   className="hidden md:flex h-9 px-4 py-2 rounded-md text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
   onClick={() => navigate('/login')}
 >
   Log In
 </button>
 
-<button 
+<button
   className="h-9 px-4 py-2 rounded-md text-sm font-medium bg-emerald-500 text-white hover:bg-emerald-600 transition-colors duration-300"
   onClick={() => navigate('/signup')}
 >
   Sign Up
 </button>
-              Sign Up
-            </button>
           </div>
         </div>
       </header>
@@ -316,9 +313,9 @@ const questions = [
         </section>
 
 {/* Features Section */}
-<motion.section 
-  id="features" 
-className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
+<motion.section
+  id="features"
+className="w-full bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-100px" }}
@@ -339,7 +336,7 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
       </div>
     </motion.div>
     <div className="flex justify-center">
-      <motion.div 
+      <motion.div
         className="grid max-w-5xl items-center justify-items-center gap-6 py-12 lg:grid-cols-3"
         variants={containerVariants}
         initial="hidden"
@@ -415,9 +412,9 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
             description: "Upvote issues in your area to help prioritize what matters most.",
             features: ["Issue upvoting", "Trending issues", "Community feedback"],
             onClick: () => navigate('/community-voting')
-          
-          }
-{features.map((feature, index) => (
+
+          },
+        ].map((feature, index) => (
   <motion.div
     key={index}
     className="rounded-lg bg-card text-card-foreground p-8 shadow-xl w-full max-w-[350px] transition-all duration-300 hover:shadow-md"
@@ -449,11 +446,12 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
     </ul>
   </motion.div>
 ))}
-
+      </motion.div>
+    </div>
 {/* How It Works Section */}
-<motion.section 
-  id="how-it-works" 
-  className="py-12 md:py-24 lg:py-32"
+<motion.section
+  id="how-it-works"
+  className="w-full py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
@@ -474,7 +472,7 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
       </div>
     </motion.div>
     <div className="flex justify-center">
-      <motion.div 
+      <motion.div
         className="grid max-w-5xl items-center justify-items-center gap-6 py-12 lg:grid-cols-3"
         variants={containerVariants}
         initial="hidden"
@@ -498,13 +496,13 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
             description: "Follow the progress of your report from submission to completion with real-time updates."
           }
         ].map((step, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="w-full max-w-xs flex flex-col items-center space-y-4 text-center"
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
           >
-            <motion.div 
+            <motion.div
               className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 transition-all duration-300 hover:scale-110"
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.5 }}
@@ -521,9 +519,9 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
 </motion.section>
 
 {/* Testimonials Section */}
-<motion.section 
-  id="testimonials" 
-  className="bg-slate-50 py-12 md:py-24 lg:py-32"
+<motion.section
+  id="testimonials"
+  className="w-full bg-slate-50 py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
@@ -544,7 +542,7 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
       </div>
     </motion.div>
     <div className="flex justify-center">
-      <motion.div 
+      <motion.div
         className="grid max-w-5xl items-center justify-items-center gap-6 py-12 lg:grid-cols-2"
         variants={containerVariants}
         initial="hidden"
@@ -563,7 +561,7 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
             role: "Public Works, Austin"
           }
         ].map((testimonial, index) => (
-          <motion.div 
+          <motion.div
             key={index}
 
             className="w-full max-w-md rounded-lg border bg-white text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
@@ -612,9 +610,9 @@ className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32"
 </motion.section>
 
 {/* Features Section */}
-<motion.section 
-  id="features" 
-className="bg-white dark:bg-background py-12 md:py-24 lg:py-32"
+<motion.section
+  id="faq"
+className=" w-full bg-white dark:bg-background py-12 md:py-24 lg:py-32"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, margin: "-100px" }}
@@ -637,7 +635,7 @@ className="bg-white dark:bg-background py-12 md:py-24 lg:py-32"
           {questions.map((faq) => (
             <div key={faq.id}
             className="py-2 mb-4 w-full overflow-hidden">
-              <button 
+              <button
 className={`w-full text-left flex items-center justify-between px-4 py-2 border-0 outline-none focus:outline-none focus:ring-0 shadow-none rounded-md transition-colors duration-300
   ${activeFaq === faq.id
     ? 'bg-emerald-200 dark:bg-emerald-600 text-emerald-900 dark:text-white font-semibold'
@@ -646,19 +644,19 @@ className={`w-full text-left flex items-center justify-between px-4 py-2 border-
               >
                 <span className="font-medium">{faq.question}</span>
                 {activeFaq === faq.id ? (
-                  <svg 
+                  <svg
                     className="w-5 h-5 text-emerald-500 transition-transform duration-300"
-                    fill="none" 
-                    stroke="currentColor" 
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path>
                   </svg>
                 ) : (
-                  <svg 
+                  <svg
                     className="w-5 h-5 text-emerald-500 transition-transform duration-300"
-                    fill="none" 
-                    stroke="currentColor" 
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
@@ -804,7 +802,9 @@ className="mt-2 px-4 py-2 bg-card dark:bg-[#18181b] rounded-md shadow-sm"
               </div>
             </div>
           </div>
-        </section>
+</section>
+    </div>
+</motion.section>
       </main>
 
       {/* Footer */}
@@ -830,24 +830,24 @@ className="mt-2 px-4 py-2 bg-card dark:bg-[#18181b] rounded-md shadow-sm"
             <span className="text-xl font-bold">Civix</span>
           </div>
           <nav className="flex flex-wrap gap-4 md:gap-6">
-            <a href="/about" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               About
             </a>
-            <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Features
             </a>
-            <a href="/privacy" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Privacy
             </a>
-            <a href="/terms" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Terms
             </a>
-            <a href="/contact" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Contact
             </a>
           </nav>
           <div className="flex items-center gap-4">
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -866,6 +866,8 @@ className="mt-2 px-4 py-2 bg-card dark:bg-[#18181b] rounded-md shadow-sm"
               <span className="sr-only">GitHub</span>
             </a>
           </div>
+        </div>
+        <div className="container py-4 md:py-6">
           <p className="text-center text-sm text-muted-foreground dark:text-muted-foreground">
             © {new Date().getFullYear()} Civix. All rights reserved.
           </p>

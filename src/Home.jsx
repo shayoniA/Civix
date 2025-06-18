@@ -329,7 +329,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-end animate-on-scroll">
+              <div className="flex items-center justify-center sm:justify-end animate-on-scroll">
                 <div className="relative w-full max-w-[400px] aspect-[4/3] overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]">
                   <img
                     src="pexels.jpg"

@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
-import { div } from "framer-motion/client";
 import { useNavigate } from "react-router-dom";
-import DarkModeToggle from "./DarkModeToggle";
 import Switch from "./DarkModeToggle";
 
 function Home() {
@@ -820,24 +818,24 @@ const questions = [
             <span className="text-xl font-bold">Civix</span>
           </div>
           <nav className="flex flex-wrap gap-4 md:gap-6">
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="/about" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               About
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Features
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="/privacy" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Privacy
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="/terms" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Terms
             </a>
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="/contact" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               Contact
             </a>
           </nav>
           <div className="flex items-center gap-4">
-            <a href="#" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -856,8 +854,6 @@ const questions = [
               <span className="sr-only">GitHub</span>
             </a>
           </div>
-        </div>
-        <div className="container py-4 md:py-6">
           <p className="text-center text-sm text-muted-foreground dark:text-muted-foreground">
             © {new Date().getFullYear()} Civix. All rights reserved.
           </p>

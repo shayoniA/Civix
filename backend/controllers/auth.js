@@ -1,7 +1,7 @@
 const bcrypt= require('bcryptjs');
 const jwt= require('jsonwebtoken');
 const {createUser,findByEmail}= require('../models/userModel');
-const{generateToken} =require('./utils/token');
+const{generateToken} =require('../utils/token');
 
 
 exports.signup= async(req,res,next)=>{
@@ -9,7 +9,7 @@ exports.signup= async(req,res,next)=>{
     const role = email.endsWith(process.env.DOMAIN_NAME) ? 'admin' :'user';
 
     try{
-        const hashedPassword= await bcrypt.has(password,10);
+        const hashedPassword= await bcrypt.hash(password,10);
         await createUser(username, email,hashedPassword,role);
         res.status(201).send('User Registred ');
 

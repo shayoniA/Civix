@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     setError('');
     try {
-      const response = await axios.post('http://localhost:5000/login', { email, password });
+      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       const { token } = response.data;
 
       // Decode token to get role

@@ -511,7 +511,7 @@ function Home() {
             {/* How It Works Section */}
             <motion.section
               id="how-it-works"
-              className="w-full py-12 md:py-24 lg:py-32"
+              className="w-full py-12"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -591,7 +591,7 @@ function Home() {
             {/* Testimonials Section */}
             <motion.section
               id="testimonials"
-              className="w-full bg-slate-50 py-12 md:py-24 lg:py-32"
+              className="w-full bg-slate-50 py-12 md:py-24 "
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -628,12 +628,14 @@ function Home() {
                           "I reported a pothole on my street and it was fixed within a week. The ability to track progress kept me informed the whole time.",
                         name: "Sarah Johnson",
                         role: "Resident, Portland",
+                        Image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmP7SJ5M9DW-qLf3XQIaj5WKWR3qzk1fAJxQ&s"
                       },
                       {
                         quote:
                           "As a city worker, Civix has transformed how we manage local issues. The dashboard makes it easy to prioritize and track our work.",
                         name: "Michael Rodriguez",
                         role: "Public Works, Austin",
+                        Image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLWltO_RzTpY_bKJ5glRBmGHEPbuUj3YnrVQ&s"
                       },
                     ].map((testimonial, index) => (
                       <motion.div
@@ -666,7 +668,10 @@ function Home() {
                             <p className="text-lg">"{testimonial.quote}"</p>
                             <div className="flex items-center gap-4">
                               <div className="rounded-full bg-slate-100 p-1">
-                                <div className="h-10 w-10 rounded-full bg-slate-200" />
+                                <div className="h-10 w-10 rounded-full bg-slate-200">
+                                  <img src= {testimonial.Image} 
+                                  className="h-10 w-10 rounded-full bg-slate-200"/>
+                                </div>
                               </div>
                               <div>
                                 <p className="font-semibold">
@@ -688,7 +693,7 @@ function Home() {
             {/* Features Section */}
             <motion.section
               id="faq"
-              className=" w-full bg-white dark:bg-background py-12 md:py-24 lg:py-32"
+              className=" w-full bg-white dark:bg-background py-12 md:py-24 "
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -781,7 +786,7 @@ function Home() {
             {/* Download Section */}
             <section
               id="download"
-              className="py-12 md:py-24 lg:py-32 bg-emerald-50 dark:bg-[#18181b] dark:text-white"
+              className="py-12 md:py-24 bg-emerald-50 dark:bg-[#18181b] dark:text-white"
             >
               <div className="container px-4 md:px-6">
                 <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">

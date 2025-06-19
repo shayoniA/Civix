@@ -4,7 +4,9 @@ import "./Home.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Switch from "./DarkModeToggle";
-import TypingText from './TypingTest';
+import DarkModeToggle from "./DarkModeToggle";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
   const navigate = useNavigate();
@@ -234,7 +236,9 @@ function Home() {
                 <div className="space-y-2">
                   <h1 className="text-left text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                     Report Local Issues. <br />
-                    <TypingText />
+                    <span className="text-emerald-500">
+                      Make Your City Better.
+                    </span>
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl text-left">
                     Civix helps citizens report and track local civic issues
@@ -466,7 +470,11 @@ function Home() {
                     className="rounded-lg bg-card text-card-foreground p-8 shadow-xl w-full max-w-[350px] transition-all duration-300 hover:shadow-md"
                     variants={cardVariants}
                     whileHover={{ y: -5 }}
-                    onClick={feature.onClick || (() => {})}
+                    onClick={() => {
+                        if (feature.title === "Report Issues") {
+                          navigate("/report-issue");
+                        }
+                      }}
                   >
                     {feature.icon}
                     <h3 className="mt-4 text-xl font-bold">{feature.title}</h3>

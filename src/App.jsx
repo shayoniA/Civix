@@ -14,7 +14,7 @@ import About from "./Pages/About";
 import Privacy from "./Pages/Privacy";
 import Terms from "./Pages/Terms";
 import Contact from "./Pages/Contact";
-
+import ReportIssue from "./Pages/ReportIssue"
 const App = () => {
   return (
     <BrowserRouter>
@@ -28,6 +28,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/report-issue" element={<ReportIssue />} />        
         <Route path="*" element={<Error404 />} />
 
         {/* Protected routes */}

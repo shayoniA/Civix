@@ -53,7 +53,6 @@ const App = () => {
         />
 
       <Route path="/500" element={<ServerError />} />
-      <Route path="/simulate-error" element={<ServerError />} />
 
       </Routes>
 

@@ -15,6 +15,9 @@ import Privacy from "./Pages/Privacy";
 import Terms from "./Pages/Terms";
 import Contact from "./Pages/Contact";
 import ReportIssue from "./Pages/ReportIssue"
+
+import ServerError from "./components/ServerError";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -48,6 +51,10 @@ const App = () => {
             </PrivateRoute>
           } 
         />
+
+      <Route path="/500" element={<ServerError />} />
+      <Route path="/simulate-error" element={<ServerError />} />
+
       </Routes>
 
       {/* Footer */}

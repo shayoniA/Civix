@@ -606,7 +606,7 @@ function Home() {
                     <div className="inline-block rounded-lg bg-emerald-100 px-3 py-1 text-sm text-emerald-700">
                       Testimonials
                     </div>
-                    <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                    <h2 className="text-5xl font-bold tracking-tighter md:text-3/tight">
                       Trusted by communities everywhere
                     </h2>
                     <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -616,7 +616,7 @@ function Home() {
                 </motion.div>
                 <div className="flex justify-center">
                   <motion.div
-                    className="grid max-w-5xl items-center justify-items-center gap-6 py-12 lg:grid-cols-2"
+                    className="grid max-w-5xl items-center justify-items-center gap-2 py-12 lg:grid-cols-2"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"

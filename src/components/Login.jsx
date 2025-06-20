@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { Link,useNavigate } from 'react-router-dom';
+import MinimalBG from './MinimalBG';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -46,11 +47,12 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container login">
-      <div className="auth-image login-image"></div>
-      <div className="auth-form">
-        <h2 >Login</h2>
-        <form onSubmit={handleSubmit} >
+    <div className="auth-container login" style={{ position: 'relative', overflow: 'hidden' }}>
+      <MinimalBG />
+      <div className="auth-image login-image" style={{ zIndex: 1 }}></div>
+      <div className="auth-form" style={{ zIndex: 1 }}>
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
           <input 
             type="text" 
             placeholder="Email" 
@@ -109,8 +111,10 @@ const Login = () => {
             </div>
             <button type="submit">Login</button>
         </form>
-        {error && <p style={{color:'red'}}>{error}</p>}
-        <p>Don't have an account? <Link to="/signup">signup</Link></p>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <p>
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </p>
       </div>
     </div>
   );

@@ -7,7 +7,6 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const Signup = () => {
   const navigate = useNavigate();
 
-  // Form state
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -15,14 +14,11 @@ const Signup = () => {
     confirmpassword: '',
   });
 
-  // For error messages
   const [error, setError] = useState('');
-
-  // For password visibility toggle
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData(prev => ({
       ...prev,
@@ -30,37 +26,55 @@ const Signup = () => {
     }));
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    // Simple password confirmation check
+    if (!formData.username.trim()) {
+      setError('Username is required');
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      setError('Enter a valid email');
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError('Password must be at least 6 characters');
+      return;
+    }
+
     if (formData.password !== formData.confirmpassword) {
       setError('Passwords do not match');
       return;
     }
 
+    setLoading(true);
+
     try {
-      const res = await axios.post('http://localhost:5000/signup', {
+      const res = await axios.post('http://localhost:5000/api/auth/signup', {
         username: formData.username,
         email: formData.email,
         password: formData.password,
       });
 
-      if (res.status === 201 || res.status === 200) {
-        // Redirect to login page or dashboard on success
+      if (res.status === 200 || res.status === 201) {
+        setFormData({ username: '', email: '', password: '', confirmpassword: '' });
         navigate('/login');
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Signup failed');
     }
+
+    setLoading(false);
   };
 
   return (
     <div className="auth-container signup">
       <div className="auth-form">
         <h2>Sign Up</h2>
+        <p>Create your account to get started with Civix.</p>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -70,6 +84,7 @@ const Signup = () => {
             onChange={handleChange}
             required
           />
+
           <input
             type="email"
             name="email"
@@ -78,17 +93,8 @@ const Signup = () => {
             onChange={handleChange}
             required
           />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
 
-          {/* Password Field */}
-          <div style={{ position: 'relative' }}>
+          <div className="password-input-wrapper">
             <input
               type={showPassword ? 'text' : 'password'}
               name="password"
@@ -96,24 +102,16 @@ const Signup = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              style={{ paddingRight: '40px' }}
             />
             <span
               onClick={() => setShowPassword(!showPassword)}
-              style={{
-                position: 'absolute',
-                right: '10px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                cursor: 'pointer'
-              }}
+              className="eye-icon"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
 
-          {/* Confirm Password Field */}
-          <div style={{ position: 'relative' }}>
+          <div className="password-input-wrapper">
             <input
               type={showConfirmPassword ? 'text' : 'password'}
               name="confirmpassword"
@@ -121,24 +119,18 @@ const Signup = () => {
               value={formData.confirmpassword}
               onChange={handleChange}
               required
-              style={{ paddingRight: '40px' }}
             />
             <span
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              style={{
-                position: 'absolute',
-                right: '10px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                cursor: 'pointer'
-              }}
+              className="eye-icon"
             >
               {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
 
-          {/* Submit Button */}
-          <button type="submit">Sign Up</button>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Signing up...' : 'Sign Up'}
+          </button>
           {error && <p style={{ color: 'red' }}>{error}</p>}
           <p>Already have an account? <Link to="/login">Login</Link></p>
         </form>

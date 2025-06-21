@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Home from './Home';
@@ -7,16 +8,22 @@ import PrivateRoute from './components/PrivateRoute';
 import AdminDashboard from './components/AdminDashboard';
 import Error404 from './components/Error404';
 import Footer from "./components/Footer";
+import ScrollToTop from './components/ScrollToTop';
 
 // Newly added pages
 import About from "./Pages/About";
 import Privacy from "./Pages/Privacy";
 import Terms from "./Pages/Terms";
 import Contact from "./Pages/Contact";
+import ReportIssue from "./Pages/ReportIssue"
+import ServerError from "./components/ServerError";
+import DownloadAndroid from './Pages/DownloadAndroid';
+import DownloadIOS from './Pages/DownloadIOS';
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Home />} />
@@ -26,7 +33,10 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/report-issue" element={<ReportIssue />} />        
         <Route path="*" element={<Error404 />} />
+        <Route path='/download-android' element={<DownloadAndroid/>}/>
+        <Route path='/download-ios' element={<DownloadIOS/>}/>
 
         {/* Protected routes */}
         <Route 
@@ -45,10 +55,13 @@ const App = () => {
             </PrivateRoute>
           } 
         />
+
+      <Route path="/500" element={<ServerError />} />
+
       </Routes>
 
       {/* Footer */}
-      <Footer />
+     
     </BrowserRouter>
   );
 };

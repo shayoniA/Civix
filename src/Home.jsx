@@ -367,7 +367,6 @@ function Home() {
           </div>
         </section>
 
-<<<<<<< HEAD
 {/* Features Section */}
 <motion.section 
   id="features" 
@@ -482,6 +481,29 @@ function Home() {
             <p className="mt-2 text-muted-foreground">{feature.description}</p>
             <ul className="mt-4 space-y-2">
               {feature.features.map((item, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-emerald-500"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  </div>
+</motion.section>s.map((item, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

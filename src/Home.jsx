@@ -958,31 +958,31 @@ function Home() {
           </div>
           <nav className="flex flex-wrap gap-4 md:gap-6">
             <a
-              href="#"
+              href="/about"
               className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300"
             >
               About
             </a>
             <a
-              href="#"
+              href="#features"
               className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300"
             >
               Features
             </a>
             <a
-              href="#"
+              href="/privacy"
               className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300"
             >
               Privacy
             </a>
             <a
-              href="#"
+              href="/terms"
               className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300"
             >
               Terms
             </a>
             <a
-              href="#"
+              href="/contact"
               className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300"
             >
               Contact

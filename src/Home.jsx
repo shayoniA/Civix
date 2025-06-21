@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
@@ -801,6 +802,7 @@ function Home() {
                       </p>
                     </div>
                     <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                    <Link  to="/download-ios">
                       <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -826,6 +828,8 @@ function Home() {
                         </svg>
                         Download for iOS
                       </button>
+                      </Link>
+                      <Link to="/download-android">
                       <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -851,6 +855,7 @@ function Home() {
                         </svg>
                         Download for Android
                       </button>
+                      </Link>
                     </div>
                     <div className="flex flex-wrap items-center gap-4 text-sm">
                       <div className="flex items-center gap-1">

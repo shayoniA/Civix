@@ -16,8 +16,9 @@ import Privacy from "./Pages/Privacy";
 import Terms from "./Pages/Terms";
 import Contact from "./Pages/Contact";
 import ReportIssue from "./Pages/ReportIssue"
-
 import ServerError from "./components/ServerError";
+import DownloadAndroid from './Pages/DownloadAndroid';
+import DownloadIOS from './Pages/DownloadIOS';
 
 const App = () => {
   return (
@@ -34,6 +35,8 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/report-issue" element={<ReportIssue />} />        
         <Route path="*" element={<Error404 />} />
+        <Route path='/download-android' element={<DownloadAndroid/>}/>
+        <Route path='/download-ios' element={<DownloadIOS/>}/>
 
         {/* Protected routes */}
         <Route 

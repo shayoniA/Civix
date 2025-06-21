@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
 require('dotenv').config();
+const issueRoutes = require('./routes/issues'); // ← this one 
 
 const Issue = require('./models/issues');
 
@@ -29,8 +30,8 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('✅ MongoDB connected for issue reporting'))
-.catch(err => console.error('❌ MongoDB connection error:', err));
+.then(() => console.log(' MongoDB connected for issue reporting'))
+.catch(err => console.error(' MongoDB connection error:', err));
 
 // POST: Report issue
 app.post('/api/report', upload.single('file'), async (req, res) => {
@@ -47,6 +48,8 @@ app.post('/api/report', upload.single('file'), async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+app.use('/api/issues', issueRoutes);
 
 const PORT = process.env.ISSUE_PORT || 5001;
 app.listen(PORT, () => console.log(`🟢 Issue server running at http://localhost:${PORT}`));

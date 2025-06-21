@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 export default function ReportIssue() {
-  const[phone, setPhone] = useState('')
+  const [phone, setPhone] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [file, setFile] = useState(null);
+  const [notifyByEmail, setNotifyByEmail] = useState(false); // ✅ new state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,6 +14,7 @@ export default function ReportIssue() {
     formData.append('title', title);
     formData.append('description', description);
     formData.append('phone', phone);
+    formData.append('notifyByEmail', notifyByEmail); // ✅ include in form data
     if (file) formData.append('file', file);
 
     try {
@@ -34,11 +36,11 @@ export default function ReportIssue() {
       <h1 className="text-2xl font-bold mb-4">Report an Issue</h1>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <input
-           type="text"
-            placeholder="Phone Number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="w-full border p-2 rounded"
+          type="text"
+          placeholder="Phone Number"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="w-full border p-2 rounded"
         />
         <input
           type="text"
@@ -58,6 +60,20 @@ export default function ReportIssue() {
           onChange={(e) => setFile(e.target.files[0])}
           className="block"
         />
+
+        {/* ✅ Notification Checkbox */}
+        <label className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            checked={notifyByEmail}
+            onChange={() => setNotifyByEmail(!notifyByEmail)}
+            className="accent-emerald-600"
+          />
+          <span className="text-sm text-gray-700">
+            Notify me via email when the issue status changes
+          </span>
+        </label>
+
         <button
           type="submit"
           className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"

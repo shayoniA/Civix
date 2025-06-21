@@ -10,7 +10,13 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header 
+      className="sticky top-0 z-50 w-full border-b bg-white/95 dark:bg-[hsla(240,5%,15%,0.8)] backdrop-blur"
+      style={{
+        '--tw-bg-opacity': '0.95',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)'
+      }}
+    >
       <div className="container flex h-14 items-center justify-between">
         <button onClick={scrollToTop} className="flex items-center gap-2 hover:text-emerald-500 transition-colors duration-300">
           <svg

@@ -526,7 +526,7 @@ function Home() {
                     <div className="inline-block rounded-lg bg-emerald-100 px-3 py-1 text-sm text-emerald-700">
                       How It Works
                     </div>
-                    <h2 className="text-5xl font-bold tracking-tighter md:text-3/tight">
+                    <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
                       Simple process, powerful results
                     </h2>
                     <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -591,7 +591,7 @@ function Home() {
             {/* Testimonials Section */}
             <motion.section
               id="testimonials"
-              className="w-full bg-slate-50 py-12 md:py-24 "
+              className="w-full bg-slate-50 dark:bg-gray-900 py-12 md:py-24 "
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -603,13 +603,13 @@ function Home() {
                   variants={itemVariants}
                 >
                   <div className="space-y-2">
-                    <div className="inline-block rounded-lg bg-emerald-100 px-3 py-1 text-sm text-emerald-700">
+                    <div className="inline-block rounded-lg bg-emerald-100 dark:bg-emerald-800 px-3 py-1 text-sm text-emerald-700 dark:text-emerald-200">
                       Testimonials
                     </div>
-                    <h2 className="text-5xl font-bold tracking-tighter md:text-3/tight">
+                    <h2 className="text-5xl font-bold tracking-tighter md:text-3/tight dark:text-white">
                       Trusted by communities everywhere
                     </h2>
-                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    <p className="max-w-[900px] text-muted-foreground dark:text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                       See what citizens and city workers are saying about Civix.
                     </p>
                   </div>
@@ -640,7 +640,7 @@ function Home() {
                     ].map((testimonial, index) => (
                       <motion.div
                         key={index}
-                        className="w-full max-w-md rounded-lg border bg-white text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md"
+                        className="w-full max-w-md rounded-lg border dark:border-gray-700 bg-white dark:bg-gray-800 text-card-foreground dark:text-white shadow-sm transition-all duration-300 hover:shadow-md"
                         variants={cardVariants}
                         whileHover={{ y: -5 }}
                       >
@@ -665,19 +665,19 @@ function Home() {
                                 </svg>
                               ))}
                             </div>
-                            <p className="text-lg">"{testimonial.quote}"</p>
+                            <p className="text-lg dark:text-gray-100">"{testimonial.quote}"</p>
                             <div className="flex items-center gap-4">
-                              <div className="rounded-full bg-slate-100 p-1">
-                                <div className="h-10 w-10 rounded-full bg-slate-200">
+                              <div className="rounded-full bg-slate-100 dark:bg-gray-700 p-1">
+                                <div className="h-10 w-10 rounded-full bg-slate-200 dark:bg-gray-600">
                                   <img src= {testimonial.Image} 
-                                  className="h-10 w-10 rounded-full bg-slate-200"/>
+                                  className="h-10 w-10 rounded-full bg-slate-200 dark:bg-gray-600"/>
                                 </div>
                               </div>
                               <div>
-                                <p className="font-semibold">
+                                <p className="font-semibold dark:text-white">
                                   {testimonial.name}
                                 </p>
-                                <p className="text-sm text-muted-foreground">
+                                <p className="text-sm text-muted-foreground dark:text-gray-400">
                                   {testimonial.role}
                                 </p>
                               </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 export default function ReportIssue() {
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState(''); //  NEW STATE
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [file, setFile] = useState(null);
@@ -12,6 +13,7 @@ export default function ReportIssue() {
 
     const formData = new FormData();
     formData.append('title', title);
+    formData.append('email', email); 
     formData.append('description', description);
     formData.append('phone', phone);
     formData.append('notifyByEmail', notifyByEmail); // ✅ include in form data
@@ -41,19 +43,30 @@ export default function ReportIssue() {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           className="w-full border p-2 rounded"
+          required
         />
+         <input
+        type="email"
+        placeholder="Email Address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="border p-2 w-full"
+        required
+      />
         <input
           type="text"
           placeholder="Issue Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           className="w-full border p-2 rounded"
+          required
         />
         <textarea
           placeholder="Describe the issue..."
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="w-full border p-2 rounded"
+          required
         ></textarea>
         <input
           type="file"

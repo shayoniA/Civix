@@ -4,6 +4,7 @@ const issueSchema = new mongoose.Schema({
   title: String,
   description: String,
   phone:String,
+  email: String,
   fileUrl: String,
   createdAt: {
     type: Date,

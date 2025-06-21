@@ -3,12 +3,13 @@ const sendEmail = require('../utils/sendEmail');
 
 const createIssue = async (req, res) => {
   try {
-    const { title, description, phone, notifyByEmail } = req.body;
+    const { title, description, phone,email, notifyByEmail } = req.body;
 
     const newIssue = await Issue.create({
       title,
       description,
       phone,
+      email, // Capture email from frontend
       notifyByEmail: notifyByEmail === 'true' // checkbox value from frontend
     });
 
@@ -30,9 +31,9 @@ const updateIssueStatus = async (req, res) => {
     issue.status = newStatus;
     await issue.save();
 
-    if (issue.notifyByEmail) {
+    if (issue.notifyByEmail && issue.email) {
       await sendEmail(
-        'user@example.com', // Replace with user's actual email
+        issue.email, // Replace with user's actual email
         'Civix - Issue Status Update',
         `<p>Your issue titled <strong>${issue.title}</strong> is now marked as <strong>${newStatus}</strong>.</p>`
       );

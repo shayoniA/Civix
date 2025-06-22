@@ -39,7 +39,7 @@
 
 .auth-image {
   flex: 0.85;
-  background-size: contain;    
+  background-size: cover;    
   background-position: center;
   background-repeat: no-repeat; 
   min-width: 0;
@@ -229,4 +229,21 @@
 
 .dark .auth-form a:hover, .dark .auth-form a:focus {
   color: #0E9F6E;
+}
+
+@media (max-width:768px){
+  .auth-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .auth-image {
+    flex: none;
+    height: 200px;
+    background-size: contain;
+  }
+  .auth-form {
+    border-radius:0 0 16px 16px;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
 }

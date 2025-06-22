@@ -72,6 +72,7 @@ const Signup = () => {
 
   return (
     <div className="auth-container signup">
+       <div className="auth-image signup-image"></div>
       <div className="auth-form">
         <h2>Sign Up</h2>
         <p>Create your account to get started with Civix.</p>
@@ -94,7 +95,7 @@ const Signup = () => {
             required
           />
 
-          <div className="password-input-wrapper">
+          <div className="password-input-wrapper flex items-center w-full relative">
             <input
               type={showPassword ? 'text' : 'password'}
               name="password"
@@ -105,13 +106,13 @@ const Signup = () => {
             />
             <span
               onClick={() => setShowPassword(!showPassword)}
-              className="eye-icon"
+              className="eye-icon absolute right-2"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
 
-          <div className="password-input-wrapper">
+          <div className="password-input-wrapper flex items-center w-full relative">
             <input
               type={showConfirmPassword ? 'text' : 'password'}
               name="confirmpassword"
@@ -122,7 +123,7 @@ const Signup = () => {
             />
             <span
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="eye-icon"
+              className="eye-icon absolute right-2"
             >
               {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
@@ -132,10 +133,10 @@ const Signup = () => {
             {loading ? 'Signing up...' : 'Sign Up'}
           </button>
           {error && <p style={{ color: 'red' }}>{error}</p>}
-          <p>Already have an account? <Link to="/login">Login</Link></p>
+          <p className='text-center'>Already have an account? <Link to="/login">Login</Link></p>
         </form>
       </div>
-      <div className="auth-image signup-image"></div>
+     
     </div>
   );
 };

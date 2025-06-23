@@ -5,7 +5,9 @@ const xss= require('xss-clean');
 const co0kieParser= require('cookie-parser');
 const rateLimit = require('express-rate-limit');
 const authRoutes=require('./routes/auth');
+const issuesRoutes=require('./routes/issues');
 const errorHandler=require('./middlewares/errorHandler');
+const { specs, swaggerUi } = require('./config/swagger');
 require('dotenv').config();
 
 const app = express();
@@ -26,8 +28,12 @@ const limiter = rateLimit({
   });
 app.use(limiter);
 
+// Swagger Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
 //Routing 
 app.use('/api/auth',authRoutes);
+app.use('/api/issues',issuesRoutes);
 app.use(errorHandler);
 
 const PORT=process.env.PORT || 5000;

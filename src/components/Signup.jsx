@@ -69,12 +69,24 @@ const Signup = () => {
 
     setLoading(false);
   };
+  const buttonStyle = {
+  padding: '12px 20px',
+  borderRadius: '8px',
+  border: '1px solid transparent',
+  backgroundColor: '#6c63ff',
+  color: '#fff',
+  fontWeight: 'bold',
+  fontSize: '16px',
+  transition: 'all 0.3s ease',
+  cursor: 'pointer',
+};
+
 
   return (
     <div className="auth-container signup">
        <div className="auth-image signup-image"></div>
       <div className="auth-form">
-        <h2>Sign Up</h2>
+        <h2 style={{ marginBottom: '6px'}}>Sign Up</h2>
         <p>Create your account to get started with Civix.</p>
         <form onSubmit={handleSubmit}>
           <input
@@ -129,11 +141,27 @@ const Signup = () => {
             </span>
           </div>
 
-          <button type="submit" disabled={loading}>
-            {loading ? 'Signing up...' : 'Sign Up'}
-          </button>
+         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '12px' }}>
+  <button
+    type="submit"
+    disabled={loading}
+    className="auth-button"
+    style={{ ...buttonStyle, backgroundColor: '#28a745', marginBottom: '6px'}}
+  >
+    {loading ? 'Signing up...' : 'Sign Up'}
+  </button>
+  <button
+    type="button"
+    className="auth-button"
+    style={{ ...buttonStyle, backgroundColor: '#f0f0f0', color: '#333',marginBottom: '4px' }}
+    onClick={() => navigate('/')}
+  >
+    Return to Home
+  </button>
+</div>
+
           {error && <p style={{ color: 'red' }}>{error}</p>}
-          <p className='text-center'>Already have an account? <Link to="/login">Login</Link></p>
+          <p className='text-center' style={{marginBottom: '3px'}}>Already have an account? <Link to="/login">Login</Link></p>
         </form>
       </div>
      

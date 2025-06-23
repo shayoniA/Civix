@@ -45,6 +45,18 @@ const Login = () => {
       if (!isHovered) setIsIconVisible(false);
     }, 100); // Delay so icon doesn't vanish before hover is triggered
   };
+  const buttonStyle = {
+  padding: '12px 20px',
+  borderRadius: '8px',
+  border: '1px solid transparent',
+  backgroundColor: '#28a745',
+  color: '#fff',
+  fontWeight: 'bold',
+  fontSize: '16px',
+  transition: 'all 0.3s ease',
+  cursor: 'pointer',
+};
+
 
   return (
     <div className="auth-container login" style={{ position: 'relative', overflow: 'hidden' }}>
@@ -109,7 +121,24 @@ const Login = () => {
                 </span>
               )}
             </div>
-            <button type="submit">Login</button>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '12px' }}>
+  <button
+    type="submit"
+    className="auth-button"
+    style={buttonStyle}
+  >
+    Login
+  </button>
+  <button
+    type="button"
+    className="auth-button"
+    style={{ ...buttonStyle, backgroundColor: '#f0f0f0', color: '#333' }}
+    onClick={() => navigate('/')}
+  >
+    Return to Home
+  </button>
+</div>
+
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <p>

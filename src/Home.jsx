@@ -259,7 +259,12 @@ function Home() {
                   { quote: "I reported a pothole on my street and it was fixed within a week. The ability to track progress kept me informed the whole time.", name: "Sarah Johnson", role: "Resident, Portland" },
                   { quote: "As a city worker, Civix has transformed how we manage local issues. The dashboard makes it easy to prioritize and track our work.", name: "Michael Rodriguez", role: "Public Works, Austin" }
                 ].map((testimonial, index) => (
-                  <motion.div key={index} className="w-full max-w-md rounded-lg border bg-white text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md" variants={cardVariants} whileHover={{ y: -5 }}>
+                  <motion.div
+                  key={index}
+                  className="w-full max-w-md rounded-lg border bg-card dark:bg-[#1f1f23] text-card-foreground dark:text-white shadow-sm transition-all duration-300 hover:shadow-md"
+                  variants={cardVariants}
+                  whileHover={{ y: -5 }}
+>
                     <div className="p-6">
                       <div className="flex flex-col gap-4">
                         <div className="flex gap-1">

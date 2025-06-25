@@ -3,7 +3,7 @@
   width: 90%;
   max-width: 1000px;
   height: 600px;
-  margin: auto;
+  margin:auto;
   margin-top: calc(50vh - 300px); /* vertical centering */
   font-family: Arial, sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -17,7 +17,7 @@
   background-size: contain;    
   background-position: center;
   background-repeat: no-repeat; 
-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .login-image {
@@ -40,7 +40,7 @@ transition: all 0.5s ease-in-out;
 }
 
 .auth-form h2 {
-  color: rgb(16 185 129);
+  color: ;
   transition: all 0.3s;
 }
 
@@ -49,10 +49,16 @@ transition: all 0.5s ease-in-out;
   flex-direction: column;
   width: 300px;
 }
+.pwValidator{
+  background:rgba(16, 185, 129, 0.221);
+  border-radius: 12px;
+  margin-bottom:8px ;
+  padding: 8px;
+}
 
 .auth-form input {
   padding: 18px 12px;      /* more vertical padding for taller inputs */
-  margin: 16px 0;          /* more vertical space between inputs */
+  margin: 8px 0;          /* more vertical space between inputs */
   border: 1.5px solid #ccc;
   border-radius: 8px;
   font-size: 1.1rem;       /* slightly bigger font */

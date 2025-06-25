@@ -8,6 +8,7 @@ import { AnimatePresence } from 'framer-motion';
 import { div } from "framer-motion/client";
 import { Link, useNavigate } from 'react-router-dom';
 import { ChevronUp } from 'lucide-react';
+import { toast,ToastContainer } from 'react-toastify';
 
 
 function Home() {
@@ -147,12 +148,24 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
-    alert("You have been logged out successfully.");
+    toast.info("you have been logged out")
+    setTimeout(() => {
     navigate('/');
+    },2500);
   };
 
   return (
     <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+       <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="dark"
+        toastClassName="toast-body custom-toast-shadow"
+        bodyClassName="text-sm font-medium"
+      />
       {/* SEO Optimization */}
       <Helmet>
         <title>Civix | Report Local Issues & Improve Your Community</title>

@@ -204,6 +204,12 @@ function Home() {
               Testimonials
             </a>
             <a
+              href="#faqs"
+              className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300"
+            >
+              FAQs
+            </a>
+            <a
               href="#download"
               className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300"
             >
@@ -697,7 +703,7 @@ function Home() {
         </motion.section>
             {/* Features Section */}
         <motion.section
-          id="faq"
+          id="faqs"
               className=" w-full bg-white dark:bg-background py-12 md:py-24 lg:py-32"
           initial="hidden"
           whileInView="visible"

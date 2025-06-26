@@ -61,7 +61,7 @@ const Navbar = () => {
           <a href="#testimonials" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
             Testimonials
           </a>
-          <a href="#faq" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
+          <a href="#faqs" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
             FAQ
           </a>
         </nav>

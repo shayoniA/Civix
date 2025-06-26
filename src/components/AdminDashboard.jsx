@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { toast ,ToastContainer} from 'react-toastify';
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [issues, setIssues] = useState([]);
 
   // Logout handler
   const handleLogout = () => {
+    localStorage.removeItem('token'); // Remove token from localStorage
+    toast.success("you have been logged out")
+        setTimeout(() => {
+        navigate('/login');
+        },2000);
+  }
     localStorage.removeItem('token');
     alert('You have been logged out.');
     navigate('/login');
@@ -79,6 +85,17 @@ const AdminDashboard = () => {
 
       {/* Issues Table */}
       <main className="p-6">
+        <p>Welcome, Admin! You have access to admin controls.</p>
+        <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="dark"
+        toastClassName="toast-body custom-toast-shadow"
+        bodyClassName="text-sm font-medium"
+      />
         <h3 className="text-lg font-semibold mb-4">Reported Issues</h3>
 
         {issues.length === 0 ? (

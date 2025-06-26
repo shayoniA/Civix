@@ -1,3 +1,10 @@
+<<<<<<< fix/auth
+import React, { useState } from "react";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+import { Link, useNavigate } from "react-router-dom";
+import { toast,ToastContainer } from "react-toastify";
+=======
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
@@ -5,10 +12,11 @@ import { jwtDecode } from 'jwt-decode';
 import { Link,useNavigate } from 'react-router-dom';
 import MinimalBG from './MinimalBG';
 
+>>>>>>> main
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isIconVisible, setIsIconVisible] = useState(false);
@@ -17,25 +25,34 @@ const Login = () => {
   // Handle password visibility toggle
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     try {
+<<<<<<< fix/auth
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        { email, password }
+      );
+      const { token, message } = response.data;
+=======
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       const { token } = response.data;
+>>>>>>> main
 
-      // Decode token to get role
       const decoded = jwtDecode(token);
-
-      // Save token in localStorage or better: in-memory or httpOnly cookie (demo uses localStorage)
-      localStorage.setItem('token', token);
-
-      // Redirect based on role
-      if (decoded.role === 'admin') {
-        navigate('/admin/dashboard');
+      console.log("Logged in as:", decoded.role); 
+      localStorage.setItem("token", token);
+      toast.success(message || "Login successful");
+      if (decoded.role === "admin") {
+        window.location.href = "/admin/dashboard";
       } else {
-        navigate('/home');
+        navigate("/home");
       }
-    } catch (err) {
-      setError('Invalid email or password');
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.error) {
+      toast.error(error.response.data.error);
+      } else {
+      toast.error("Login failed. Please try again.");
+    }
     }
   };
 
@@ -59,6 +76,32 @@ const Login = () => {
 
 
   return (
+<<<<<<< fix/auth
+    <div className="auth-container login">
+      <div className="auth-image login-image"></div>
+      <div className="auth-form">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <p>
+          Don't have an account? <Link to="/signup">signup</Link>
+=======
     <div className="auth-container login" style={{ position: 'relative', overflow: 'hidden' }}>
       <MinimalBG />
       <div className="auth-image login-image" style={{ zIndex: 1 }}></div>
@@ -143,8 +186,19 @@ const Login = () => {
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <p>
           Don't have an account? <Link to="/signup">Sign up</Link>
+>>>>>>> main
         </p>
       </div>
+       <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="dark"
+        toastClassName="toast-body custom-toast-shadow"
+        bodyClassName="text-sm font-medium"
+      />
     </div>
   );
 };

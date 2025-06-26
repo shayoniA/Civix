@@ -10,11 +10,16 @@ import Footer from "./components/Footer";
 import ScrollToTop from './components/ScrollToTop';
 import {RequireAdmin} from './components/auth/RequireAdmin';
 
-// Pages
+// Newly added pages
 import About from "./Pages/About";
 import Privacy from "./Pages/Privacy";
 import Terms from "./Pages/Terms";
 import Contact from "./Pages/Contact";
+import ReportIssue from "./Pages/ReportIssue"
+import ServerError from "./components/ServerError";
+import DownloadAndroid from './Pages/DownloadAndroid';
+import DownloadIOS from './Pages/DownloadIOS';
+import CommunityVotingPage from './CommunityVotingPage';
 
 const App = () => {
   return (
@@ -29,7 +34,11 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/report-issue" element={<ReportIssue />} />        
         <Route path="*" element={<Error404 />} />
+        <Route path='/download-android' element={<DownloadAndroid/>}/>
+        <Route path='/download-ios' element={<DownloadIOS/>}/>
+        <Route path="/community-voting" element={<CommunityVotingPage />} />
 
         {/* Protected routes */}
        <Route path="/admin"
@@ -46,10 +55,13 @@ const App = () => {
             </PrivateRoute>
           } 
         />
+
+      <Route path="/500" element={<ServerError />} />
+
       </Routes>
-      
+
       {/* Footer */}
-      <Footer />
+     
     </BrowserRouter>
   );
 };

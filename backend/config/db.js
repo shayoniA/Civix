@@ -1,20 +1,23 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const User = require('./models/userModel');
+<<<<<<< fix/auth
+const pg = require('pg');
+require('dotenv').config();
 
-const createAdmin = async () => {
-  await mongoose.connect(process.env.MONGO_URI); // or your Mongo URI
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production'
+    ? { rejectUnauthorized: false }
+    : false,
+});
 
-  const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASS, 10);
-  await User.create({
-    name: 'Admin',
-    email: process.env.EMAIL_ADMIN,
-    password: hashedPassword,
-    role: 'admin'
-  });
+module.exports = pool;
+=======
+const {Pool} =require('pg');
+const pool= new Pool({
+    connectionString:process.env.DATABASE_URL,
+    ssl:{
+        rejectUnauthorized:false
+    },
+});
 
-  console.log('Admin created');
-  mongoose.disconnect();
-};
-
-createAdmin();
+module.exports=pool;
+>>>>>>> main

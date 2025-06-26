@@ -3,8 +3,18 @@ import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
+<<<<<<< fix/auth
+import { AnimatePresence } from 'framer-motion';
+
+import { div } from "framer-motion/client";
+import { Link, useNavigate } from 'react-router-dom';
+import { ChevronUp } from 'lucide-react';
+import { toast,ToastContainer } from 'react-toastify';
+
+=======
 import { useNavigate } from "react-router-dom";
 import Switch from "./DarkModeToggle";
+>>>>>>> main
 
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -72,10 +82,47 @@ function Home() {
       question: "Can I vote on issues reported by others?",
       answer: "Yes! You can upvote issues reported by other citizens to help prioritize them for resolution."
     }
+<<<<<<< fix/auth
+
+  ]
+
+//Logijn state management
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token); 
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    toast.info("you have been logged out")
+    setTimeout(() => {
+    navigate('/');
+    },2500);
+  };
+
+  return (
+    <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+       <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="dark"
+        toastClassName="toast-body custom-toast-shadow"
+        bodyClassName="text-sm font-medium"
+      />
+      {/* SEO Optimization */}
+=======
   ];
 
   return (
     <div className="flex min-h-screen flex-col">
+>>>>>>> main
       <Helmet>
         <title>Civix | Report Local Issues & Improve Your Community</title>
         <meta name="description" content="Civix helps citizens report and track local civic issues like potholes, broken lights, and garbage collection problems. Make your city better today!" />
@@ -94,6 +141,7 @@ function Home() {
             <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Features</a>
             <a href="#how-it-works" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">How It Works</a>
             <a href="#testimonials" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Testimonials</a>
+            <a href="#faqs" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">FAQs</a>
             <a href="#download" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Download</a>
           </nav>
           <div className="flex items-center gap-4">

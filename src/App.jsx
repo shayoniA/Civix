@@ -9,6 +9,7 @@ import AdminDashboard from './components/AdminDashboard';
 import Error404 from './components/Error404';
 import Footer from "./components/Footer";
 import ScrollToTop from './components/ScrollToTop';
+import RequireAdmin from './components/auth/RequireAdmin';
 
 // Newly added pages
 import About from "./Pages/About";
@@ -39,14 +40,12 @@ const App = () => {
         <Route path='/download-ios' element={<DownloadIOS/>}/>
 
         {/* Protected routes */}
-        <Route 
-          path="/admin/dashboard" 
-          element={
-            <PrivateRoute allowedRoles={['admin']}>
-              <AdminDashboard />
-            </PrivateRoute>
-          } 
-        />
+        <Route path="/admin"
+         element={<RequireAdmin>
+          <AdminDashboard />
+         </RequireAdmin>} 
+         />
+
         <Route 
           path="/home" 
           element={

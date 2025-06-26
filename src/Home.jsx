@@ -244,27 +244,22 @@ function Home() {
           </div>
         </motion.section>
 
-        <motion.section id="testimonials" className="bg-slate-50 py-12 md:py-24 lg:py-32" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}>
+        <motion.section id="testimonials" className="bg-slate-50 py-12 dark:bg-gray-900 md:py-24 lg:py-32" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}>
           <div className="container mx-auto px-4">
             <motion.div className="flex flex-col items-center justify-center space-y-4 text-center" variants={itemVariants}>
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-emerald-100 px-3 py-1 text-sm text-emerald-700">Testimonials</div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Trusted by communities everywhere</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">See what citizens and city workers are saying about Civix.</p>
+                <div className="inline-block rounded-lg bg-emerald-100 dark:bg-emerald-800 px-3 py-1 text-sm text-emerald-700 dark:text-emerald-200">Testimonials</div>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight dark:text-white">Trusted by communities everywhere</h2>
+                <p className="max-w-[900px] text-muted-foreground dark:text-gray-300  md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">See what citizens and city workers are saying about Civix.</p>
               </div>
             </motion.div>
             <div className="flex justify-center">
-              <motion.div className="grid max-w-5xl items-center justify-items-center gap-6 py-12 lg:grid-cols-2" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <motion.div className="grid max-w-5xl items-stretch justify-items-center gap-6 py-12 lg:grid-cols-2" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 {[
                   { quote: "I reported a pothole on my street and it was fixed within a week. The ability to track progress kept me informed the whole time.", name: "Sarah Johnson", role: "Resident, Portland" },
                   { quote: "As a city worker, Civix has transformed how we manage local issues. The dashboard makes it easy to prioritize and track our work.", name: "Michael Rodriguez", role: "Public Works, Austin" }
                 ].map((testimonial, index) => (
-                  <motion.div
-                  key={index}
-                  className="w-full max-w-md rounded-lg border bg-card dark:bg-[#1f1f23] text-card-foreground dark:text-white shadow-sm transition-all duration-300 hover:shadow-md"
-                  variants={cardVariants}
-                  whileHover={{ y: -5 }}
->
+                  <motion.div key={index} className="w-full max-w-md rounded-lg border dark:border-gray-700  bg-white dark:bg-gray-800  text-card-foreground dark:text-white shadow-sm transition-all duration-300 hover:shadow-md flex flex-col h-full" variants={cardVariants} whileHover={{ y: -5 }}>
                     <div className="p-6">
                       <div className="flex flex-col gap-4">
                         <div className="flex gap-1">
@@ -276,12 +271,13 @@ function Home() {
                         </div>
                         <p className="text-lg">"{testimonial.quote}"</p>
                         <div className="flex items-center gap-4">
-                          <div className="rounded-full bg-slate-100 p-1">
-                            <div className="h-10 w-10 rounded-full bg-slate-200" />
+                          <div className="rounded-full bg-slate-100 dark:bg-gray-700 p-1">
+                            <div className="h-10 w-10 rounded-full bg-slate-200  dark:bg-gray-600" />
                           </div>
-                          <div>
-                            <p className="font-semibold">{testimonial.name}</p>
-                            <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                                                     
+                           <div>
+                            <p className="font-semibold dark:text-white">{testimonial.name}</p>
+                            <p className="text-sm text-muted-foreground dark:text-gray-400">{testimonial.role}</p>
                           </div>
                         </div>
                       </div>

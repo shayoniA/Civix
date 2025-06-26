@@ -1,10 +1,3 @@
-<<<<<<< fix/auth
-import React, { useState } from "react";
-import axios from "axios";
-import { jwtDecode } from "jwt-decode";
-import { Link, useNavigate } from "react-router-dom";
-import { toast,ToastContainer } from "react-toastify";
-=======
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
@@ -12,7 +5,6 @@ import { jwtDecode } from 'jwt-decode';
 import { Link,useNavigate } from 'react-router-dom';
 import MinimalBG from './MinimalBG';
 
->>>>>>> main
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,16 +19,8 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-<<<<<<< fix/auth
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        { email, password }
-      );
-      const { token, message } = response.data;
-=======
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       const { token } = response.data;
->>>>>>> main
 
       const decoded = jwtDecode(token);
       console.log("Logged in as:", decoded.role); 
@@ -76,32 +60,6 @@ const Login = () => {
 
 
   return (
-<<<<<<< fix/auth
-    <div className="auth-container login">
-      <div className="auth-image login-image"></div>
-      <div className="auth-form">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="submit">Login</button>
-        </form>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <p>
-          Don't have an account? <Link to="/signup">signup</Link>
-=======
     <div className="auth-container login" style={{ position: 'relative', overflow: 'hidden' }}>
       <MinimalBG />
       <div className="auth-image login-image" style={{ zIndex: 1 }}></div>
@@ -186,7 +144,6 @@ const Login = () => {
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <p>
           Don't have an account? <Link to="/signup">Sign up</Link>
->>>>>>> main
         </p>
       </div>
        <ToastContainer

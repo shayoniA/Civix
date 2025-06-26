@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Home from './Home';
@@ -19,6 +18,7 @@ import ReportIssue from "./Pages/ReportIssue"
 import ServerError from "./components/ServerError";
 import DownloadAndroid from './Pages/DownloadAndroid';
 import DownloadIOS from './Pages/DownloadIOS';
+import CommunityVotingPage from './CommunityVotingPage';
 
 const App = () => {
   return (
@@ -37,6 +37,7 @@ const App = () => {
         <Route path="*" element={<Error404 />} />
         <Route path='/download-android' element={<DownloadAndroid/>}/>
         <Route path='/download-ios' element={<DownloadIOS/>}/>
+        <Route path="/community-voting" element={<CommunityVotingPage />} />
 
         {/* Protected routes */}
         <Route 

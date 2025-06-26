@@ -1,148 +1,85 @@
-# 🚧 Civix – Local Civic Issue Reporting App
-**Domain:**  *Governance / Public Welfare*
-**Tagline:**  *Empowering citizens, enabling better governance.*
+# 🚧 Civix – Local Civic Issue Reporting App  
+
+**Domain**: Governance / Public Welfare  
+**Tagline**: Empowering citizens, enabling better governance.  
 
 ![Issues](https://img.shields.io/github/issues/Harshs16/civix)
 ![Forks](https://img.shields.io/github/forks/Harshs16/civix)
 ![Stars](https://img.shields.io/github/stars/Harshs16/civix)
 
----
+## 🧠 Overview
+  
+**Civix** is a full-stack web application designed to streamline the process of reporting, tracking, and resolving local civic issues such as potholes, broken streetlights, and uncollected garbage. It provides a bridge between citizens and municipal authorities, bringing accountability and transparency to local issue resolution. 
 
-## 🧠 Overview 
+![Image](https://github.com/user-attachments/assets/2640c43b-64b0-4fa1-afb4-ee2c5e7a5354)
+*Caption: Citizen view showing issue reporting interface*
 
-**Civix** is a full-stack web application designed to streamline the process of reporting, tracking, and resolving local civic issues such as potholes, broken streetlights, and uncollected garbage. It provides a bridge between citizens and municipal authorities, bringing accountability and transparency to local issue resolution.
+## 🚨 Problem Addressed  
+Local civic issues often go unnoticed or unresolved due to:  
+- Lack of structured, user-friendly reporting systems  
+- No transparent status tracking  
+- Difficulty in community prioritization  
 
----
+## ✨ Features  
 
-## 🚨 Problem Addressed
-Local civic issues often go unnoticed or unresolved due to the lack of a structured, user-friendly reporting system. Civix solves this by enabling:
+![Image](https://github.com/user-attachments/assets/b7f86a3e-3f51-4098-a5e7-eb14b134b111)
+*Caption: Step-by-step issue reporting process*
 
-- 📸Citizens to report problems easily with images and geolocation.
+### 🧍 Citizens  
+- 📍 **Report Issues**: Submit problems with description, live location (via map), and image  
+- 🔁 **Track Status**: View transitions from *Open → In Progress → Resolved*  
+- 👍 **Upvote Issues**: Support others' reports to highlight common concerns  
 
-- 🔁Transparent status tracking of reported issues.
+### 🧑‍💼 Admins (City Workers)  
+- 📊 **Dashboard**: View, filter, and manage all reported issues  
+- 🔧 **Status Management**: Update progress and mark resolutions  
+- 🔒 **Role-Based Access**: Secure login for Citizens and Admins  
 
-- 🔼Community-driven prioritization via upvotes.
+## 🛠️ Tech Stack  
+### Frontend  
+- React.js  
+- Tailwind CSS – Modern responsive UI  
+- Leaflet.js – Interactive maps for location tagging  
 
-- 🧑‍💼A centralized admin dashboard for city workers to manage and resolve issues efficiently.
+### Backend  
+- Node.js + Express.js  
+- PostgreSQL – Relational DB for reports and user data  
 
----
+### Integrations  
+- Cloudinary – Image uploads and hosting  
+- JWT Authentication – Secure role-based access  
 
-## ✨ Features
-
-### 🧍 Citizens
-
-- 📍 **Report Issues**: Submit problems with description, live location (via map), and image.
-
-- 🔁 **Track Status**: View status transitions from Open → In Progress → Resolved.
-
-- 🔼 **Upvote Issues**: Support others' reports to highlight common concerns.
-
-### 🧑‍💼 Admins (City Workers)
-
-- 📊 **Dashboard Access**: View, filter, and manage all reported issues.
-
-- 🔧 **Status Management**: Update issue progress and mark resolutions.
-
-- 🧑‍🤝‍🧑 **Role-Based Access**: Admin vs Citizen privileges secured via authentication.
-
-
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend:
-- **React.js** 
-
-- **Tailwind CSS**  – for modern and responsive UI
-
-- **Leaflet.js** – interactive maps for location tagging
-
-### Backend:
-- **Node.js + Express.js** 
-
-- **PostgreSQL** – relational DB for storing reports and user data
-
-### Additional Integrations:
-- **Cloudinary** – for image uploads and hosting
-
-- **Role-Based Authentication** – Secure login for Citizens and Admins
-
----
 
 ## 🌗 Dark Mode Toggle  
+**Implementation**:  
+- `darkMode: 'class'` in `tailwind.config.js`  
+- User preference saved via `localStorage`  
+- Toggle switch: `src/ThemeToggle.jsx` (used in `Home.jsx`)  
 
-Civix supports a **light and dark mode toggle** to enhance user experience in different lighting conditions. This feature allows users to switch between a light theme and a dark theme with a single click.
+**How to Use**:  
+1. Locate the toggle button (🌙/☀️) in the header  
+2. Click to switch between:  
+   - **Light Mode**: White/light gray backgrounds (`bg-slate-50`) with dark text (`text-gray-900`)  
+   - **Dark Mode**: Dark gray backgrounds (`dark:bg-gray-800`) with light text (`dark:text-gray-100`)  
 
-### 🔧 Setup Details
+## 🚀 Getting Started  
 
-- `darkMode: 'class'` is enabled in `tailwind.config.js`
-- User preference is saved using `localStorage`
-- Toggle switch is implemented in `src/ThemeToggle.jsx`
-- Imported and used inside `Home.jsx`, beside the "Sign Up" button
+![Image](https://github.com/user-attachments/assets/2cd2d4e6-f9b4-4322-aad2-5475277ce2ff)
+*Caption: Admin dashboard with issue management tools*
 
-### How to Use
+### Prerequisites  
+- Node.js 16+  
+- npm 8+  
+- PostgreSQL 14+  
+- Cloudinary account (for image uploads)  
 
-- **Locate the Toggle Button**: In the header of the app, look for the toggle button displaying a moon (🌙) or sun (☀️) icon.
-- **Switch Modes**:
-  - If the moon icon (🌙) is visible, click it to switch to dark mode.
-  - If the sun icon (☀️) is visible, click it to switch to light mode.
-- **Visual Changes**: The app will update instantly:
-  - **Light Mode**: White or light gray backgrounds (e.g., `bg-slate-50`) with dark text (e.g., `text-gray-900`).
-  - **Dark Mode**: Dark gray backgrounds (e.g., `dark:bg-gray-800`) with light text (e.g., `dark:text-gray-100`).
-
----
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js and npm  
-- PostgreSQL
-
-### 📥 Clone and Run (For Local Testing) 
-- Clone the repository
-
-```
-
-git clone https://github.com/Harshs16/civix.git
-cd civix-app
-
-```
-- Install Dependencies
-```
-
-npm install
-
-```
-- Start the Development Server
-
-```
-
-npm start
-
-```
-
-### 🧑‍💻 How to Contribute
-
-Here’s a quick step-by-step guide to help you get started:
-
-
-
- 🔧 1. **Fork the Repository**
-Click the **"Fork"** button on the top-right of this repo. This will create a copy under your GitHub account.
-
-
-
-📥 2. **Clone the Fork**
-```bash
-
-git clone https://github.com/<your-username>/civix.git
-cd civix-app
-
-```
-
-
-
- 📦 3. **Install Dependencies**
+### 📥 Installation  
+📦 1.**Clone the repository**:  
+   ```bash
+   git clone https://github.com/Harshs16/civix.git
+   cd Civix
+  
+📦 2. **Install Dependencies**
 
 Make sure you have **Node.js** and **npm** installed.  
 Then, install the project dependencies:
@@ -155,7 +92,7 @@ npm install
 
 
 
-### 🌱 4. **Create a New Branch**
+### 🌱 3. **Create a New Branch**
 Use a meaningful branch name:
 ```bash
 
@@ -171,7 +108,7 @@ git checkout -b improve-readme
 ```
 
 
- 🛠️ 5. **Make Your Changes**
+ 🛠️ 4. **Make Your Changes**
 - Improve the code, fix bugs, or update docs.
 - If you're running the project:
   ```bash
@@ -182,7 +119,7 @@ git checkout -b improve-readme
 
 
 
- ✅ 6. **Stage and Commit**
+ ✅ 5. **Stage and Commit**
 ```bash
 
 git add .
@@ -190,7 +127,7 @@ git commit -m "feat: your clear and concise commit message"
 
 ```
 
-🚀 7. **Push Your Branch**
+🚀 6. **Push Your Branch**
 ```bash
 
 git push origin your-feature-name
@@ -199,7 +136,7 @@ git push origin your-feature-name
 
 ---
 
-🔁 8. **Create a Pull Request**
+🔁 7. **Create a Pull Request**
 - Go to your forked repo on GitHub
 - Click **“Compare & pull request”**
 - Add a helpful description of what you changed and why

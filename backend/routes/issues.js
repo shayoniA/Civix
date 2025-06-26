@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { createIssue, updateIssueStatus } = require('../controllers/issues');
+const issueController = require('../controllers/issues');
+const { verifyToken, isAdmin } = require('../middlewares/validate');
+
+// GET all issues
+router.get('/', issueController.getAllIssues);
+
 
 /**
  * @swagger
@@ -77,7 +82,8 @@ const { createIssue, updateIssueStatus } = require('../controllers/issues');
  *       500:
  *         description: Server error
  */
-router.post('/', createIssue);
+router.post('/',issueController.createIssue);
+
 
 /**
  * @swagger
@@ -116,6 +122,7 @@ router.post('/', createIssue);
  *       500:
  *         description: Server error
  */
-router.patch('/:id/status', updateIssueStatus);
+router.patch('/:id/status',verifyToken, isAdmin, issueController.updateIssueStatus);
+
 
 module.exports = router;

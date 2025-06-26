@@ -20,6 +20,16 @@ const createIssue = async (req, res) => {
   }
 };
 
+//  Get all issues
+const getAllIssues = async (req, res) => {
+  try {
+    const issues = await Issue.find().sort({ createdAt: -1 });
+    res.json(issues);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch issues.' });
+  }
+};
+
 const updateIssueStatus = async (req, res) => {
   try {
     const { id } = req.params;
@@ -46,4 +56,4 @@ const updateIssueStatus = async (req, res) => {
   }
 };
 
-module.exports = { createIssue , updateIssueStatus };
+module.exports = { createIssue ,getAllIssues, updateIssueStatus };

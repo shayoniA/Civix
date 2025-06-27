@@ -1,6 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const { createIssue, updateIssueStatus } = require('../controllers/issues');
+const express = require('express');
+
+const upload = require('../middlewares/upload');
+const { createIssue, updateIssueStatus } = require('../controllers/issues');
+
+router.post('/', upload.single('file'), createIssue);
+router.patch('/:id/status', updateIssueStatus);
+
+
 
 /**
  * @swagger

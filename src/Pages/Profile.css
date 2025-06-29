@@ -1,0 +1,165 @@
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.profile-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
+  padding: 2.5rem 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.btn-back:hover {
+  color: #1b4332;
+}
+
+.icon {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.profile-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: #50816b;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 700px) {
+  .profile-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-bottom: 2px solid #94d3ac;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-bottom-color: #2d6a4f;
+}
+
+.form-input.readonly {
+  border-bottom-color: #94d3ac;
+  cursor: default;
+}
+
+.form-text {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid #94d3ac;
+  user-select: none;
+}
+
+.action-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background-color: #2d6a4f;
+  color: #ffffff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1b4332;
+}
+
+.btn-primary .icon {
+  color: inherit;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  border: 2px solid #2d6a4f;
+  color: #2d6a4f;
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #2d6a4f;
+  color: white;
+}
+
+.btn-secondary .icon {
+  color: inherit;
+}
+
+.password-request-message {
+  grid-column: 1 / -1;
+  border: 1px solid #a7f3d0;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 1rem;
+}

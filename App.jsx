@@ -49,7 +49,7 @@ const App = () => {
           } 
         />
         <Route 
-          path="/home" 
+          path="/user/dashboard" 
           element={
             <PrivateRoute allowedRoles={['user', 'admin']}>
               <Home />

@@ -1,13 +1,14 @@
 const express= require('express');
 const cors=require('cors');
 const helmet=require('helmet');
-const xss= require('xss-clean');
+//const xss= require('xss-clean');
 const co0kieParser= require('cookie-parser');
 const rateLimit = require('express-rate-limit');
 const authRoutes=require('./routes/auth');
 const issuesRoutes=require('./routes/issues');
 const errorHandler=require('./middlewares/errorHandler');
 const { specs, swaggerUi } = require('./config/swagger');
+const profileRoutes = require('./routes/profileRoutes');
 require('dotenv').config();
 
 const app = express();
@@ -15,7 +16,7 @@ const app = express();
 // middlewares
 app.use(cors());
 app.use(helmet());
-app.use(xss());
+//app.use(xss());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(co0kieParser());
@@ -34,6 +35,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 //Routing 
 app.use('/api/auth',authRoutes);
 app.use('/api/issues',issuesRoutes);
+app.use('/api/profile', profileRoutes);
+
 app.use(errorHandler);
 
 const PORT=process.env.PORT || 5000;

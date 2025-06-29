@@ -27,12 +27,13 @@ const Login = () => {
 
       // Save token in localStorage or better: in-memory or httpOnly cookie (demo uses localStorage)
       localStorage.setItem('token', token);
-
+      localStorage.setItem('email', email);
+      console.log(localStorage.getItem('email'));
       // Redirect based on role
       if (decoded.role === 'admin') {
         navigate('/admin/dashboard');
       } else {
-        navigate('/home');
+        navigate('/user/dashboard');
       }
     } catch (err) {
       setError('Invalid email or password');

@@ -19,6 +19,11 @@ import ReportIssue from "./Pages/ReportIssue"
 import ServerError from "./components/ServerError";
 import DownloadAndroid from './Pages/DownloadAndroid';
 import DownloadIOS from './Pages/DownloadIOS';
+import UserDashboard from './Pages/UserDashboard '
+import CommunityVotingPage from './Pages/CommunityVotingPage';
+import Profile from './Pages/Profile';
+import Resources from './Pages/Resources';
+
 
 const App = () => {
   return (
@@ -37,6 +42,9 @@ const App = () => {
         <Route path="*" element={<Error404 />} />
         <Route path='/download-android' element={<DownloadAndroid/>}/>
         <Route path='/download-ios' element={<DownloadIOS/>}/>
+        <Route path="/community-voting" element={<CommunityVotingPage />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/resources" element={<Resources />} />
 
         {/* Protected routes */}
         <Route 
@@ -48,10 +56,10 @@ const App = () => {
           } 
         />
         <Route 
-          path="/home" 
+          path="/user/dashboard" 
           element={
             <PrivateRoute allowedRoles={['user', 'admin']}>
-              <Home />
+              <UserDashboard />
             </PrivateRoute>
           } 
         />

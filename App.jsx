@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -18,11 +18,10 @@ import ReportIssue from "./Pages/ReportIssue"
 import ServerError from "./components/ServerError";
 import DownloadAndroid from './Pages/DownloadAndroid';
 import DownloadIOS from './Pages/DownloadIOS';
-import CommunityVotingPage from './CommunityVotingPage';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <Routes>
         {/* Public routes */}
@@ -35,9 +34,9 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/report-issue" element={<ReportIssue />} />        
         <Route path="*" element={<Error404 />} />
-        <Route path='/download-android' element={<DownloadAndroid/>}/>
-        <Route path='/download-ios' element={<DownloadIOS/>}/>
-        <Route path="/community-voting" element={<CommunityVotingPage />} />
+        <Route path="/download-android" element={<DownloadAndroid />} />
+        <Route path="/download-ios" element={<DownloadIOS />} />
+        <Route path="/500" element={<ServerError />} />
 
         {/* Protected routes */}
         <Route 
@@ -56,14 +55,9 @@ const App = () => {
             </PrivateRoute>
           } 
         />
-
-      <Route path="/500" element={<ServerError />} />
-
       </Routes>
-
-      {/* Footer */}
-     
-    </BrowserRouter>
+      {/* Optional: <Footer /> if you want it globally visible */}
+    </>
   );
 };
 

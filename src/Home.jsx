@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link,useNavigate} from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import Switch from "./DarkModeToggle";
 
 function Home() {
@@ -72,7 +71,8 @@ function Home() {
       question: "Can I vote on issues reported by others?",
       answer: "Yes! You can upvote issues reported by other citizens to help prioritize them for resolution."
     }
-  ];
+
+  ]
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -94,6 +94,7 @@ function Home() {
             <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Features</a>
             <a href="#how-it-works" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">How It Works</a>
             <a href="#testimonials" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Testimonials</a>
+            <a href="#faqs" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">FAQs</a>
             <a href="#download" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Download</a>
           </nav>
           <div className="flex items-center gap-4">

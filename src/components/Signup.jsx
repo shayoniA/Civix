@@ -3,15 +3,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { toast,ToastContainer } from "react-toastify";
+
 
 const Signup = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmpassword: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
   });
 
   const [error, setError] = useState('');
@@ -20,7 +22,7 @@ const Signup = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -64,7 +66,9 @@ const Signup = () => {
         navigate('/login');
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Signup failed');
+      const errorMsg = (await err.response?.data?.error) || "Signup failed";
+      setError(errorMsg);
+      toast.error(errorMsg);
     }
 
     setLoading(false);

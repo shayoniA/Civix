@@ -23,6 +23,7 @@ import UserDashboard from './Pages/UserDashboard '
 import CommunityVotingPage from './Pages/CommunityVotingPage';
 import Profile from './Pages/Profile';
 import Resources from './Pages/Resources';
+import MyComplaints from './Pages/MyComplaints'
 
 
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
         <Route path="/community-voting" element={<CommunityVotingPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/resources" element={<Resources />} />
+        <Route path="/complaints" element={<MyComplaints />} />
 
         {/* Protected routes */}
         <Route 

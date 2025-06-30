@@ -54,7 +54,7 @@ const App = () => {
         <Route path="/download-android" element={<DownloadAndroid />} />
         <Route path="/download-ios" element={<DownloadIOS />} />
 
-        {/* Optional: If you're still using custom login/signup */}
+        
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 

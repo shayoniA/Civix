@@ -1,17 +1,11 @@
 const express = require('express');
 const router = express.Router();
-<<<<<<< HEAD
 const issueController = require('../controllers/issues');
 const { verifyToken, isAdmin } = require('../middlewares/validate');
 
 // GET all issues
 router.get('/', issueController.getAllIssues);
 
-=======
-
-const upload = require('../middlewares/upload');
-const { createIssue, updateIssueStatus } = require('../controllers/issues');
->>>>>>> 7c5900ba5b06a57c3e847c9543aeeb81e0ed4159
 
 router.post('/', upload.single('file'), createIssue);
 router.patch('/:id/status', updateIssueStatus);

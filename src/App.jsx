@@ -69,7 +69,6 @@ const App = () => {
         <Route path="/resources" element={<Resources />} />
         <Route path="/complaints" element={<MyComplaints />} />
 
-<<<<<<< HEAD
         {/* Protected routes */}
         <Route path="/admin"
          element={<RequireAdmin>
@@ -77,17 +76,6 @@ const App = () => {
          </RequireAdmin>} 
          />
 
-=======
-        {/* Protected Routes */}
-        <Route
-          path="/admin/dashboard"
-          element={
-            <PrivateRoute allowedRoles={['admin']}>
-              <AdminDashboard />
-            </PrivateRoute>
-          }
-        />
->>>>>>> 7c5900ba5b06a57c3e847c9543aeeb81e0ed4159
         <Route 
           path="/user/dashboard" 
           element={

@@ -17,7 +17,6 @@ exports.createIssue = async (req, res) => {
   }
 };
 
-<<<<<<< HEAD
 //  Get all issues
 const getAllIssues = async (req, res) => {
   try {
@@ -29,9 +28,6 @@ const getAllIssues = async (req, res) => {
 };
 
 const updateIssueStatus = async (req, res) => {
-=======
-exports.updateIssueStatus = async (req, res) => {
->>>>>>> 7c5900ba5b06a57c3e847c9543aeeb81e0ed4159
   try {
     const { id } = req.params;
     const { newStatus } = req.body;
@@ -51,10 +47,6 @@ exports.updateIssueStatus = async (req, res) => {
     console.error('Error updating status:', err);
     res.status(500).json({ error: 'Failed to update status.' });
   }
-<<<<<<< HEAD
 };
 
 module.exports = { createIssue ,getAllIssues, updateIssueStatus };
-=======
-};
->>>>>>> 7c5900ba5b06a57c3e847c9543aeeb81e0ed4159

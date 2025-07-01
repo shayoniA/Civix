@@ -1,24 +1,17 @@
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link,useNavigate} from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
-<<<<<<< fix/auth
-import { AnimatePresence } from 'framer-motion';
-
-import { div } from "framer-motion/client";
-import { Link, useNavigate } from 'react-router-dom';
-import { ChevronUp } from 'lucide-react';
-import { toast,ToastContainer } from 'react-toastify';
-
-=======
-import { useNavigate } from "react-router-dom";
 import Switch from "./DarkModeToggle";
->>>>>>> main
+import { useAuth, useUser, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
+import { toast, ToastContainer } from 'react-toastify';
 
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
   const navigate = useNavigate();
+  const { isSignedIn, signOut } = useAuth();
+  const { user } = useUser();
 
   useEffect(() => {
     const animateOnScroll = () => {
@@ -35,6 +28,18 @@ function Home() {
     animateOnScroll();
     return () => window.removeEventListener("scroll", animateOnScroll);
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      toast.info("You have been logged out");
+      setTimeout(() => {
+        navigate('/');
+      }, 2500);
+    } catch (error) {
+      toast.error("Error logging out");
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -82,31 +87,13 @@ function Home() {
       question: "Can I vote on issues reported by others?",
       answer: "Yes! You can upvote issues reported by other citizens to help prioritize them for resolution."
     }
-<<<<<<< fix/auth
 
   ]
 
-//Logijn state management
-const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token); 
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    setIsLoggedIn(false);
-    toast.info("you have been logged out")
-    setTimeout(() => {
-    navigate('/');
-    },2500);
-  };
-
+  // Render Home Page UI with JSX
   return (
     <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-       <ToastContainer
+      <ToastContainer
         position="bottom-right"
         autoClose={3000}
         closeOnClick
@@ -116,19 +103,12 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
         toastClassName="toast-body custom-toast-shadow"
         bodyClassName="text-sm font-medium"
       />
-      {/* SEO Optimization */}
-=======
-  ];
 
-  return (
-    <div className="flex min-h-screen flex-col">
->>>>>>> main
       <Helmet>
         <title>Civix | Report Local Issues & Improve Your Community</title>
         <meta name="description" content="Civix helps citizens report and track local civic issues like potholes, broken lights, and garbage collection problems. Make your city better today!" />
       </Helmet>
-
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-down">
+        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-down">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-emerald-500">
@@ -171,16 +151,35 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300" onClick={() => navigate("/login")}>
-                    Get Started
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 h-4 w-4">
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </button>
-                  <button className="flex h-10 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
-                    Learn More
-                  </button>
+                  <button
+  className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300"
+  onClick={() => {
+    if (isSignedIn) {
+      // ✅ Do the actual app logic here
+      navigate("/report-issue"); // or your real working component
+    } else {
+      // 🔐 If not signed in, take them to login/signup
+      navigate("/signup");
+    }
+  }}
+>
+  Get Started
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="ml-2 h-4 w-4"
+  >
+    <path d="M5 12h14" />
+    <path d="m12 5 7 7-7 7" />
+  </svg>
+        </button>
                 </div>
               </div>
               <div className="flex items-center justify-center animate-on-scroll">

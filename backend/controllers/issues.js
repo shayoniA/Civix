@@ -1,25 +1,23 @@
 const Issue = require('../models/issues');
 const sendEmail = require('../utils/sendEmail');
 
-const createIssue = async (req, res) => {
+exports.createIssue = async (req, res) => {
   try {
-    const { title, description, phone,email, notifyByEmail } = req.body;
+    const { title, description, phone, email, notifyByEmail } = req.body;
+    const fileUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
-    const newIssue = await Issue.create({
-      title,
-      description,
-      phone,
-      email, // Capture email from frontend
-      notifyByEmail: notifyByEmail === 'true' // checkbox value from frontend
+    const issue = await Issue.create({
+      title, description, phone, email, notifyByEmail: notifyByEmail === 'true', fileUrl
     });
 
-    res.status(201).json({ message: 'Issue submitted successfully', issue: newIssue });
+    res.status(201).json({ message: 'Issue submitted successfully', issue });
   } catch (err) {
     console.error('Error submitting issue:', err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
 
+<<<<<<< HEAD
 //  Get all issues
 const getAllIssues = async (req, res) => {
   try {
@@ -31,6 +29,9 @@ const getAllIssues = async (req, res) => {
 };
 
 const updateIssueStatus = async (req, res) => {
+=======
+exports.updateIssueStatus = async (req, res) => {
+>>>>>>> 7c5900ba5b06a57c3e847c9543aeeb81e0ed4159
   try {
     const { id } = req.params;
     const { newStatus } = req.body;
@@ -42,11 +43,7 @@ const updateIssueStatus = async (req, res) => {
     await issue.save();
 
     if (issue.notifyByEmail && issue.email) {
-      await sendEmail(
-        issue.email, // Replace with user's actual email
-        'Civix - Issue Status Update',
-        `<p>Your issue titled <strong>${issue.title}</strong> is now marked as <strong>${newStatus}</strong>.</p>`
-      );
+      await sendEmail(issue.email, 'Civix - Issue Status Update', `<p>Your issue <strong>${issue.title}</strong> is now <strong>${newStatus}</strong>.</p>`);
     }
 
     res.json({ message: 'Status updated successfully.' });
@@ -54,6 +51,10 @@ const updateIssueStatus = async (req, res) => {
     console.error('Error updating status:', err);
     res.status(500).json({ error: 'Failed to update status.' });
   }
+<<<<<<< HEAD
 };
 
 module.exports = { createIssue ,getAllIssues, updateIssueStatus };
+=======
+};
+>>>>>>> 7c5900ba5b06a57c3e847c9543aeeb81e0ed4159

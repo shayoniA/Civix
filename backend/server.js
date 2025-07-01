@@ -5,11 +5,12 @@ const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
 const rateLimit = require('express-rate-limit');
 const path = require('path');
-require('dotenv').config();
+
 
 // Routes
 const authRoutes = require('./routes/auth');
 const issueRoutes = require('./routes/issues');
+const profileRoutes = require('./routes/profileRoutes');
 
 // DB Config
 require('./config/db');       // PostgreSQL for Auth
@@ -21,10 +22,13 @@ const { swaggerUi, specs } = require('./config/swagger');
 
 const app = express();
 
+require('dotenv').config();
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(helmet());
 app.use(xss());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
@@ -42,11 +46,11 @@ app.use(limiter);
 // Swagger Docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
-// Routes
+//Routing 
 app.use('/api/auth', authRoutes);
 app.use('/api/issues', issueRoutes);
+app.use('/api/profile', profileRoutes);
 
-// Error Handler
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
@@ -62,7 +66,6 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // 4 middlewares/upload.js
 const multer = require('multer');
-const path = require('path');
 
 const storage = multer.diskStorage({
   destination: './uploads/',

@@ -5,7 +5,7 @@
   width: 90%;
   max-width: 1000px;
   height: 600px;
-  margin: auto;
+  margin:auto;
   margin-top: calc(50vh - 300px); /* vertical centering */
   font-family: 'Inter', Arial, sans-serif;
   background: #fff;
@@ -93,6 +93,12 @@
   gap: 1.2rem;
   align-items: stretch;
   animation-delay: 0.3s;
+}
+.pwValidator{
+  background:rgba(16, 185, 129, 0.221);
+  border-radius: 12px;
+  margin-bottom:8px ;
+  padding: 8px;
 }
 
 .pwValidator {

@@ -182,7 +182,7 @@ const Login = () => {
       <SignIn
         routing="path"
         path="/login"
-        redirectUrl="/home" // or any dashboard
+        redirectUrl="/user/dashboard" // or any dashboard
       />
     </div>
   );

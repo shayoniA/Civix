@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link,useNavigate} from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import Switch from "./DarkModeToggle";
 import { useAuth, useUser, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 import { toast, ToastContainer } from 'react-toastify';
@@ -88,7 +87,8 @@ function Home() {
       question: "Can I vote on issues reported by others?",
       answer: "Yes! You can upvote issues reported by other citizens to help prioritize them for resolution."
     }
-  ];
+
+  ]
 
   // Render Home Page UI with JSX
   return (

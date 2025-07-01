@@ -272,7 +272,7 @@ const Signup = () => {
       <SignUp
         routing="path"
         path="/signup"
-        redirectUrl="/home"
+        redirectUrl="/user/dashboard"
       />
     </div>
   );

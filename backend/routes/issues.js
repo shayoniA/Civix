@@ -9,6 +9,11 @@ router.patch('/:id/status', updateIssueStatus);
 
 
 
+router.post('/', upload.single('file'), createIssue);
+router.patch('/:id/status', updateIssueStatus);
+
+
+
 /**
  * @swagger
  * components:

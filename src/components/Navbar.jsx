@@ -76,16 +76,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Switch from '../DarkModeToggle';
-<<<<<<< HEAD
 import {jwtDecode} from 'jwt-decode';
-=======
-import {
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useClerk
-} from '@clerk/clerk-react';
->>>>>>> 7c5900ba5b06a57c3e847c9543aeeb81e0ed4159
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -150,7 +141,6 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           <Switch />
 
-<<<<<<< HEAD
           {/* ✅ Conditionally show Admin Dashboard button */}
           {isAdmin && (
             <button
@@ -173,34 +163,6 @@ const Navbar = () => {
           >
             Get Started
           </button>
-=======
-          {/* Show if not logged in */}
-          <SignedOut>
-            <button
-              onClick={() => navigate('/login')}
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium border h-9 px-4 py-2 hover:bg-accent"
-            >
-              Login
-            </button>
-            <button
-              onClick={() => navigate('/signup')}
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium bg-emerald-500 text-white h-9 px-4 py-2 hover:bg-emerald-500/90"
-            >
-              Get Started
-            </button>
-          </SignedOut>
-
-          {/* Show if logged in */}
-          <SignedIn>
-            <UserButton afterSignOutUrl="/" />
-            <button
-              onClick={() => navigate('/admin/dashboard')}
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium border h-9 px-4 py-2 hover:bg-accent"
-            >
-              Dashboard
-            </button>
-          </SignedIn>
->>>>>>> 7c5900ba5b06a57c3e847c9543aeeb81e0ed4159
         </div>
       </div>
     </header>

@@ -2,6 +2,8 @@ const bcrypt = require('bcryptjs');
 const { createUser, findByEmail } = require('../models/userModel');
 const { generateToken } = require('../utils/token');
 require('dotenv').config();
+const jwt = require('jsonwebtoken');
+
 
 exports.signup = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -16,7 +18,36 @@ exports.signup = async (req, res, next) => {
     res.status(500).json({ message: 'Signup failed', error: err.message });
     next(err); // Optional: if you want centralized error handling
   }
+
+  };
+
+exports.adminLogin = (req, res) => {
+  const { email, password } = req.body;
+
+  // Check with .env values
+  if (
+    email === process.env.EMAIL_ADMIN &&
+    password === process.env.ADMIN_PASS
+  ) {
+    //  If correct, generate token with role: 'admin'
+    const token = jwt.sign(
+      {
+        email,
+        role: 'admin',
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: '1d' }
+    );
+
+    return res.json({ token });
+  }
+
+  return res.status(401).json({ message: 'Invalid admin credentials' });
 };
+
+
+
+
 
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;

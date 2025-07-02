@@ -35,10 +35,10 @@
   flex: 0.85;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; 
   min-width: 0;
   transition: all 0.5s ease-in-out, opacity 0.4s ease-in-out;
-  animation: imageFadeIn 0.8s cubic-bezier(.4, 0, .2, 1) forwards;
+  animation: imageFadeIn 0.8s cubic-bezier(.4,0,.2,1) forwards;
 }
 
 .login-image {

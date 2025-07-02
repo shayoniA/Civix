@@ -10,6 +10,7 @@ import AdminDashboard from './components/AdminDashboard';
 import Error404 from './components/Error404';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import RequireAdmin from './components/auth/RequireAdmin';
 
 // Pages
 import About from './Pages/About';
@@ -68,15 +69,13 @@ const App = () => {
         <Route path="/resources" element={<Resources />} />
         <Route path="/complaints" element={<MyComplaints />} />
 
-        {/* Protected Routes */}
-        <Route
-          path="/admin/dashboard"
-          element={
-            <PrivateRoute allowedRoles={['admin']}>
-              <AdminDashboard />
-            </PrivateRoute>
-          }
-        />
+        {/* Protected routes */}
+        <Route path="/admin"
+         element={<RequireAdmin>
+          <AdminDashboard />
+         </RequireAdmin>} 
+         />
+
         <Route 
           path="/user/dashboard" 
           element={

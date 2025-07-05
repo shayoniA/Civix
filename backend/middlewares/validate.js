@@ -1,8 +1,8 @@
-const{validationResult}=require('express-validator');
+const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
-//  Basic token validation
-exports.verifyToken = (req, res, next) => {
+// Basic token validation
+const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -21,20 +21,25 @@ exports.verifyToken = (req, res, next) => {
 };
 
 // Middleware to check if user is admin
-exports.isAdmin = (req, res, next) => {
+const isAdmin = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
     next();
   } else {
     return res.status(403).json({ message: 'Admin access only' });
   }
 };
+
 // Middleware to validate request data using express-validator
-
-module.exports=(req,res,next)=>{
-    const errors= validationResult(req);
-    if(!errors.isEmpty()){
-        return res.status(400).json({errors:errors.array()});
-
-    }
-    next();
+const validate = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  next();
 };
+
+module.exports = { 
+  verifyToken, 
+  isAdmin, 
+  validate
+ };

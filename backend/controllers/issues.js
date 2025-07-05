@@ -1,7 +1,7 @@
 const Issue = require('../models/issues');
 const sendEmail = require('../utils/sendEmail');
 
-exports.createIssue = async (req, res) => {
+const createIssues = async (req, res) => {
   try {
     const { title, description, phone, email, notifyByEmail } = req.body;
     const fileUrl = req.file ? `/uploads/${req.file.filename}` : null;
@@ -49,4 +49,10 @@ const updateIssueStatus = async (req, res) => {
   }
 };
 
-module.exports = { createIssue ,getAllIssues, updateIssueStatus };
+module.exports = {
+  createIssues, 
+  getAllIssues,
+  updateIssueStatus
+};
+
+

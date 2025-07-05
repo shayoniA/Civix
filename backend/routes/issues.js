@@ -1,19 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const issueController = require('../controllers/issues');
-const { verifyToken, isAdmin } = require('../middlewares/validate');
+const { verifyToken, isAdmin, validate} = require('../middlewares/validate');
 
+const { upload } = require('../middlewares/upload');
+// const { validate } = require('../middlewares/validate');
 // GET all issues
 router.get('/', issueController.getAllIssues);
 
+// const {  isAdmin, validate } = require('../middlewares/validate');
 
-router.post('/', upload.single('file'), createIssue);
-router.patch('/:id/status', updateIssueStatus);
+router.post('/', upload.single('file'), issueController.createIssues);
+router.patch('/:id/status', issueController.updateIssueStatus);
 
 
 
-router.post('/', upload.single('file'), createIssue);
-router.patch('/:id/status', updateIssueStatus);
+
 
 
 
@@ -92,7 +94,7 @@ router.patch('/:id/status', updateIssueStatus);
  *       500:
  *         description: Server error
  */
-router.post('/',issueController.createIssue);
+
 
 
 /**

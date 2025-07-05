@@ -44,10 +44,55 @@ Local civic issues often go unnoticed or unresolved due to:
 ### Backend  
 - Node.js + Express.js  
 - PostgreSQL – Relational DB for reports and user data  
+- JWT Authentication – Secure role-based access
+- Multer – File upload handling
+- Swagger – API documentation
+- Helmet.js – Security middleware
+- Express Rate Limit – API protection
 
 ### Integrations  
 - Cloudinary – Image uploads and hosting  
-- JWT Authentication – Secure role-based access  
+- JWT Authentication – Secure role-based access
+
+## 🔧 Backend API Features
+
+### 🔐 Authentication System
+- **JWT-based authentication** with role management
+- **Admin/User role separation** for different access levels
+- **Secure password hashing** using bcrypt
+- **Token expiration** and refresh handling
+
+### 📡 RESTful API Endpoints
+- **GET /api/issues** - Retrieve all civic issues
+- **POST /api/issues** - Create new issue with file upload
+- **PATCH /api/issues/:id/status** - Update issue status (Admin only)
+- **POST /api/auth/signup** - User registration
+- **POST /api/auth/login** - User authentication
+
+### 🛡️ Security Features
+- **Rate limiting** (100 requests per 15 minutes)
+- **Input validation** using express-validator
+- **XSS protection** and security headers
+- **CORS configuration** for frontend integration
+- **File upload security** with type validation
+
+### 📊 API Documentation
+- **Interactive Swagger UI** at `/api-docs`
+- **Complete endpoint documentation** with examples
+- **Schema definitions** for request/response objects
+- **Authentication testing** directly in browser
+
+### 🗄️ Database Integration
+- **PostgreSQL** for reliable data storage
+- **Optimized queries** with proper indexing
+- **User management** with secure credential storage
+- **Issue tracking** with status management
+
+### 📁 File Management
+- **Image upload** support for issue reporting
+- **File validation** and security checks
+- **Organized storage** in uploads directory
+- **Efficient file handling** with Multer middleware  
 
 
 ## 🌗 Dark Mode Toggle  
@@ -71,7 +116,49 @@ Local civic issues often go unnoticed or unresolved due to:
 - Node.js 16+  
 - npm 8+  
 - PostgreSQL 14+  
-- Cloudinary account (for image uploads)  
+- Cloudinary account (for image uploads)
+
+## 📡 API Usage Examples
+
+### Authentication
+```bash
+# Register new user
+curl -X POST http://localhost:5000/api/auth/signup \
+  -H "Content-Type: application/json" \
+  -d '{"username":"john_doe","email":"john@example.com","password":"password123"}'
+
+# Login user
+curl -X POST http://localhost:5000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"john@example.com","password":"password123"}'
+```
+
+### Issue Management
+```bash
+# Get all issues
+curl -X GET http://localhost:5000/api/issues
+
+# Create new issue with image
+curl -X POST http://localhost:5000/api/issues \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -F "title=Pothole on Main Street" \
+  -F "description=Large pothole causing traffic issues" \
+  -F "location=Main Street & 5th Ave" \
+  -F "category=road" \
+  -F "file=@/path/to/image.jpg"
+
+# Update issue status (Admin only)
+curl -X PATCH http://localhost:5000/api/issues/1/status \
+  -H "Authorization: Bearer ADMIN_JWT_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"status":"in-progress"}'
+```
+
+### API Documentation
+- **Swagger UI**: `http://localhost:5000/api-docs`
+- **Interactive testing** of all endpoints
+- **Complete schema documentation**
+- **Authentication examples**  
 
 ### 📥 Installation  
 📦 1.**Clone the repository**:  

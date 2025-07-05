@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
 const { signup, login } = require('../controllers/auth');
-const validate = require('../middlewares/validate');
+const { validate } = require('../middlewares/validate');
 
 /**
  * @swagger

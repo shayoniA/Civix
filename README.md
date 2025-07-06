@@ -35,6 +35,24 @@ Local civic issues often go unnoticed or unresolved due to:
 - 🔧 **Status Management**: Update progress and mark resolutions  
 - 🔒 **Role-Based Access**: Secure login for Citizens and Admins  
 
+### 📘 Civic Education & Rights  
+
+Civix now includes a fully frontend civic learning module to educate users—especially students and first-time voters—about their rights and responsibilities.
+
+**Route**: `/civic-education`  
+**File**: `src/Pages/CivicEducation.jsx`
+
+#### ✨ Highlights  
+- 🧠 Interactive Quiz System with progress tracking and localStorage-based scores  
+- 🏆 Gamified XP system, achievements, and level-ups  
+- 🗂️ Tabbed layout for Overview, Learn, Quiz, and Resources  
+- 🔖 Bookmark favorite sections and save them locally  
+- 📊 Reading Progress Bar and Civic Journey visualization  
+- 💡 Animated “Did You Know?” facts carousel  
+- 📥 Downloadable PDFs and curated civic resources  
+- 🎉 Celebration animations on milestone completions  
+
+
 ## 🛠️ Tech Stack  
 ### Frontend  
 - React.js  

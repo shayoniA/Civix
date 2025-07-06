@@ -74,13 +74,12 @@
 
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Switch from '../DarkModeToggle';
 import {jwtDecode} from 'jwt-decode';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { signOut } = useClerk();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -136,6 +135,12 @@ const Navbar = () => {
           <a href="#faqs" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">
             FAQ
           </a>
+          <Link
+            to="/civic-education"
+            className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300"
+          >
+            Civic Education & Rights
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -170,6 +175,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 
 

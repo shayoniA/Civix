@@ -11,6 +11,7 @@ import Error404 from './components/Error404';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import RequireAdmin from './components/auth/RequireAdmin';
+import Navbar from './components/Navbar';
 
 // Pages
 import About from './Pages/About';
@@ -21,12 +22,12 @@ import ReportIssue from './Pages/ReportIssue';
 import ServerError from './components/ServerError';
 import DownloadAndroid from './Pages/DownloadAndroid';
 import DownloadIOS from './Pages/DownloadIOS';
-import UserDashboard from './Pages/UserDashboard '
+import UserDashboard from './Pages/UserDashboard ';
 import CommunityVotingPage from './Pages/CommunityVotingPage';
 import Profile from './Pages/Profile';
 import Resources from './Pages/Resources';
-import MyComplaints from './Pages/MyComplaints'
-
+import MyComplaints from './Pages/MyComplaints';
+import CivicEducation from './Pages/CivicEducation';
 
 const App = () => {
   return (
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/civic-education" element={<CivicEducation />} />
         <Route
   path="/report-issue"
   element={

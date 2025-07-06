@@ -20,7 +20,6 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-// Check admin role
 const isAdmin = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
     next();
@@ -28,6 +27,7 @@ const isAdmin = (req, res, next) => {
     return res.status(403).json({ message: 'Admin access only' });
   }
 };
+
 
 // Validation result checker
 const validateRequest = (req, res, next) => {

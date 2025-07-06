@@ -20,7 +20,6 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-// Middleware to check if user is admin
 const isAdmin = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
     next();
@@ -29,8 +28,9 @@ const isAdmin = (req, res, next) => {
   }
 };
 
-// Middleware to validate request data using express-validator
-const validate = (req, res, next) => {
+
+// Validation result checker
+const validateRequest = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -38,8 +38,8 @@ const validate = (req, res, next) => {
   next();
 };
 
-module.exports = { 
-  verifyToken, 
-  isAdmin, 
-  validate
- };
+module.exports = {
+  verifyToken,
+  isAdmin,
+  validateRequest,
+};

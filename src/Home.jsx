@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link,useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
@@ -108,7 +108,7 @@ function Home() {
         <title>Civix | Report Local Issues & Improve Your Community</title>
         <meta name="description" content="Civix helps citizens report and track local civic issues like potholes, broken lights, and garbage collection problems. Make your city better today!" />
       </Helmet>
-        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-down">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-down">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-emerald-500">
@@ -120,6 +120,7 @@ function Home() {
           <nav className="hidden md:flex gap-6">
             <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Features</a>
             <a href="#how-it-works" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">How It Works</a>
+            <a href="/civic-education" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Civic Education & Rights</a>
             <a href="#testimonials" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Testimonials</a>
             <a href="#faqs" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">FAQs</a>
             <a href="#download" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Download</a>
@@ -152,34 +153,34 @@ function Home() {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <button
-  className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300"
-  onClick={() => {
-    if (isSignedIn) {
-      // ✅ Do the actual app logic here
-      navigate("/report-issue"); // or your real working component
-    } else {
-      // 🔐 If not signed in, take them to login/signup
-      navigate("/signup");
-    }
-  }}
->
-  Get Started
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="ml-2 h-4 w-4"
-  >
-    <path d="M5 12h14" />
-    <path d="m12 5 7 7-7 7" />
-  </svg>
-        </button>
+                    className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300"
+                    onClick={() => {
+                      if (isSignedIn) {
+                        // ✅ Do the actual app logic here
+                        navigate("/report-issue"); // or your real working component
+                      } else {
+                        // 🔐 If not signed in, take them to login/signup
+                        navigate("/signup");
+                      }
+                    }}
+                  >
+                    Get Started
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="ml-2 h-4 w-4"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </button>
                 </div>
               </div>
               <div className="flex items-center justify-center animate-on-scroll">
@@ -241,7 +242,7 @@ function Home() {
                     onClick: () => navigate('/community-voting')
                   }
                 ].map((feature, index) => (
-                  <motion.div key={index} className="rounded-lg bg-card text-card-foreground p-8 shadow-xl w-full max-w-[350px] transition-all duration-300 hover:shadow-md" variants={cardVariants} whileHover={{ y: -5 }} onClick={feature.onClick || (() => {})}>
+                  <motion.div key={index} className="rounded-lg bg-card text-card-foreground p-8 shadow-xl w-full max-w-[350px] transition-all duration-300 hover:shadow-md" variants={cardVariants} whileHover={{ y: -5 }} onClick={feature.onClick || (() => { })}>
                     {feature.icon}
                     <h3 className="mt-4 text-xl font-bold">{feature.title}</h3>
                     <p className="mt-2 text-muted-foreground">{feature.description}</p>
@@ -321,8 +322,8 @@ function Home() {
                           <div className="rounded-full bg-slate-100 dark:bg-gray-700 p-1">
                             <div className="h-10 w-10 rounded-full bg-slate-200  dark:bg-gray-600" />
                           </div>
-                                                     
-                           <div>
+
+                          <div>
                             <p className="font-semibold dark:text-white">{testimonial.name}</p>
                             <p className="text-sm text-muted-foreground dark:text-gray-400">{testimonial.role}</p>
                           </div>

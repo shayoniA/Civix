@@ -3,6 +3,8 @@
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  color: #111;
+  background-color: #fff;
 }
 
 .back-button {
@@ -22,6 +24,10 @@
   border-radius: 50px;
   margin: 20px 0;
   flex-wrap: wrap;
+}
+
+body.dark .filter-bar {
+  background: #1f2937;
 }
 
 .filter-section {
@@ -127,7 +133,7 @@
     flex-direction: column;
     border-radius: 15px;
   }
-  
+
   .issue-metrics {
     flex-direction: column;
     gap: 10px;

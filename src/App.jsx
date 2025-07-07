@@ -67,3 +67,47 @@ const App = () => {
 };
 
 export default App;
+// src/App.jsx
+import { Toaster } from 'react-hot-toast';
+import { Routes, Route } from 'react-router-dom';
+// Import your other components...
+
+function App() {
+  return (
+    <>
+      {/* Toast Provider (should be near root) */}
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          className: '!bg-white dark:!bg-gray-800 !text-gray-900 dark:!text-white !border !border-gray-200 dark:!border-gray-700',
+          duration: 4000,
+          success: {
+            iconTheme: {
+              primary: '#10B981', // Emerald 500
+              secondary: 'white',
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: '#EF4444', // Red 500
+              secondary: 'white',
+            },
+          },
+        }}
+      />
+
+      {/* Your existing layout */}
+      <Navbar />
+      
+      <main className="container mx-auto p-4">
+        <Routes>
+          <Route path="/issues/new" element={<NewIssue />} />
+          <Route path="/issues/:id" element={<IssueDetail />} />
+          {/* Other routes... */}
+        </Routes>
+      </main>
+
+      <Footer />
+    </>
+  );
+}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CommunityVoting.css"; // Create this file for styling
 import { motion, AnimatePresence } from "framer-motion";
+import Switch from '../DarkModeToggle';
 
 const CommunityVotingPage = () => {
   const navigate = useNavigate();
@@ -103,6 +104,11 @@ const CommunityVotingPage = () => {
   };
 
   return (
+    <>
+    {/* Top bar with dark mode toggle */}
+  <div className="w-full flex justify-end mb-6"  style={{ paddingRight: "20px", paddingTop: "20px" }}>
+    <Switch />
+  </div>
   <motion.div 
     className="community-voting-container"
     initial={{ opacity: 0 }}
@@ -251,6 +257,7 @@ const CommunityVotingPage = () => {
       </motion.div>
     </AnimatePresence>
   </motion.div>
+  </>
 );
 };
 

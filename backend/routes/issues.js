@@ -31,7 +31,10 @@ router.patch('/:id/status', verifyToken, isAdmin, async (req, res, next) => {
   }
 });
 
+const { upload } = require('../middlewares/upload');
+// const { validate } = require('../middlewares/validate');
 // GET all issues
 router.get('/', issueController.getAllIssues);
+
 
 module.exports = router;

@@ -3,7 +3,6 @@ import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
-import { Routes, Route } from 'react-router-dom';
 import { SignIn, SignUp } from '@clerk/clerk-react';
 
 

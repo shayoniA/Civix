@@ -35,6 +35,13 @@ export default function ReportIssue() {
 
   return (
     <div className="p-8">
+      <button
+        className="back-button"
+        onClick={() => window.history.back()}
+        type="button"
+      >
+        ← Back
+      </button>
       <h1 className="text-2xl font-bold mb-4">Report an Issue</h1>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <input

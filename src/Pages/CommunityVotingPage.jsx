@@ -118,10 +118,10 @@ const CommunityVotingPage = () => {
     <motion.button 
       className="back-button" 
       onClick={() => navigate(-1)}
-      whileHover={{ x: -5 }}
+      whileHover={{ x: -2 }}
       transition={{ type: "spring", stiffness: 300 }}
     >
-      ← Back to Home
+      ← Back
     </motion.button>
 
     <motion.div

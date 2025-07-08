@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-// Import the CSS file
-import './ReportIssue.css'; // Or import styles from './ReportIssue.module.css'; if using CSS Modules
+import './ReportIssue.css';
 
 export default function ReportIssue() {
   const [phone, setPhone] = useState('');
@@ -29,8 +28,7 @@ export default function ReportIssue() {
       });
 
       const data = await res.json();
-      alert(data.message); // Consider using react-toastify here for better UX!
-      // Optional: Clear form after successful submission
+      alert(data.message);
       setPhone('');
       setEmail('');
       setTitle('');
@@ -39,13 +37,12 @@ export default function ReportIssue() {
       setNotifyByEmail(false);
     } catch (err) {
       console.error('Submit error:', err);
-      alert('Failed to submit issue.'); // Consider using react-toastify here!
+      alert('Failed to submit issue.');
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden">
-      {/* Animated background shapes */}
       <motion.div
         className="absolute top-10 left-10 w-48 h-48 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob"
         initial={{ scale: 0 }}

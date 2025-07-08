@@ -1,0 +1,89 @@
+.resources-container {
+  max-width: 960px;
+  margin: auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.resources-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #4caf50;
+  padding-bottom: 0.5rem;
+}
+
+.resources-section {
+  margin-bottom: 2rem;
+  border-left: 4px solid #4caf50;
+  padding-left: 1rem;
+}
+
+.resources-subtitle {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.resources-text {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.resources-list {
+  list-style: disc;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.green {
+  color: #4caf50;
+}
+
+/* FAQ styles */
+.faq-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.faq-question {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #333;
+}
+
+.faq-answer {
+  padding: 0.8rem 1rem;
+  background-color: #f7f7f7;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.arrow-icon {
+  font-size: 1rem;
+  color: #4caf50;
+}

@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
-const { signup, login } = require('../controllers/auth');
-const validate = require('../middlewares/validate');
-
+const { signup, login } = require('../controllers/authController');
+const { validateRequest } = require('../middlewares/validate');
 /**
  * @swagger
  * components:
@@ -91,7 +90,7 @@ router.post('/signup',
       .isLength({ min: 8 })
       .withMessage('Password must be at least 8 characters')
   ],
-  validate,
+  validateRequest,
   signup
 );
 
@@ -130,7 +129,7 @@ router.post('/login',
     body('password')
       .notEmpty()
   ],
-  validate,
+  validateRequest,
   login
 );
 

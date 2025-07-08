@@ -1,24 +1,18 @@
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
-<<<<<<< fix/auth
-import { AnimatePresence } from 'framer-motion';
-
-import { div } from "framer-motion/client";
-import { Link, useNavigate } from 'react-router-dom';
-import { ChevronUp } from 'lucide-react';
-import { toast,ToastContainer } from 'react-toastify';
-
-=======
-import { useNavigate } from "react-router-dom";
 import Switch from "./DarkModeToggle";
->>>>>>> main
+import { useAuth, useUser, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
+import { toast, ToastContainer } from 'react-toastify';
+import Navbar from "./components/Navbar";
 
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
   const navigate = useNavigate();
+  const { isSignedIn, signOut } = useAuth();
+  const { user } = useUser();
 
   useEffect(() => {
     const animateOnScroll = () => {
@@ -35,6 +29,18 @@ function Home() {
     animateOnScroll();
     return () => window.removeEventListener("scroll", animateOnScroll);
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      toast.info("You have been logged out");
+      setTimeout(() => {
+        navigate('/');
+      }, 2500);
+    } catch (error) {
+      toast.error("Error logging out");
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -82,31 +88,13 @@ function Home() {
       question: "Can I vote on issues reported by others?",
       answer: "Yes! You can upvote issues reported by other citizens to help prioritize them for resolution."
     }
-<<<<<<< fix/auth
 
   ]
 
-//Logijn state management
-const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token); 
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    setIsLoggedIn(false);
-    toast.info("you have been logged out")
-    setTimeout(() => {
-    navigate('/');
-    },2500);
-  };
-
+  // Render Home Page UI with JSX
   return (
     <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-       <ToastContainer
+      <ToastContainer
         position="bottom-right"
         autoClose={3000}
         closeOnClick
@@ -116,46 +104,12 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
         toastClassName="toast-body custom-toast-shadow"
         bodyClassName="text-sm font-medium"
       />
-      {/* SEO Optimization */}
-=======
-  ];
 
-  return (
-    <div className="flex min-h-screen flex-col">
->>>>>>> main
       <Helmet>
         <title>Civix | Report Local Issues & Improve Your Community</title>
         <meta name="description" content="Civix helps citizens report and track local civic issues like potholes, broken lights, and garbage collection problems. Make your city better today!" />
       </Helmet>
-
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-down">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-emerald-500">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <span className="text-xl font-bold">Civix</span>
-          </div>
-          <nav className="hidden md:flex gap-6">
-            <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Features</a>
-            <a href="#how-it-works" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">How It Works</a>
-            <a href="#testimonials" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Testimonials</a>
-            <a href="#faqs" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">FAQs</a>
-            <a href="#download" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Download</a>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Switch />
-            <button className="hidden md:flex h-9 px-4 py-2 rounded-md text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors duration-300" onClick={() => navigate("/login")}>
-              Log In
-            </button>
-            <button className="h-9 px-4 py-2 rounded-md text-sm font-medium bg-emerald-500 text-white hover:bg-emerald-600 transition-colors duration-300" onClick={() => navigate("/signup")}>
-              Sign Up
-            </button>
-          </div>
-        </div>
-      </header>
-
+      <Navbar />
       <main className="flex-1">
         <section className="py-12 md:py-24 lg:py-32 xl:py-48">
           <div className="container px-4 md:px-6">
@@ -171,15 +125,34 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300" onClick={() => navigate("/login")}>
+                  <button
+                    className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300"
+                    onClick={() => {
+                      if (isSignedIn) {
+                        // ✅ Do the actual app logic here
+                        navigate("/report-issue"); // or your real working component
+                      } else {
+                        // 🔐 If not signed in, take them to login/signup
+                        navigate("/signup");
+                      }
+                    }}
+                  >
                     Get Started
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 h-4 w-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="ml-2 h-4 w-4"
+                    >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </button>
-                  <button className="flex h-10 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300">
-                    Learn More
                   </button>
                 </div>
               </div>
@@ -242,7 +215,7 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
                     onClick: () => navigate('/community-voting')
                   }
                 ].map((feature, index) => (
-                  <motion.div key={index} className="rounded-lg bg-card text-card-foreground p-8 shadow-xl w-full max-w-[350px] transition-all duration-300 hover:shadow-md" variants={cardVariants} whileHover={{ y: -5 }} onClick={feature.onClick || (() => {})}>
+                  <motion.div key={index} className="rounded-lg bg-card text-card-foreground p-8 shadow-xl w-full max-w-[350px] transition-all duration-300 hover:shadow-md" variants={cardVariants} whileHover={{ y: -5 }} onClick={feature.onClick || (() => { })}>
                     {feature.icon}
                     <h3 className="mt-4 text-xl font-bold">{feature.title}</h3>
                     <p className="mt-2 text-muted-foreground">{feature.description}</p>
@@ -292,27 +265,22 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
           </div>
         </motion.section>
 
-        <motion.section id="testimonials" className="bg-slate-50 py-12 md:py-24 lg:py-32" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}>
+        <motion.section id="testimonials" className="bg-slate-50 py-12 dark:bg-gray-900 md:py-24 lg:py-32" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}>
           <div className="container mx-auto px-4">
             <motion.div className="flex flex-col items-center justify-center space-y-4 text-center" variants={itemVariants}>
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-emerald-100 px-3 py-1 text-sm text-emerald-700">Testimonials</div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Trusted by communities everywhere</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">See what citizens and city workers are saying about Civix.</p>
+                <div className="inline-block rounded-lg bg-emerald-100 dark:bg-emerald-800 px-3 py-1 text-sm text-emerald-700 dark:text-emerald-200">Testimonials</div>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight dark:text-white">Trusted by communities everywhere</h2>
+                <p className="max-w-[900px] text-muted-foreground dark:text-gray-300  md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">See what citizens and city workers are saying about Civix.</p>
               </div>
             </motion.div>
             <div className="flex justify-center">
-              <motion.div className="grid max-w-5xl items-center justify-items-center gap-6 py-12 lg:grid-cols-2" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <motion.div className="grid max-w-5xl items-stretch justify-items-center gap-6 py-12 lg:grid-cols-2" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 {[
                   { quote: "I reported a pothole on my street and it was fixed within a week. The ability to track progress kept me informed the whole time.", name: "Sarah Johnson", role: "Resident, Portland" },
                   { quote: "As a city worker, Civix has transformed how we manage local issues. The dashboard makes it easy to prioritize and track our work.", name: "Michael Rodriguez", role: "Public Works, Austin" }
                 ].map((testimonial, index) => (
-                  <motion.div
-                  key={index}
-                  className="w-full max-w-md rounded-lg border bg-card dark:bg-[#1f1f23] text-card-foreground dark:text-white shadow-sm transition-all duration-300 hover:shadow-md"
-                  variants={cardVariants}
-                  whileHover={{ y: -5 }}
->
+                  <motion.div key={index} className="w-full max-w-md rounded-lg border dark:border-gray-700  bg-white dark:bg-gray-800  text-card-foreground dark:text-white shadow-sm transition-all duration-300 hover:shadow-md flex flex-col h-full" variants={cardVariants} whileHover={{ y: -5 }}>
                     <div className="p-6">
                       <div className="flex flex-col gap-4">
                         <div className="flex gap-1">
@@ -324,12 +292,13 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
                         </div>
                         <p className="text-lg">"{testimonial.quote}"</p>
                         <div className="flex items-center gap-4">
-                          <div className="rounded-full bg-slate-100 p-1">
-                            <div className="h-10 w-10 rounded-full bg-slate-200" />
+                          <div className="rounded-full bg-slate-100 dark:bg-gray-700 p-1">
+                            <div className="h-10 w-10 rounded-full bg-slate-200  dark:bg-gray-600" />
                           </div>
+
                           <div>
-                            <p className="font-semibold">{testimonial.name}</p>
-                            <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                            <p className="font-semibold dark:text-white">{testimonial.name}</p>
+                            <p className="text-sm text-muted-foreground dark:text-gray-400">{testimonial.role}</p>
                           </div>
                         </div>
                       </div>

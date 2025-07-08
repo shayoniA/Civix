@@ -24,7 +24,7 @@ const ContactForm = () => {
     setTimeout(() => setSubmitted(false), 3000);
     // Add your API call or submission logic here
   };
-
+  const isFilled = (value) => value.trim() !== '';
   return (
     <motion.form
       onSubmit={handleSubmit}
@@ -47,7 +47,12 @@ const ContactForm = () => {
           placeholder="Your Name"
           autoComplete="off"
         />
-        <label htmlFor="name" className="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 text-base transition-all duration-200 pointer-events-none peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-xs peer-focus:text-emerald-600 dark:peer-focus:text-emerald-400 bg-white dark:bg-[#23272f] px-1 peer-focus:px-1">
+        <label
+          htmlFor="name"
+          className={`absolute left-10 px-1 bg-white dark:bg-[#23272f] transition-all duration-200 text-gray-500 dark:text-gray-400 pointer-events-none 
+            ${isFilled(formData.name) ? '-top-3 text-xs text-emerald-600 dark:text-emerald-400' : 'top-4 text-base'}
+            peer-focus:-top-3 peer-focus:text-xs peer-focus:text-emerald-600 dark:peer-focus:text-emerald-400 peer-focus:px-1`}
+        >
           Your Name
         </label>
       </motion.div>
@@ -65,7 +70,12 @@ const ContactForm = () => {
           placeholder="Your Email"
           autoComplete="off"
         />
-        <label htmlFor="email" className="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 text-base transition-all duration-200 pointer-events-none peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-xs peer-focus:text-emerald-600 dark:peer-focus:text-emerald-400 bg-white dark:bg-[#23272f] px-1 peer-focus:px-1">
+        <label
+          htmlFor="email"
+          className={`absolute left-10 px-1 bg-white dark:bg-[#23272f] transition-all duration-200 text-gray-500 dark:text-gray-400 pointer-events-none 
+            ${isFilled(formData.email) ? '-top-3 text-xs text-emerald-600 dark:text-emerald-400' : 'top-4 text-base'}
+            peer-focus:-top-3 peer-focus:text-xs peer-focus:text-emerald-600 dark:peer-focus:text-emerald-400 peer-focus:px-1`}
+        >
           Your Email
         </label>
       </motion.div>
@@ -82,7 +92,12 @@ const ContactForm = () => {
           className="peer w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-[#23272f] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 placeholder-transparent resize-none"
           placeholder="Your Message"
         ></textarea>
-        <label htmlFor="message" className="absolute left-10 top-4 text-gray-500 dark:text-gray-400 text-base transition-all duration-200 pointer-events-none peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-xs peer-focus:text-emerald-600 dark:peer-focus:text-emerald-400 bg-white dark:bg-[#23272f] px-1 peer-focus:px-1">
+        <label
+          htmlFor="message"
+          className={`absolute left-10 px-1 bg-white dark:bg-[#23272f] transition-all duration-200 text-gray-500 dark:text-gray-400 pointer-events-none 
+            ${isFilled(formData.message) ? '-top-3 text-xs text-emerald-600 dark:text-emerald-400' : 'top-4 text-base'}
+            peer-focus:-top-3 peer-focus:text-xs peer-focus:text-emerald-600 dark:peer-focus:text-emerald-400 peer-focus:px-1`}
+        >
           Your Message
         </label>
       </motion.div>

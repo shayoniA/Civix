@@ -12,7 +12,7 @@
   box-shadow: none;
   border-radius: 16px;
   overflow: hidden;
-  transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1);
+  transition: box-shadow 0.4s cubic-bezier(.4, 0, .2, 1);
   border: 1px solid #e5e7eb;
 }
 
@@ -22,14 +22,8 @@
 }
 
 @keyframes entryFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes imageFadeIn {
@@ -39,16 +33,12 @@
 
 .auth-image {
   flex: 0.85;
-  background-size: cover;    
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat; 
-<<<<<<< fix/auth
-  transition: all 0.5s ease-in-out;
-=======
   min-width: 0;
   transition: all 0.5s ease-in-out, opacity 0.4s ease-in-out;
   animation: imageFadeIn 0.8s cubic-bezier(.4,0,.2,1) forwards;
->>>>>>> main
 }
 
 .login-image {
@@ -67,7 +57,7 @@
   align-items: center;
   background: #fff;
   border-radius: 0 16px 16px 0;
-  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+  padding: 2.5rem;
   font-family: 'Inter', Arial, sans-serif;
   min-width: 320px;
   max-width: 360px;
@@ -78,16 +68,11 @@
 .auth-form form,
 .auth-form > p {
   opacity: 0;
-  animation: entryFadeIn 0.6s cubic-bezier(.4,0,.2,1) forwards;
+  animation: entryFadeIn 0.6s cubic-bezier(.4, 0, .2, 1) forwards;
 }
 
 .auth-form h2 {
-<<<<<<< fix/auth
-  color: ;
-  transition: all 0.3s;
-=======
   color: #10B981;
-  font-family: 'Inter', Arial, sans-serif;
   font-size: 1.7rem;
   font-weight: 600;
   letter-spacing: -0.5px;
@@ -99,7 +84,6 @@
 
 .auth-form h2:hover {
   color: #0E9F6E;
->>>>>>> main
 }
 
 .auth-form form {
@@ -117,17 +101,15 @@
   padding: 8px;
 }
 
+.pwValidator {
+  background: rgba(16, 185, 129, 0.221);
+  border-radius: 12px;
+  margin-bottom: 8px;
+  padding: 8px;
+}
+
 .auth-form input {
-<<<<<<< fix/auth
-  padding: 18px 12px;      /* more vertical padding for taller inputs */
-  margin: 8px 0;          /* more vertical space between inputs */
-  border: 1.5px solid #ccc;
-  border-radius: 8px;
-  font-size: 1.1rem;       /* slightly bigger font */
-  transition: border-color 0.3s;
-=======
   padding: 0.95rem 1rem;
-  margin: 0;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
   font-size: 1rem;
@@ -136,14 +118,12 @@
   outline: none;
   transition: border-color 0.18s, box-shadow 0.18s;
   font-family: 'Inter', Arial, sans-serif;
-  box-shadow: none;
   width: 100%;
 }
 
 .auth-form input:focus {
   border-color: #10B981;
   box-shadow: 0 0 0 1.5px #10B98122;
->>>>>>> main
 }
 
 .auth-form input:hover {
@@ -161,7 +141,6 @@
   border-radius: 6px;
   cursor: pointer;
   margin-bottom: 0.5rem;
-  box-shadow: none;
   transition: background 0.18s, transform 0.14s;
   outline: none;
   letter-spacing: 0.2px;
@@ -169,7 +148,8 @@
   width: 100%;
 }
 
-.auth-form button:hover, .auth-form button:focus {
+.auth-form button:hover,
+.auth-form button:focus {
   background-color: #0E9F6E;
   transform: translateY(-1px) scale(1.01);
 }
@@ -190,7 +170,8 @@
   transition: color 0.18s;
 }
 
-.auth-form a:hover, .auth-form a:focus {
+.auth-form a:hover,
+.auth-form a:focus {
   color: #0E9F6E;
   text-decoration: underline;
 }
@@ -227,6 +208,7 @@
 :-ms-input-placeholder { color: #bdbdbd; opacity: 1; }
 ::placeholder { color: #bdbdbd; opacity: 1; }
 
+/* Dark mode support */
 .dark .auth-form {
   background: #18181b;
 }
@@ -251,22 +233,25 @@
   color: #10B981;
 }
 
-.dark .auth-form a:hover, .dark .auth-form a:focus {
+.dark .auth-form a:hover,
+.dark .auth-form a:focus {
   color: #0E9F6E;
 }
 
-@media (max-width:768px){
+@media (max-width: 768px) {
   .auth-container {
     flex-direction: column;
     height: auto;
   }
+
   .auth-image {
     flex: none;
     height: 200px;
     background-size: contain;
   }
+
   .auth-form {
-    border-radius:0 0 16px 16px;
+    border-radius: 0 0 16px 16px;
     max-width: 100%;
     padding: 1.5rem;
   }

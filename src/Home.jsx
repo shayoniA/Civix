@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Switch from "./DarkModeToggle";
 import { useAuth, useUser, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 import { toast, ToastContainer } from 'react-toastify';
+import Navbar from "./components/Navbar";
 
 function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -108,6 +109,7 @@ function Home() {
         <title>Civix | Report Local Issues & Improve Your Community</title>
         <meta name="description" content="Civix helps citizens report and track local civic issues like potholes, broken lights, and garbage collection problems. Make your city better today!" />
       </Helmet>
+
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-down">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
@@ -137,7 +139,8 @@ function Home() {
           </div>
         </div>
       </header>
-
+      <Navbar />
+                
       <main className="flex-1">
         <section className="py-12 md:py-24 lg:py-32 xl:py-48">
           <div className="container px-4 md:px-6">

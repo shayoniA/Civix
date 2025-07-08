@@ -28,6 +28,7 @@ import Profile from './Pages/Profile';
 import Resources from './Pages/Resources';
 import MyComplaints from './Pages/MyComplaints';
 import CivicEducation from './Pages/CivicEducation';
+import CivicSimulator from './Pages/CivicSimulator';
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="/terms" element={<Terms />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/civic-education" element={<CivicEducation />} />
+        <Route path="/civic-simulator" element={<CivicSimulator />} />
         <Route
   path="/report-issue"
   element={

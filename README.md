@@ -52,6 +52,20 @@ Civix now includes a fully frontend civic learning module to educate users—esp
 - 📥 Downloadable PDFs and curated civic resources  
 - 🎉 Celebration animations on milestone completions  
 
+### 🧭 Civic Simulator
+
+Civix now includes a standalone interactive simulator that allows users to step into civic leadership roles. Through animated dilemmas and slider-based decisions, users make trade-offs and explore the consequences of their choices—all within a frontend-only experience.
+
+**Route**: `/civic-simulator`  
+**File**: `src/Pages/CivicSimulator.jsx`
+
+#### ✨ Highlights  
+- 🎮 **Scenario Cards** – Solve dilemmas like budget allocation or policy conflicts using sliders and toggles  
+- 🧠 **Outcome Feedback** – Dynamic responses based on user choices (public satisfaction, resource balance)  
+- 📊 **Civic Style Profiling** – Discover civic personas like “Planner” or “Advocate” based on decisions  
+- 🔁 **Replayable Challenges** – Rerun scenarios to improve your score and try alternate outcomes  
+- 🏅 **XP & Badges** – Earn experience points and unlock achievement badges locally  
+- 💡 **Frontend-Only Logic** – Built entirely in React with `localStorage` persistence for decision history and XP tracking
 
 ## 🛠️ Tech Stack  
 ### Frontend  

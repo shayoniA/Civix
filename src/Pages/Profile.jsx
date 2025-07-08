@@ -87,9 +87,12 @@ const Profile = () => {
   return (
     <div className="profile-page">
       {/* Back Button */}
-      <button onClick={() => navigate(-1)} className="btn-back" aria-label="Go Back">
-        <FontAwesomeIcon icon={faArrowLeft} className="icon" />
-        Back
+      <button
+        className="back-button"
+        onClick={() => window.history.back()}
+        type="button"
+      >
+        ← Back
       </button>
 
       <div className="profile-card">

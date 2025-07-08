@@ -1,140 +1,40 @@
 const express = require('express');
 const router = express.Router();
 const issueController = require('../controllers/issues');
-const { verifyToken, isAdmin, validate} = require('../middlewares/validate');
+const { verifyToken, isAdmin } = require('../middlewares/validate');
+const upload = require('../middlewares/upload');
+const xss = require('xss');
+
+// POST create issue
+router.post('/', upload.single('file'), async (req, res, next) => {
+  try {
+    req.body.title = xss(req.body.title);
+    req.body.description = xss(req.body.description);
+    req.body.location = xss(req.body.location);
+    if (req.body.category) req.body.category = xss(req.body.category);
+
+    await issueController.createIssue(req, res);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// PATCH update status
+router.patch('/:id/status', verifyToken, isAdmin, async (req, res, next) => {
+  try {
+    if (req.body.newStatus) {
+      req.body.newStatus = xss(req.body.newStatus);
+    }
+    await issueController.updateIssueStatus(req, res);
+  } catch (err) {
+    next(err);
+  }
+});
 
 const { upload } = require('../middlewares/upload');
 // const { validate } = require('../middlewares/validate');
 // GET all issues
 router.get('/', issueController.getAllIssues);
-
-// const {  isAdmin, validate } = require('../middlewares/validate');
-
-router.post('/', upload.single('file'), issueController.createIssues);
-router.patch('/:id/status', issueController.updateIssueStatus);
-
-
-
-
-
-
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     Issue:
- *       type: object
- *       required:
- *         - title
- *         - description
- *         - location
- *       properties:
- *         title:
- *           type: string
- *           description: Issue title
- *         description:
- *           type: string
- *           description: Issue description
- *         location:
- *           type: string
- *           description: Issue location
- *         category:
- *           type: string
- *           description: Issue category
- *         status:
- *           type: string
- *           enum: [pending, in-progress, resolved]
- *           description: Issue status
- *     IssueResponse:
- *       type: object
- *       properties:
- *         id:
- *           type: string
- *         title:
- *           type: string
- *         description:
- *           type: string
- *         location:
- *           type: string
- *         category:
- *           type: string
- *         status:
- *           type: string
- *         createdAt:
- *           type: string
- *           format: date-time
- */
-
-/**
- * @swagger
- * /issues:
- *   post:
- *     summary: Create a new issue
- *     tags: [Issues]
- *     security:
- *       - bearerAuth: []
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Issue'
- *     responses:
- *       201:
- *         description: Issue created successfully
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/IssueResponse'
- *       400:
- *         description: Validation error
- *       401:
- *         description: Unauthorized
- *       500:
- *         description: Server error
- */
-
-
-
-/**
- * @swagger
- * /issues/{id}/status:
- *   patch:
- *     summary: Update issue status
- *     tags: [Issues]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: Issue ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               status:
- *                 type: string
- *                 enum: [pending, in-progress, resolved]
- *     responses:
- *       200:
- *         description: Issue status updated successfully
- *       400:
- *         description: Invalid status
- *       401:
- *         description: Unauthorized
- *       404:
- *         description: Issue not found
- *       500:
- *         description: Server error
- */
-router.patch('/:id/status',verifyToken, isAdmin, issueController.updateIssueStatus);
 
 
 module.exports = router;

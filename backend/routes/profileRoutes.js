@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
+const xss = require('xss');
 
 // GET user profile by email
 router.get('/:email', async (req, res) => {
   try {
-    const { email } = req.params;
+    const email = xss(req.params.email);
     const result = await pool.query(
       'SELECT id, username, email, role, location, complaints, last_activity FROM users WHERE email = $1',
       [email]
@@ -23,8 +24,10 @@ router.get('/:email', async (req, res) => {
 
 // PUT update user profile by email
 router.put('/:email', async (req, res) => {
-  const currentEmail = req.params.email;
-  const { username, email: newEmail, location } = req.body;
+  const currentEmail = xss(req.params.email);
+  const username = xss(req.body.username);
+  const newEmail = xss(req.body.email);
+  const location = xss(req.body.location);
 
   try {
     const result = await pool.query(

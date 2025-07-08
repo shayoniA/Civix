@@ -42,10 +42,13 @@ const Resources = () => {
 
   return (
     <div className="resources-container">
-      <button onClick={() => navigate(-1)} className="btn-back" aria-label="Go Back">
-              <FontAwesomeIcon icon={faArrowLeft} className="icon" />
-              Back
-       </button>
+      <button
+        className="back-button"
+        onClick={() => window.history.back()}
+        type="button"
+      >
+        ← Back
+      </button>
       <h1 className="resources-title">Citizen Resources</h1>
 
       <section className="resources-section">

@@ -852,7 +852,7 @@ const CivicEducation = () => {
                 Your Civic Journey
               </h3>
               <div className="relative">
-                <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-blue-500 via-purple-500 to-pink-500 rounded-full transform -translate-y-1/2"></div>
+                <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-purple-500 to-pink-500 rounded-full transform -translate-y-1/2"></div>
                 <div className="grid md:grid-cols-4 gap-8 relative">
                   {[
                     { step: 1, title: "Learn", desc: "Understand your rights", icon: <BookOpen className="w-8 h-8" />, color: "emerald", completed: readingProgress > 25 },
@@ -1165,7 +1165,7 @@ const CivicEducation = () => {
                                 : 'border-purple-500 bg-purple-50 text-purple-700'
                               : showResult && index === currentQuestion.correct
                               ? 'border-emerald-500 bg-emerald-50 text-emerald-700'
-                              : 'border-gray-300 bg-white hover:border-purple-300'
+                              : 'border-gray-300 bg-white hover:border-purple-300 text-black'
                           }`}
                         >
                           <div className="flex items-center space-x-3">

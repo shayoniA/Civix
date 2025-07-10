@@ -27,7 +27,6 @@ import DownloadIOS from './Pages/DownloadIOS';
 import NewIssue from './Pages/NewIssue';
 import IssueDetail from './Pages/IssueDetail';
 
-import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import RequireAdmin from './components/auth/RequireAdmin';
 import Navbar from './components/Navbar';

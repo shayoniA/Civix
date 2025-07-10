@@ -142,7 +142,7 @@ function Home() {
       <Navbar />
                 
       <main className="flex-1">
-        <section className="py-12 md:py-24 lg:py-32 xl:py-48">
+        <section className="py-6 md:py-12 lg:py-16 xl:py-20">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center">
               <div className="flex flex-col justify-center space-y-4 animate-on-scroll">
@@ -197,7 +197,7 @@ function Home() {
           </div>
         </section>
 
-        <motion.section id="features" className="bg-slate-50 dark:bg-background py-12 md:py-24 lg:py-32" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={containerVariants}>
+        <motion.section id="features" className="bg-slate-50 dark:bg-background py-6 md:py-12 lg:py-16 xl:py-20" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={containerVariants}>
           <div className="container px-4 md:px-6 mx-auto">
             <motion.div className="flex flex-col items-center justify-center space-y-4 text-center" variants={itemVariants}>
               <div className="space-y-2">
@@ -267,7 +267,7 @@ function Home() {
           </div>
         </motion.section>
 
-        <motion.section id="how-it-works" className="py-12 md:py-24 lg:py-32" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}>
+        <motion.section id="how-it-works" className="py-6 md:py-12 lg:py-16 xl:py-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}>
           <div className="container px-4 md:px-6 mx-auto">
             <motion.div className="flex flex-col items-center justify-center space-y-4 text-center" variants={itemVariants}>
               <div className="space-y-2">
@@ -296,7 +296,7 @@ function Home() {
           </div>
         </motion.section>
 
-        <motion.section id="testimonials" className="bg-slate-50 py-12 dark:bg-gray-900 md:py-24 lg:py-32" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}>
+        <motion.section id="testimonials" className="bg-slate-50 py-6 dark:bg-gray-900 md:py-12 lg:py-16" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}>
           <div className="container mx-auto px-4">
             <motion.div className="flex flex-col items-center justify-center space-y-4 text-center" variants={itemVariants}>
               <div className="space-y-2">
@@ -341,7 +341,7 @@ function Home() {
           </div>
         </motion.section>
 
-        <motion.section id="faqs" className="bg-white dark:bg-background py-12 md:py-24 lg:py-32" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={containerVariants}>
+        <motion.section id="faqs" className="bg-white dark:bg-background py-6 md:py-12 lg:py-16" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={containerVariants}>
           <div className="container px-4 mx-auto">
             <motion.div className="flex flex-col items-center space-y-4 text-center w-full" variants={itemVariants}>
               <div className="space-y-2">
@@ -376,7 +376,7 @@ function Home() {
           </div>
         </motion.section>
 
-        <section id="download" className="py-12 md:py-24 lg:py-32 bg-emerald-50 dark:bg-[#18181b] dark:text-white">
+        <section id="download" className="py-6 md:py-12 lg:py-16 bg-emerald-50 dark:bg-[#18181b] dark:text-white">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="flex flex-col justify-center space-y-4 animate-on-scroll">

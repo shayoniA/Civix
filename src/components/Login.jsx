@@ -4,6 +4,8 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { Link,useNavigate } from 'react-router-dom';
 import MinimalBG from './MinimalBG';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [email, setEmail] = useState("");

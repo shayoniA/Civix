@@ -38,178 +38,54 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
     
-    <style>
-      .navbar {
-  background: linear-gradient(90deg, #10b981, #3bb78f);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 18px;
-  padding: 15px 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-.navbar-item {
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-.navbar-item:hover {
-  color: #fff;
-  transform: scale(1.05);
-}
-.navbar-item.active {
-  border-bottom: 2px solid #fff;
-}
-
-<style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8fafc;
-            margin: 0;
-            padding: 20px;
-        }
-
-        /* Chatbot container */
-        .chatbot {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            background-color: white;
-        }
-
-        /* Chat header */
-        .chat-header {
-            background-color: #0ea5e9;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        /* Chat messages area */
-        .chat-messages {
-            padding: 10px;
-            height: 300px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        /* Individual message */
-        .message {
-            padding: 10px;
-            border-radius: 5px;
-            max-width: 80%;
-            word-wrap: break-word;
-        }
-
-        .message.user {
-            background-color: #0ea5e9;
-            color: white;
-            align-self: flex-end;
-        }
-
-        .message.bot {
-            background-color: #e5e5e5;
-            color: black;
-            align-self: flex-start;
-        }
-
-        /* Input area */
-        .chat-input {
-            display: flex;
-            border-top: 1px solid #ccc;
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 0;
-            outline: none;
-        }
-
-        .chat-input button {
-            padding: 10px;
-            background-color: #0ea5e9;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 0 0 10px 10px;
-        }
-        .chat-input button:hover {
-            background-color: #3b82f6;
-        }
-    </style>
-    <!-- Chatbot  -->
+    <!-- Botpress Chatbot -->
     <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js" defer></script>
     <script src="https://files.bpcontent.cloud/2025/06/23/15/20250623153848-PNBTVMZP.js" defer></script>
 
-    <div class="chatbot">
-        <div class="chat-header">Chatbot</div>
-        <div class="chat-messages" id="chatMessages"></div>
-        <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Type a message..." />
-            <button id="sendButton">Send</button>
-        </div>
-    </div>
+    <style>
+      .bpw-layout {
+        border-radius: 12px !important;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2) !important;
+      }
 
-    
-<script>
-        const chatMessages = document.getElementById('chatMessages');
-        const userInput = document.getElementById('userInput');
-        const sendButton = document.getElementById('sendButton');
+      .bpw-header-container {
+        background: linear-gradient(135deg, #059669, #10b981, #34d399) !important;
+        border-radius: 12px 12px 0 0 !important;
+      }
 
-       
-        function appendMessage(text, sender) {
-            const message = document.createElement('div');
-            message.classList.add('message', sender);
-            message.textContent = text;
-            chatMessages.appendChild(message);
-            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
-        }
+      .bpw-header-title {
+        color: white !important;
+        font-family: 'Segoe UI', sans-serif !important;
+      }
 
-        
-        function handleUser Input() {
-            const userText = userInput.value.trim();
-            if (userText) {
-                appendMessage(userText, 'user');
-                userInput.value = ''; // Clear input field
-                botResponse(userText); // Get bot response
-            }
-        }
+      .bpw-send-button {
+        background-color: rgb(16 185 129) !important;
+        border: none !important;
+      }
 
-       
-        function botResponse(userText) {
-            // Simple bot logic for demonstration
-            let botText = "I'm not sure how to respond to that.";
-            if (userText.toLowerCase().includes('hello')) {
-                botText = 'Hello! How can I assist you today?';
-            } else if (userText.toLowerCase().includes('help')) {
-                botText = 'Sure! What do you need help with?';
-            } else if (userText.toLowerCase().includes('bye')) {
-                botText = 'Goodbye! Have a great day!';
-            }
+      .bpw-send-button:hover {
+        background-color: #059669 !important;
+      }
 
-            setTimeout(() => {
-                appendMessage(botText, 'bot');
-            }, 1000); // Simulate a delay for bot response
-        }
+      .bpw-from-bot .bpw-chat-bubble {
+        background-color: #f0fdf4 !important;
+        border: 1px solid #d1fae5 !important;
+      }
 
-        
-        sendButton.addEventListener('click', handleUser Input);
+      .bpw-from-user .bpw-chat-bubble {
+        background: linear-gradient(135deg, #059669, #10b981) !important;
+        color: white !important;
+      }
 
-        
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                handleUser Input();
-            }
-        });
-  </script>
+      .bpw-composer {
+        border-top: 1px solid #ecfdf5 !important;
+      }
+
+      .bpw-chat-container {
+        background-color: white !important;
+      }
+    </style>
   </body>
 </html>

@@ -382,7 +382,7 @@ function Home() {
           </div>
         </motion.section>
 
-        <section id="download" className="py-6 md:py-12 lg:py-16 bg-emerald-50 dark:bg-[#18181b] dark:text-white">
+        <section id="download" className="py-6 md:py-12 lg:py-16 bg-emerald-50 dark:bg-[#161c28] dark:text-white">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="flex flex-col justify-center space-y-4 animate-on-scroll">
@@ -441,13 +441,13 @@ function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="flex items-center justify-center lg:justify-end animate-on-scroll">
+              <div className="hidden lg:flex flex items-center justify-center lg:justify-end animate-on-scroll">
                 <div className="relative w-full max-w-[400px]">
-                  <div className="overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] bg-white dark:bg-[#23272f]">
-                    <img  className="w-full h-auto object-cover" loading="lazy" />
+                  <div className="overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] bg-white dark:bg-[#111827]">
+                    <img className="w-full h-auto object-cover" loading="lazy" />
                     <p className="ml-[7rem]">Civix App on Mobile</p>
                   </div>
-                  <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-lg border bg-background dark:bg-[#23272f] p-2 shadow-lg transition-all duration-300 hover:scale-110">
+                  <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-lg border bg-background dark:bg-[#111827] p-2 shadow-lg transition-all duration-300 hover:scale-110">
                     <div className="flex h-full w-full items-center justify-center rounded bg-emerald-100 dark:bg-emerald-900">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-emerald-500">
                         <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -462,7 +462,7 @@ function Home() {
         </section>
       </main>
 
-      <footer className="border-t bg-slate-50 dark:bg-[#18181b]">
+      <footer className="border-t bg-slate-50 dark:bg-[#111827]">
         <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between md:py-12">
           <div className="flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-emerald-500">
@@ -488,6 +488,7 @@ function Home() {
               <span className="sr-only">GitHub</span>
             </a>
           </div>
+
           <p className="text-center text-sm text-muted-foreground dark:text-muted-foreground">© {new Date().getFullYear()} Civix. All rights reserved.</p>
         </div>
       </footer>

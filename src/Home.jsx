@@ -135,13 +135,7 @@ function Home() {
                 <div className="flex flex-col gap-3 min-[400px]:flex-row">
                   <button
                     className="flex h-12 items-center justify-center rounded-lg bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group"
-                    onClick={() => {
-                      if (isSignedIn) {
-                        navigate("/report-issue");
-                      } else {
-                        navigate("/signup");
-                      }
-                    }}
+                    onClick={() => navigate('/signup')}
                   >
                     Get Started
                     <svg

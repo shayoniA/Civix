@@ -358,7 +358,7 @@ function Home() {
               <div className="w-full mt-8 max-w-3xl mx-auto">
                 {questions.map((faq) => (
                   <div key={faq.id} className="py-2 mb-4 w-full overflow-hidden">
-                    <button className={`w-full text-left flex items-center justify-between px-4 py-2 border-0 outline-none focus:outline-none focus:ring-0 shadow-none rounded-md transition-colors duration-300 ${activeFaq === faq.id ? 'bg-emerald-200 dark:bg-emerald-600 text-emerald-900 dark:text-white font-semibold' : 'bg-emerald-100 dark:bg-[#23272f] text-accent-foreground dark:text-white hover:bg-accent hover:dark:bg-[#2a2e37]'}`} onClick={() => setActiveFaq(activeFaq === faq.id ? null : faq.id)}>
+                    <button className={`w-full text-left flex items-center justify-between px-4 py-2 border-0 outline-none focus:outline-none focus:ring-0 shadow-none rounded-md transition-colors duration-300 ${activeFaq === faq.id ? 'bg-emerald-200 dark:bg-emerald-600 text-emerald-900 dark:text-white font-semibold' : 'bg-emerald-100 dark:bg-[#131a28bd] text-accent-foreground dark:text-white hover:bg-accent hover:dark:bg-[#131a28]'}`} onClick={() => setActiveFaq(activeFaq === faq.id ? null : faq.id)}>
                       <span className="font-medium">{faq.question}</span>
                       {activeFaq === faq.id ? (
                         <svg className="w-5 h-5 text-emerald-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

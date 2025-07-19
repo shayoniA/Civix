@@ -510,8 +510,7 @@ function Home() {
               <span className="sr-only">GitHub</span>
             </a>
           </div>
-
-
+          
           <p className="text-center text-sm text-muted-foreground dark:text-muted-foreground">© {new Date().getFullYear()} Civix. All rights reserved.</p>
         </div>
       </footer>

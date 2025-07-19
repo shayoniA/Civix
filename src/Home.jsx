@@ -371,7 +371,7 @@ function Home() {
                       )}
                     </button>
                     {activeFaq === faq.id && (
-                      <motion.div className="mt-2 px-4 py-2 bg-card dark:bg-[#18181b] rounded-md shadow-sm" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.5, ease: "easeInOut" }}>
+                      <motion.div className="mt-2 px-4 py-2 bg-card dark:bg-[#11172385] rounded-md shadow-sm" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.5, ease: "easeInOut" }}>
                         <p className="text-left text-foreground dark:text-white">{faq.answer}</p>
                       </motion.div>
                     )}

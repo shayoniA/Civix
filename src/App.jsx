@@ -143,3 +143,29 @@ function Layout({ children }) {
     </div>
   );
 }
+import { useEffect } from 'react';
+import { useUIStore } from './stores/uiStore';
+
+function App() {
+  const { darkMode, toggleDarkMode } = useUIStore();
+
+  // Initialize dark mode from localStorage
+  useEffect(() => {
+    const savedMode = localStorage.getItem('darkMode') === 'true';
+    if (savedMode !== darkMode) toggleDarkMode();
+  }, []);
+
+  return (
+    <div className={darkMode ? 'dark' : ''}>
+      {/* Rest of your app */}
+    </div>
+  );
+}
+import { lazy, Suspense } from 'react';
+
+const CivicSimulator = lazy(() => import('./Pages/CivicSimulator'));
+
+// Usage:
+<Suspense fallback={<div>Loading...</div>}>
+  <CivicSimulator />
+</Suspense>

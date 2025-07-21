@@ -192,6 +192,47 @@ curl -X PATCH http://localhost:5000/api/issues/1/status \
 - **Complete schema documentation**
 - **Authentication examples**  
 
+
+
+
+### Testing
+*   **Backend Testing:** Jest, Supertest, MongoDB Memory Server
+*   **Frontend Unit/Component Testing:** Vitest, React Testing Library
+*   **Frontend E2E Testing:** Cypress
+
+---
+
+
+## ✅ Running Tests
+
+We have a comprehensive testing suite to ensure code quality and stability.
+
+### Backend Tests (Jest & Supertest)
+
+These tests cover the API endpoints. They run against an in-memory MongoDB database to ensure a clean, isolated environment for each test run, preventing any impact on your development database.
+
+To run all backend tests, navigate to the `/backend` directory and run:
+```sh
+npm test
+```
+
+### Frontend Unit & Component Tests (Vitest)
+
+These tests verify that individual React components render and behave correctly in isolation. We use Vitest and React Testing Library for this.
+
+To run all frontend unit tests, navigate to the `/frontend` directory and run:
+```sh
+npm test
+```
+
+### Frontend End-to-End (E2E) Tests (Cypress)
+
+E2E tests simulate real user workflows in a browser from start to finish. This helps catch bugs in critical user journeys like logging in, creating a post, or navigating the application.
+
+To open the Cypress Test Runner, navigate to the `/frontend` directory and run:
+```sh
+npm run cypress:open
+
 ### 📥 Installation  
 📦 1.**Clone the repository**:  
    ```bash

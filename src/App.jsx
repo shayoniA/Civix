@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { SignIn, SignUp } from '@clerk/clerk-react';
+import { SignIn, SignUp, useAuth } from '@clerk/clerk-react';
 
 import Home from './Home';
 import Login from './components/Login';
@@ -33,6 +33,8 @@ import CivicEducation from './Pages/CivicEducation';
 import CivicSimulator from './Pages/CivicSimulator';
 
 const App = () => {
+  const { isSignedIn } = useAuth();
+  // Only show Navbar if user is NOT signed in
   return (
     <>
       <ScrollToTop />
@@ -50,7 +52,7 @@ const App = () => {
           },
         }}
       />
-      <Navbar />
+      {!isSignedIn && <Navbar />}
       <main className="container mx-auto p-4">
         <Routes>
           {/* Clerk Auth Routes */}
@@ -129,15 +131,16 @@ const App = () => {
 };
 
 export default App;
-import ChatBot from './components/Chatbot';
+// import ChatBot from './components/Chatbot';
 
-// Add this to your Layout component's return statement
-function Layout({ children }) {
-  return (
-    <div className="relative min-h-screen">
-      {/* Your existing layout code */}
-      {children}
+// // Add this to your Layout component's return statement
+// function Layout({ children }) {
+//   return (
+//     <div className="relative min-h-screen">
+//       {/* Your existing layout code */}
+//       {children}
       
+
       {/* Add the ChatBot component at the end */}
       <ChatBot />
     </div>
@@ -169,3 +172,10 @@ const CivicSimulator = lazy(() => import('./Pages/CivicSimulator'));
 <Suspense fallback={<div>Loading...</div>}>
   <CivicSimulator />
 </Suspense>
+
+//       {/* Add the ChatBot component at the end */}
+//       <ChatBot />
+//     </div>
+//   );
+// }
+

@@ -116,12 +116,12 @@ function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center min-h-[calc(100vh-8rem)]">
               <div className="flex flex-col justify-center space-y-6 animate-on-scroll">
-                <div className="space-y-4">
-                  <div className="inline-block">
+                <div className="flex flex-col justify-center items-center">
+                  {/* <div className="inline-block">
                     <span className="px-3 py-1 text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200 rounded-full">
                       🏛️ Civic Engagement Platform
                     </span>
-                  </div>
+                  </div> */}
                   <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none leading-tight">
                     Report Local Issues. <br />
                     <span className="text-emerald-500 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
@@ -132,7 +132,7 @@ function Home() {
                     Civix helps citizens report and track local civic issues like potholes, broken lights, and garbage collection problems. Join thousands making their communities better.
                   </p>
                 </div>
-                <div className="flex flex-col gap-3 min-[400px]:flex-row">
+                <div className="flex flex-col justify-center items-center gap-3 min-[400px]:flex-row">
                   <button
                     className="flex h-12 items-center justify-center rounded-lg bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group"
                     onClick={() => navigate('/signup')}
@@ -177,7 +177,7 @@ function Home() {
                     Watch Demo
                   </button>
                 </div>
-                <div className="flex items-center gap-6 pt-2">
+                <div className="flex items-center justify-center gap-4 pt-0">
                   <div className="flex items-center gap-1">
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (
@@ -441,7 +441,7 @@ function Home() {
                   </Link>
                 </div>
               </div>
-              
+
               <div className="hidden lg:flex items-center justify-end animate-on-scroll px-6">
                 <div className="relative w-full max-w-sm">
 

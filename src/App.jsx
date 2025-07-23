@@ -52,17 +52,19 @@ const App = () => {
           },
         }}
       />
-      {!isSignedIn && <Navbar />}
+          
+      <Navbar/>
+
       <main className="min-h-screen">
         <Routes>
           {/* Clerk Auth Routes */}
           <Route
             path="/sign-in/*"
-            element={<SignIn routing="path" path="/sign-in" redirectUrl="/home" />}
+            element={<SignIn routing="path" path="/sign-in" redirectUrl="/" />}
           />
           <Route
             path="/signup/*"
-            element={<SignUp routing="path" path="/signup" redirectUrl="/home" />}
+            element={<SignUp routing="path" path="/signup" redirectUrl="/" />}
           />
 
           {/* Public Routes */}

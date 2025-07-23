@@ -146,10 +146,10 @@ const Navbar = () => {
 
         {/* Desktop nav - only show on large screens */}
         <nav className="hidden lg:flex gap-6">
-          <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Features</a>
-          <a href="#how-it-works" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">How It Works</a>
-          <a href="#testimonials" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Testimonials</a>
-          <a href="#faqs" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">FAQ</a>
+          <a href="/#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Features</a>
+          <a href="/#how-it-works" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">How It Works</a>
+          <a href="/#testimonials" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Testimonials</a>
+          <a href="/#faqs" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">FAQ</a>
           <Link to="/civic-education" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Civic Education & Rights</Link>
         </nav>
 

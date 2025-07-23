@@ -53,7 +53,7 @@ const App = () => {
         }}
       />
       {!isSignedIn && <Navbar />}
-      <main className="container mx-auto p-4">
+      <main className="min-h-screen">
         <Routes>
           {/* Clerk Auth Routes */}
           <Route

@@ -116,12 +116,12 @@ function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center min-h-[calc(100vh-8rem)]">
               <div className="flex flex-col justify-center space-y-6 animate-on-scroll">
-                <div className="space-y-4">
-                  <div className="inline-block">
+                <div className="flex flex-col justify-center items-center">
+                  {/* <div className="inline-block">
                     <span className="px-3 py-1 text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200 rounded-full">
                       🏛️ Civic Engagement Platform
                     </span>
-                  </div>
+                  </div> */}
                   <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none leading-tight">
                     Report Local Issues. <br />
                     <span className="text-emerald-500 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
@@ -132,7 +132,7 @@ function Home() {
                     Civix helps citizens report and track local civic issues like potholes, broken lights, and garbage collection problems. Join thousands making their communities better.
                   </p>
                 </div>
-                <div className="flex flex-col gap-3 min-[400px]:flex-row">
+                <div className="flex flex-col justify-center items-center gap-3 min-[400px]:flex-row">
                   <button
                     className="flex h-12 items-center justify-center rounded-lg bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group"
                     onClick={() => navigate('/signup')}
@@ -177,7 +177,7 @@ function Home() {
                     Watch Demo
                   </button>
                 </div>
-                <div className="flex items-center gap-6 pt-2">
+                <div className="flex items-center justify-center gap-4 pt-0">
                   <div className="flex items-center gap-1">
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (
@@ -441,79 +441,49 @@ function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="hidden lg:flex flex items-center justify-center lg:justify-end animate-on-scroll">
-                <div className="relative w-full max-w-[400px]">
-                  <div className="overflow-hidden rounded-lg border shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] bg-white dark:bg-[#111827]">
-                    <img className="w-full h-auto object-cover" loading="lazy" />
-                    <p className="ml-[7rem]">Civix App on Mobile</p>
+
+              <div className="hidden lg:flex items-center justify-end animate-on-scroll px-6">
+                <div className="relative w-full max-w-sm">
+
+                  {/* QR Card */}
+                  <div className="flex flex-col items-center justify-center bg-white dark:bg-[#111827] border rounded-xl shadow-xl transition-transform duration-500 hover:scale-[1.02] hover:shadow-2xl p-6">
+                    <img
+                      src="/downloadCivixQrCode.png"
+                      alt="Download Civix App QR Code"
+                      className="w-48 h-48 object-contain mb-4"
+                      loading="lazy"
+                    />
+                    <p className="text-center text-sm font-medium text-gray-800 dark:text-gray-300">
+                      Civix App on Mobile
+                    </p>
                   </div>
-                  <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-lg border bg-background dark:bg-[#111827] p-2 shadow-lg transition-all duration-300 hover:scale-110">
-                    <div className="flex h-full w-full items-center justify-center rounded bg-emerald-100 dark:bg-emerald-900">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-emerald-500">
+
+                  {/* Floating Icon */}
+                  <div className="absolute -bottom-5 -left-5 h-16 w-16 rounded-lg border bg-white dark:bg-[#111827] p-2 shadow-lg transition-transform duration-300 hover:scale-110">
+                    <div className="flex items-center justify-center h-full w-full rounded bg-emerald-100 dark:bg-emerald-900">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-6 h-6 text-emerald-500"
+                      >
                         <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                         <circle cx="12" cy="10" r="3" />
                       </svg>
                     </div>
                   </div>
+
                 </div>
               </div>
+
             </div>
           </div>
         </section>
       </main>
-
-      <footer className="border-t bg-slate-50 dark:bg-[#111827]">
-        <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between md:py-12">
-          <div className="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-emerald-500">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <span className="text-xl font-bold">Civix</span>
-          </div>
-          <nav className="flex flex-wrap gap-4 md:gap-6">
-            <a href="/about" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">About</a>
-            <a href="#features" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Features</a>
-            <a href="/privacy" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Privacy</a>
-            <a href="/terms" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Terms</a>
-            <a href="/contact" className="text-sm font-medium hover:text-emerald-500 transition-colors duration-300">Contact</a>
-          </nav>
-          <div className="flex items-center gap-4">
-            <a
-              href="https://github.com/HarshS16/Civix"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium transition-colors duration-300 hover:text-emerald-500 dark:hover:text-green-400"
-            >
-              <svg
-                width="19"
-                height="19"
-                viewBox="0 0 118 118"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-black hover:stroke-emerald-500 dark:stroke-white dark:hover:stroke-green-400 transition-colors duration-300"
-              >
-                <path
-                  d="M49.1666 101.124C32.3095 106.814 18.2619 101.124 9.83331 83.5833"
-                  strokeWidth="8.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M49.1666 108.167V92.2263C49.1666 89.2847 50.0708 86.728 51.5286 84.4187C52.5287 82.834 51.8438 80.5861 50.0374 80.0895C35.0752 75.9763 24.5833 69.3628 24.5833 47.4264C24.5833 41.7234 26.4519 36.3615 29.7365 31.6948C30.554 30.5334 30.9626 29.9527 31.0609 29.4267C31.1592 28.9008 30.9884 28.2144 30.6466 26.8416C29.256 21.2543 29.3461 15.3213 31.4333 9.97212C31.4333 9.97212 35.7462 8.56688 45.5626 14.6993C47.8038 16.0995 48.9245 16.7995 49.9115 16.9561C50.8983 17.1127 52.2179 16.7847 54.8567 16.1287C58.4655 15.2316 62.184 14.75 66.375 14.75C70.5659 14.75 74.2844 15.2316 77.8933 16.1287C80.532 16.7847 81.8517 17.1127 82.8384 16.9561C83.8257 16.7995 84.9462 16.0995 87.1872 14.6993C97.0039 8.56688 101.317 9.97212 101.317 9.97212C103.404 15.3213 103.494 21.2543 102.103 26.8416C101.762 28.2144 101.591 28.9008 101.689 29.4267C101.787 29.9527 102.196 30.5334 103.013 31.6948C106.298 36.3615 108.167 41.7234 108.167 47.4264C108.167 69.3628 97.675 75.9763 82.7126 80.0895C80.9062 80.5861 80.2213 82.834 81.2213 84.4187C82.6791 86.728 83.5833 89.2847 83.5833 92.2263V108.167"
-                  strokeWidth="8.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-
-              <span className="sr-only">GitHub</span>
-            </a>
-          </div>
-          
-          <p className="text-center text-sm text-muted-foreground dark:text-muted-foreground">© {new Date().getFullYear()} Civix. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 }

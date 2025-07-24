@@ -22,7 +22,7 @@ export default function ReportIssue() {
     if (file) formData.append('file', file);
 
     try {
-      const res = await fetch('http://localhost:5001/api/report', {
+      const res = await fetch('http://localhost:5000/api/report', {
         method: 'POST',
         body: formData,
       });
